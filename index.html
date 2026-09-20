@@ -1,488 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML CSS JavaScript - Lab Questions</title>
-<style>
-*{box-sizing:border-box} html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#eef2ff,#fdf2f8,#ecfeff);color:#172033;line-height:1.6}
-header{background:linear-gradient(135deg,#4f46e5,#7c3aed,#db2777);color:#fff;padding:55px 20px 45px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.15)}
-header h1{margin:0 0 10px;font-size:clamp(30px,5vw,52px)} header p{margin:0;font-size:18px}
-.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);padding:12px;text-align:center;box-shadow:0 3px 12px rgba(0,0,0,.1)}
-.nav a{display:inline-block;margin:4px;padding:9px 16px;border-radius:20px;text-decoration:none;color:#fff;background:#4f46e5;font-weight:bold}
-.nav a:hover{background:#db2777}
-.container{max-width:1150px;margin:30px auto;padding:0 16px}
-.note{text-align:center;background:#fff7ed;border:1px solid #fed7aa;padding:15px;border-radius:12px;margin:25px 0;color:#9a3412;font-weight:bold}
-.section{background:#fff;margin:28px 0;border-radius:18px;overflow:hidden;box-shadow:0 8px 25px rgba(31,41,55,.1);border:1px solid #e5e7eb}
-.section-title{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:22px;color:#fff;background:linear-gradient(135deg,#2563eb,#7c3aed)}
-.section:nth-of-type(2) .section-title{background:linear-gradient(135deg,#059669,#0d9488)}
-.section:nth-of-type(3) .section-title{background:linear-gradient(135deg,#ea580c,#e11d48)}
-.section:nth-of-type(4) .section-title{background:linear-gradient(135deg,#0891b2,#2563eb)}
-.section:nth-of-type(5) .section-title{background:linear-gradient(135deg,#9333ea,#db2777)}
-.section:nth-of-type(6) .section-title{background:linear-gradient(135deg,#16a34a,#0f766e)}
-.section:nth-of-type(7) .section-title{background:linear-gradient(135deg,#ca8a04,#ea580c)}
-.section:nth-of-type(8) .section-title{background:linear-gradient(135deg,#4f46e5,#0f766e)}
-.section-title h2{margin:0;flex:1;font-size:24px}.badge,.count{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);padding:5px 10px;border-radius:15px;font-size:13px;font-weight:bold}
-.section ol{margin:0;padding:22px 28px 25px 58px}
-.section li{margin:10px 0;padding:0;border-radius:10px;background:#f8fafc;border-left:4px solid #6366f1}
-.section li a{display:block;padding:12px 15px;color:#1e293b;text-decoration:none;font-weight:500}
-.section li a:hover{background:#eef2ff;color:#4f46e5;transform:translateX(3px);transition:.2s}
-footer{text-align:center;padding:30px 15px;background:#111827;color:#fff;margin-top:40px}
-@media(max-width:650px){.section-title h2{font-size:20px}.section ol{padding-left:45px;padding-right:14px}.section li a{font-size:14px}.nav a{font-size:13px;padding:7px 11px}}
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HTML CSS JavaScript Practical Dashboard</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #667eea,
+                    #764ba2
+                );
+
+            min-height: 100vh;
+
+            padding: 40px 20px;
+
+            color: #2c3e50;
+        }
+
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+
+            margin: auto;
+        }
+
+
+        /* HEADER */
+
+        header {
+            background-color: white;
+
+            text-align: center;
+
+            padding: 45px 25px;
+
+            border-radius: 25px;
+
+            margin-bottom: 35px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.20);
+        }
+
+
+        header .emoji {
+            font-size: 55px;
+
+            margin-bottom: 15px;
+        }
+
+
+        header h1 {
+            color: #5a3d8e;
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+        }
+
+
+        header p {
+            color: #666;
+
+            font-size: 18px;
+        }
+
+
+        /* SECTION */
+
+        .dashboard-title {
+            text-align: center;
+
+            color: white;
+
+            margin-bottom: 25px;
+
+            font-size: 28px;
+        }
+
+
+        /* CARDS */
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 30px;
+        }
+
+
+        .card {
+
+            background-color: white;
+
+            padding: 35px 25px;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.18);
+
+            transition: 0.3s;
+        }
+
+
+        .card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        .icon {
+
+            font-size: 65px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .card h2 {
+
+            font-size: 26px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+            min-height: 70px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* HTML CARD */
+
+        .html-card h2 {
+            color: #e44d26;
+        }
+
+
+        .html-card a {
+            background-color: #e44d26;
+        }
+
+
+        .html-card a:hover {
+            background-color: #c93d1f;
+        }
+
+
+        /* CSS CARD */
+
+        .css-card h2 {
+            color: #6c4ab6;
+        }
+
+
+        .css-card a {
+            background-color: #6c4ab6;
+        }
+
+
+        .css-card a:hover {
+            background-color: #51358f;
+        }
+
+
+        /* JAVASCRIPT CARD */
+
+        .js-card h2 {
+            color: #d6a900;
+        }
+
+
+        .js-card a {
+            background-color: #d6a900;
+
+            color: #222;
+        }
+
+
+        .js-card a:hover {
+            background-color: #b38d00;
+        }
+
+
+        /* BUTTON */
+
+        .card a {
+
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        /* INFORMATION */
+
+        .info {
+
+            background-color: white;
+
+            margin-top: 35px;
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        .info h2 {
+
+            color: #5a3d8e;
+
+            margin-bottom: 12px;
+        }
+
+
+        .info p {
+
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+
+            background-color: #2c3e50;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            margin-top: 35px;
+
+            border-radius: 15px;
+        }
+
+
+        footer p {
+
+            margin: 5px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 10px;
+            }
+
+
+            header h1 {
+                font-size: 28px;
+            }
+
+
+            header p {
+                font-size: 15px;
+            }
+
+
+            .dashboard-title {
+                font-size: 23px;
+            }
+
+
+            .card {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
+
 <body>
-<header>
-<h1>📚 HTML • CSS • JavaScript</h1>
-<p>Complete Practical Lab Question Bank</p>
-</header>
-<nav class="nav">
-<a href="#html">HTML</a><a href="#css">CSS</a><a href="#javascript">JavaScript</a>
-<a href="#dom">DOM</a><a href="#events">Events</a><a href="#forms">Forms</a>
-<a href="#browser">Browser</a><a href="#storage">Web Storage</a>
-</nav>
+
+
 <div class="container">
-<div class="note">📌 Click any question to open its corresponding practical program.</div>
 
-<section class="section" id="html">
-  <div class="section-title">
-    <span class="badge">HTML</span>
-    <h2>HTML Lab Questions</h2>
-    <span class="count">15 Questions</span>
-  </div>
-  <ol>
-    <li><a href="html/Basic-HTML-Webpage.html">Write an HTML program to create a basic webpage.</a></li>
-<li><a href="html/Ordered-Unordered-DescriptionLists.html">Write an HTML program to create ordered, unordered and description lists.</a></li>
-<li><a href="html/TableswithRows-Columns-MergedCells.html">Write an HTML program to create a table with rows, columns and merged cells.</a></li>
-<li><a href="html/ImagesandHyperlinks.html">Write an HTML program to display images and hyperlinks.</a></li>
-<li><a href="html/StudentRegistrationForm.html">Write an HTML program to create a student registration form.</a></li>
-<li><a href="html/AudioandVideo.html">Write an HTML program to embed audio and video.</a></li>
-<li><a href="html/Frames-iframe.html">Write an HTML program to demonstrate frames and iframe.</a></li>
-<li><a href="html/SemanticElements.html">Write an HTML program using semantic HTML5 elements.</a></li>
-<li><a href="html/HTML5InputTypes.html">Write an HTML program demonstrating HTML5 input types.</a></li>
-<li><a href="html/CollegeTimetable.html">Write an HTML program to create a college timetable.</a></li>
-<li><a href="html/InternalandExternalCSS.html">Write an HTML program using internal and external CSS.</a></li>
-<li><a href="html/css-selectors.html">Write an HTML program demonstrating CSS selectors.</a></li>
-<li><a href="html/responsive-webpage.html">Write an HTML program to create a responsive webpage.</a></li>
-<li><a href="html/Bootstrap-Components.html">Write an HTML program demonstrating Bootstrap components.</a></li>
-<li><a href="html/Simple-Personal-Portfolio.html">Write an HTML program to create a simple personal portfolio.</a></li>
-  </ol>
-</section>
 
-<section class="section" id="css">
-  <div class="section-title">
-    <span class="badge">CSS</span>
-    <h2>CSS Lab Questions</h2>
-    <span class="count">75 Questions</span>
-  </div>
-  <ol>
-    <li><a href="css/Inline-Internal-ExternalCSS.html">Write a CSS program demonstrating inline, internal and external CSS.</a></li>
-<li><a href="css/DifferentCSSSelectors.html">Write a CSS program demonstrating different CSS selectors.</a></li>
-<li><a href="css/colour-background-border.html">Write a CSS program to style colours, backgrounds and borders.</a></li>
-<li><a href="css/Font Properties-TextFormatting.html">Write a CSS program demonstrating font properties and text formatting.</a></li>
-<li><a href="css/BoxModel.html">Write a CSS program demonstrating the CSS box model.</a></li>
-<li><a href="css/Width-Height-Sizing.html">Write a CSS program demonstrating width, height and sizing.</a></li>
-<li><a href="css/CSSPositioning.html">Write a CSS program demonstrating CSS positioning.</a></li>
-<li><a href="css/Float-Clear.html">Write a CSS program demonstrating float and clear.</a></li>
-<li><a href="css/Styled-Navigation-Bar.html">Write a CSS program to create a styled navigation bar.</a></li>
-<li><a href="css/Pseudo-Classes.html">Write a CSS program demonstrating pseudo-classes.</a></li>
-<li><a href="css/Pseudo-Elements.html">Write a CSS program demonstrating pseudo-elements.</a></li>
-<li><a href="css/ListsandTables.html">Write a CSS program to style lists and tables.</a></li>
-<li><a href="css/RegistrationForm.html">Write a CSS program to style a registration form.</a></li>
-<li><a href="css/Flexbox.html">Write a CSS program demonstrating Flexbox.</a></li>
-<li><a href="css/CSSGrid.html">Write a CSS program demonstrating CSS Grid.</a></li>
-<li><a href="css/Responsive-Media-Queries.html">Write a CSS program using responsive media queries.</a></li>
-<li><a href="css/TransitionsandTransformations.html">Write a CSS program demonstrating transitions and transformations.</a></li>
-<li><a href="css/Animations.html">Write a CSS program demonstrating CSS animations.</a></li>
-<li><a href="css/Responsive-Navigation-Menu.html">Write a CSS program to create a responsive navigation menu.</a></li>
-<li><a href="css/Personal-Portfolio.html">Write a CSS program to create a personal portfolio.</a></li>
-<li><a href="css/Student-Profile.html">Write a CSS program to create a student profile.</a></li>
-<li><a href="css/LoginPage.html">Write a CSS program to create a login page.</a></li>
-<li><a href="css/ProductCard.html">Write a CSS program to create a product card.</a></li>
-<li><a href="css/gallery.html">Write a CSS program to create an image gallery.</a></li>
-<li><a href="css/Homepage.html">Write a CSS program to create a homepage.</a></li>
-<li><a href="css/InheritanceandSpecificity.html">Write a CSS program demonstrating inheritance and specificity.</a></li>
-<li><a href="css/DifferentCSSSelectors.html">Write a CSS program demonstrating different CSS selectors.</a></li>
-<li><a href="css/CombinatorSelectors.html">Write a CSS program demonstrating combinator selectors.</a></li>
-<li><a href="css/Variables.html">Write a CSS program using CSS variables.</a></li>
-<li><a href="css/images-positioning.html">Write a CSS program demonstrating image positioning.</a></li>
-<li><a href="css/linear-radial.html">Write a CSS program demonstrating linear and radial gradients.</a></li>
-<li><a href="css/box-text.html">Write a CSS program demonstrating box and text styling.</a></li>
-<li><a href="css/radius-shape.html">Write a CSS program demonstrating border radius and shapes.</a></li>
-<li><a href="css/OpacityandTransparency.html">Write a CSS program demonstrating opacity and transparency.</a></li>
-<li><a href="css/Overflow.html">Write a CSS program demonstrating overflow.</a></li>
-<li><a href="css/z-indexandstacking.html">Write a CSS program demonstrating z-index and stacking.</a></li>
-<li><a href="css/DisplayProperty.html">Write a CSS program demonstrating the display property.</a></li>
-<li><a href="css/VisibilityandHiding.html">Write a CSS program demonstrating visibility and hiding.</a></li>
-<li><a href="css/DropdownMenu.html">Write a CSS program to create a dropdown menu.</a></li>
-<li><a href="css/ImageHoverEffect.html">Write a CSS program to create an image hover effect.</a></li>
-<li><a href="css/Tooltip.html">Write a CSS program to create tooltips.</a></li>
-<li><a href="css/button-hover.html">Write a CSS program demonstrating button hover effects.</a></li>
-<li><a href="css/CSSFilters.html">Write a CSS program demonstrating CSS filters.</a></li>
-<li><a href="css/fit-position.html">Write a CSS program demonstrating object-fit and object-position.</a></li>
-<li><a href="css/responsive-gallery.html">Write a CSS program to create a responsive image gallery.</a></li>
-<li><a href="css/CardLayout.html">Write a CSS program to create a card layout.</a></li>
-<li><a href="css/dashboard.html">Write a CSS program to create a dashboard layout.</a></li>
-<li><a href="css/2column.html">Write a CSS program to create a two-column layout.</a></li>
-<li><a href="css/3column.html">Write a CSS program to create a three-column layout.</a></li>
-<li><a href="css/stickyheader.html">Write a CSS program to create a sticky header.</a></li>
-<li><a href="css/fixed-sidebar.html">Write a CSS program to create a fixed sidebar.</a></li>
-<li><a href="css/ResponsiveFooter.html">Write a CSS program to create a responsive footer.</a></li>
-<li><a href="css/LoginPage.html">Write a CSS program to create a login page.</a></li>
-<li><a href="css/contactForm.html">Write a CSS program to create a contact form.</a></li>
-<li><a href="css/college-homepage.html">Write a CSS program to create a college homepage.</a></li>
-<li><a href="css/restaurant-web.html">Write a CSS program to create a restaurant website.</a></li>
-<li><a href="css/shopping-web.html">Write a CSS program to create a shopping website.</a></li>
-<li><a href="css/travel-homepage.html">Write a CSS program to create a travel homepage.</a></li>
-<li><a href="css/news-blog.html">Write a CSS program to create a news/blog webpage.</a></li>
-<li><a href="css/multi-section.html">Write a CSS program to create a multi-section webpage.</a></li>
-<li><a href="css/template.html">Write a CSS program to create a reusable webpage template.</a></li>
-<li><a href="css/Flexbox-Alignment-Ordering.html">Write a CSS program demonstrating Flexbox alignment and ordering.</a></li>
-<li><a href="css/responsive-grid.html">Write a CSS program to create a responsive grid.</a></li>
-<li><a href="css/mobile-responsive.html">Write a CSS program to create a mobile-responsive webpage.</a></li>
-<li><a href="css/transitions.html">Write a CSS program demonstrating transitions.</a></li>
-<li><a href="css/transformations.html">Write a CSS program demonstrating transformations.</a></li>
-<li><a href="css/keyframe-animations.html">Write a CSS program using keyframe animations.</a></li>
-<li><a href="css/loading-spinner.html">Write a CSS program to create a loading spinner.</a></li>
-<li><a href="css/sliding-card.html">Write a CSS program to create a sliding card.</a></li>
-<li><a href="css/only-modal-popup.html">Write a CSS program to create a modal popup.</a></li>
-<li><a href="css/dark-mode.html">Write a CSS program to create a dark-mode webpage.</a></li>
-<li><a href="css/typography.html">Write a CSS program demonstrating typography.</a></li>
-<li><a href="css/min-max.html">Write a CSS program demonstrating min(), max() and related sizing functions.</a></li>
-<li><a href="css/cal-func.html">Write a CSS program demonstrating the calc() function.</a></li>
-<li><a href="css/responsive-website.html">Write a CSS program to create a complete responsive website.</a></li>
-  </ol>
-</section>
+    <!-- HEADER -->
 
-<section class="section" id="javascript">
-  <div class="section-title">
-    <span class="badge">JAVASCRIPT</span>
-    <h2>Basic JavaScript Programs</h2>
-<ol>
-     <li><a href="basic-javascript/hello-world.html">1. Hello World</a></li>
-<li><a href="basic-javascript/arithmetic-operations.html">2. Arithmetic Operations</a></li>
-<li><a href="basic-javascript/largest-of-three.html">3. Largest of Three Numbers</a></li>
-<li><a href="basic-javascript/even-odd.html">4. Even or Odd</a></li>
-<li><a href="basic-javascript/positive-negative-zero.html">5. Positive, Negative or Zero</a></li>
-<li><a href="basic-javascript/factorial.html">6. Factorial</a></li>
-<li><a href="basic-javascript/fibonacci.html">7. Fibonacci Series</a></li>
-<li><a href="basic-javascript/prime-number.html">8. Prime Number</a></li>
-<li><a href="basic-javascript/palindrome-number.html">9. Palindrome Number</a></li>
-<li><a href="basic-javascript/reverse-number.html">10. Reverse Number</a></li>
-<li><a href="basic-javascript/sum-of-digits.html">11. Sum of Digits</a></li>
-<li><a href="basic-javascript/largest-smallest-array.html">12. Largest and Smallest in Array</a></li>
-<li><a href="basic-javascript/sort-array.html">13. Sort an Array</a></li>
-<li><a href="basic-javascript/sum-average-array.html">14. Sum and Average of Array</a></li>
-<li><a href="basic-javascript/functions.html">15. Functions</a></li>
-<li><a href="basic-javascript/arrow-functions.html">16. Arrow Functions</a></li>
-<li><a href="basic-javascript/strings-methods.html">17. Strings and String Methods</a></li>
-<li><a href="basic-javascript/arrays-methods.html">18. Arrays and Array Methods</a></li>
-<li><a href="basic-javascript/objects.html">19. Objects</a></li>
-<li><a href="basic-javascript/date-math-objects.html">20. Date and Math Objects</a></li>
-</ol>
-    <h2>DOM & Event-Based Experiments</h2>
-<ol>
-     <li><a href="dom-manipulation/change-text.html">21. Change Text</a></li>
-<li><a href="dom-manipulation/change-background-color.html">22. Change Background Color</a></li>
-<li><a href="dom-manipulation/button-click-event.html">23. Button Click Event</a></li>
-<li><a href="dom-manipulation/show-hide-element.html">24. Show / Hide Element</a></li>
-<li><a href="dom-manipulation/change-image-on-click.html">25. Change Image on Click</a></li>
-<li><a href="dom-manipulation/digital-clock.html">26. Digital Clock</a></li>
-<li><a href="dom-manipulation/simple-calculator.html">27. Simple Calculator</a></li>
-<li><a href="dom-manipulation/number-guessing-game.html">28. Number Guessing Game</a></li>
-<li><a href="dom-manipulation/form-validation.html">29. Form Validation</a></li>
-<li><a href="dom-manipulation/validate-user-details.html">30. Validate Name, Email, Phone and Password</a></li>
-<li><a href="dom-manipulation/todo-list.html">31. To-Do List</a></li>
-<li><a href="dom-manipulation/quiz.html">32. Quiz</a></li>
-<li><a href="dom-manipulation/counter.html">33. Counter</a></li>
-<li><a href="dom-manipulation/stopwatch.html">34. Stopwatch</a></li>
-<li><a href="dom-manipulation/countdown-timer.html">35. Countdown Timer</a></li>
-</ol>
-    <h2>Advanced JavaScript</h2>
-<ol>
-     <li><a href="advancedjavascript/es6-features.html">36. ES6 Features</a></li>
-<li><a href="advanced-javascript/spread-rest.html">37. Spread and Rest Operators</a></li>
-<li><a href="advanced-javascript/classes-objects.html">38. Classes and Objects</a></li>
-<li><a href="advanced-javascript/inheritance.html">39. Inheritance</a></li>
-<li><a href="advanced-javascript/callbacks-promises-async.html">40. Callbacks, Promises and Async/Await</a></li>
-<li><a href="advanced-javascript/fetch-api.html">41. Fetch API</a></li>
-<li><a href="advanced-javascript/display-api-data.html">42. Display API Data Dynamically</a></li>
-<li><a href="advanced-javascript/localstorage-store-retrieve.html">43. LocalStorage Store and Retrieve</a></li>
-<li><a href="advanced-javascript/responsive-login-validation.html">44. Responsive Login Form with JavaScript Validation</a></li>
-<li><a href="advanced-javascript/complete-interactive-webpage.html">45. Complete Interactive Webpage</a></li>
-  </ol>
-     <h2>Additional JavaScript Programs</h2>
-     <ol>
+    <header>
 
-    <li><a href="additional-javascript/swap-two-numbers.html">46. Swap Two Numbers</a></li>
-<li><a href="additional-javascript/gcd.html">47. GCD</a></li>
-<li><a href="additional-javascript/lcm.html">48. LCM</a></li>
-<li><a href="additional-javascript/armstrong-number.html">49. Armstrong Number</a></li>
-<li><a href="additional-javascript/perfect-number.html">50. Perfect Number</a></li>
-<li><a href="additional-javascript/multiplication-table.html">51. Multiplication Table</a></li>
-<li><a href="additional-javascript/power.html">52. Power of a Number</a></li>
-<li><a href="additional-javascript/count-digits.html">53. Count Digits</a></li>
-<li><a href="additional-javascript/second-largest-array.html">54. Second Largest in Array</a></li>
-<li><a href="additional-javascript/remove-duplicates.html">55. Remove Duplicates</a></li>
-<li><a href="additional-javascript/merge-arrays.html">56. Merge Arrays</a></li>
-<li><a href="additional-javascript/frequency-array-elements.html">57. Frequency of Array Elements</a></li>
-<li><a href="additional-javascript/common-elements-arrays.html">58. Common Elements of Arrays</a></li>
-<li><a href="additional-javascript/reverse-string.html">59. Reverse String</a></li>
-<li><a href="additional-javascript/string-palindrome.html">60. String Palindrome</a></li>
-<li><a href="additional-javascript/vowels-consonants.html">61. Vowels and Consonants</a></li>
-<li><a href="additional-javascript/count-words.html">62. Count Words</a></li>
-<li><a href="additional-javascript/character-frequency.html">63. Character Frequency</a></li>
-<li><a href="additional-javascript/regular-expressions.html">64. Regular Expressions</a></li>
-<li><a href="additional-javascript/validate-email-regex.html">65. Validate Email using Regex</a></li>
-</ol>
-    <h2>DOM Manipulation</h2>
-<ol>
-     <li><a href="dom manipulation-1/add-elements-dynamically.html">1. Add New Elements Dynamically</a></li>
-<li><a href="dom manipulation-1/remove-elements-dynamically.html">2. Remove HTML Elements Dynamically</a></li>
-<li><a href="dom manipulation-1/change-css-dynamically.html">3. Change CSS Styles using JavaScript</a></li>
-<li><a href="dom manipulation-1/change-multiple-elements.html">4. Change Multiple HTML Elements</a></li>
-<li><a href="dom manipulation-1/getelementbyid-classname.html">5. getElementById() and getElementsByClassName()</a></li>
-<li><a href="dom manipulation-1/queryselector.html">6. querySelector() and querySelectorAll()</a></li>
-<li><a href="dom manipulation-1/dynamic-css-classes.html">7. Create and Remove CSS Classes Dynamically</a></li>
-<li><a href="dom manipulation-1/dynamic-table.html">8. Dynamic Table</a></li>
-<li><a href="dom manipulation-1/add-delete-table-rows.html">9. Add and Delete Table Rows</a></li>
-<li><a href="dom manipulation-1/filter-table.html">10. Search and Filter Table Records</a></li>
-<li><a href="dom manipulation-1/character-counter.html">11. Live Character Counter</a></li>
-<li><a href="dom manipulation-1/show-hide-password.html">12. Show / Hide Password</a></li>
-<li><a href="dom manipulation-1/dynamic-dropdown.html">13. Dynamic Dropdown</a></li>
-<li><a href="dom manipulation-1/dependent-dropdown.html">14. Country → State → City Dropdown</a></li>
-<li><a href="dom manipulation-1/image-slideshow.html">15. Image Slideshow / Carousel</a></li>
-</ol>
-    <h2>Events</h2>
-<ol>
-     <li><a href="events/mouse-events.html">1. Mouse Events</a></li>
-<li><a href="events/keyboard-events.html">2. Keyboard Events</a></li>
-<li><a href="events/form-events.html">3. Form Events - Submit, Change, Focus and Blur</a></li>
-<li><a href="events/double-click.html">4. Double-Click Webpage</a></li>
-<li><a href="events/bubbling-capturing.html">5. Event Bubbling and Event Capturing</a></li>
-<li><a href="events/events-event-delegation.html">6. Event Delegation</a></li>
-<li><a href="events/keyboard-game.html">7. Keyboard-Controlled Webpage / Game</a></li>
-<li><a href="events/drag-and-drop.html">8. Drag-and-Drop Application</a></li>
-</ol>
-    <h2>Forms & Validation</h2>
-<ol>
-     <li><a href="forms and validation/student-registration-validation.html">1. Student Registration Form Validation</a></li>
-<li><a href="forms and validation/login-validation.html">2. Login Username and Password Validation</a></li>
-<li><a href="forms and validation/name-validation.html">3. Name Validation - Alphabets Only</a></li>
-<li><a href="forms and validation/age-validation.html">4. Age Validation</a></li>
-<li><a href="forms and validation/mobile-validation.html">5. Mobile Number Validation</a></li>
-<li><a href="forms and validation/email-validation.html">6. Email Validation</a></li>
-<li><a href="forms and validation/password-min-length.html">7. Password Minimum Length Validation</a></li>
-</ol>
-     <h2>Browser Objects & Browser Features</h2>
-<ol>
-    <li><a href="browser objects and features/window-object-demo.html">1. Demonstrate the Window Object</a></li>
+        <div class="emoji">
+            💻
+        </div>
 
-<li><a href="browser objects and features/navigator-object-demo.html">2. Demonstrate the Navigator Object</a></li>
+        <h1>
+            HTML • CSS • JavaScript
+        </h1>
 
-<li><a href="browser objects and features/location-object-demo.html">3. Demonstrate the Location Object</a></li>
+        <p>
+            Web Programming Practical Assignment
+        </p>
 
-<li><a href="browser objects and features/history-object-demo.html">4. Demonstrate the History Object</a></li>
+    </header>
 
-<li><a href="browser objects and features/local-storage.html">5. Create a Program Using localStorage</a></li>
 
-<li><a href="browser objects and features/session-storage.html">6. Create a Program Using sessionStorage</a></li>
+    <!-- DASHBOARD -->
 
-<li><a href="browser objects and features/shopping-cart-local-storage.html">7. Create a Shopping Cart Using localStorage</a></li>
+    <h2 class="dashboard-title">
+        📚 Practical Programs Dashboard
+    </h2>
 
-<li><a href="browser objects and features/theme-switcher-local-storage.html">8. Create a Theme Switcher (Light/Dark Mode) Using localStorage</a></li>
-  </ol>
 
-     <h2>Mini Projects</h2>
-<ol>
-     <li><a href="mini projects/mini-calculator.html">1. Digital Calculator</a></li>
-<li><a href="mini projects/mini-digital-clock.html">2. Digital Clock</a></li>
-<li><a href="mini projects/mini-stopwatch.html">3. Stopwatch</a></li>
-<li><a href="mini projects/mini-countdown.html">4. Countdown Timer</a></li>
-<li><a href="mini projects/mini-todo.html">5. To-Do List</a></li>
-<li><a href="mini projects/weather-api.html">6. Weather API</a></li>
-<li><a href="mini projects/mini-quiz.html">7. Quiz Application</a></li>
-<li><a href="mini projects/mini-number-guessing.html">8. Number Guessing Game</a></li>
-<li><a href="mini projects/tic-tac-toe.html">9. Tic-Tac-Toe</a></li>
-<li><a href="mini projects/expense-tracker.html">10. Expense Tracker</a></li>
-<li><a href="mini projects/student-marks-grade.html">11. Student Marks and Grade</a></li>
-<li><a href="mini projects/shopping-cart.html">12. Shopping Cart</a></li>
-<li><a href="mini projects/notes-localstorage.html">13. Notes using localStorage</a></li>
-<li><a href="mini projects/random-password.html">14. Random Password Generator</a></li>
-<li><a href="mini projects/bmi-calculator.html">15. BMI Calculator</a></li>
-<li><a href="mini projects/currency-converter-api.html">16. Currency Converter API</a></li>
-<li><a href="mini projects/interactive-portfolio.html">17. Complete Interactive Portfolio</a></li>
-  </ol>
-      <h2>Additional DOM Manipulation</h2>
-<ol>
-    <li><a href="dom manipulation-2/dom-change-text.html">1. Change Text Content</a></li>
-<li><a href="dom manipulation-2/dom-innerhtml.html">2. Change innerHTML</a></li>
-<li><a href="dom manipulation-2/dom-change-style.html">3. Change Style</a></li>
-<li><a href="dom manipulation-2/dom-background-click.html">4. Change Background Color on Click</a></li>
-<li><a href="dom manipulation-2/dom-create-element.html">5. Create New Element</a></li>
-<li><a href="dom manipulation-2/dom-remove-element.html">6. Remove Element</a></li>
-<li><a href="dom manipulation-2/dom-replace-element.html">7. Replace Element</a></li>
-<li><a href="dom manipulation-2/dom-add-remove-classes.html">8. Add / Remove CSS Classes</a></li>
-<li><a href="dom manipulation-2/dom-toggle-class.html">9. Toggle CSS Class</a></li>
-<li><a href="dom manipulation-2/dom-change-attributes.html">10. Change Attributes</a></li>
-<li><a href="dom manipulation-2/dom-dynamic-ul.html">11. Dynamic Unordered List</a></li>
-<li><a href="dom manipulation-2/dom-dynamic-ol.html">12. Dynamic Ordered List</a></li>
-<li><a href="dom manipulation-2/dom-student-table.html">13. Dynamic Student Table</a></li>
-<li><a href="dom manipulation-2/dom-add-table-rows.html">14. Add Table Rows</a></li>
-<li><a href="dom manipulation-2/dom-delete-table-row.html">15. Delete Selected Table Row</a></li>
-<li><a href="dom manipulation-2/dom-edit-table.html">16. Edit Table Data</a></li>
-<li><a href="dom manipulation-2/dom-search-table.html">17. Searchable / Filterable Table</a></li>
-<li><a href="dom manipulation-2/dom-sort-table.html">18. Sort Table</a></li>
-<li><a href="dom manipulation-2/dom-dynamic-dropdown.html">19. Dynamic Dropdown</a></li>
-<li><a href="dom manipulation-2/dom-add-options.html">20. Add Dropdown Options</a></li>
-<li><a href="dom manipulation-2/dom-dependent-dropdown.html">21. Dependent Dropdown</a></li>
-<li><a href="dom manipulation-2/dom-image-gallery.html">22. Dynamic Image Gallery</a></li>
-<li><a href="dom manipulation-2/dom-image-slideshow.html">23. Image Slideshow</a></li>
-<li><a href="dom manipulation-2/dom-show-hide-password.html">24. Show / Hide Password</a></li>
-<li><a href="dom manipulation-2/dom-show-hide-content.html">25. Show / Hide Content</a></li>
-<li><a href="dom manipulation-2/dom-tabs.html">26. Tabs</a></li>
-<li><a href="dom manipulation-2/dom-accordion.html">27. Accordion</a></li>
-<li><a href="dom manipulation-2/dom-modal.html">28. Modal</a></li>
-<li><a href="dom manipulation-2/dom-tooltip.html">29. Dynamic Tooltip</a></li>
-<li><a href="dom manipulation-2/dom-character-counter.html">30. Live Character Counter</a></li>
-<li><a href="dom manipulation-2/dom-word-counter.html">31. Live Word Counter</a></li>
-<li><a href="dom manipulation-2/dom-current-date-time.html">32. Current Date and Time</a></li>
-<li><a href="dom manipulation-2/dom-todo.html">33. To-Do List using DOM</a></li>
-<li><a href="dom manipulation-2/dom-edit-delete-todo.html">34. Add, Edit and Delete To-Do</a></li>
-<li><a href="dom manipulation-2/dom-create-append-remove-replace.html">35. createElement, appendChild, removeChild and replaceChild</a></li>
-  </ol>
-    <h2>Additional JavaScript Events</h2>
-  <ol>
-     <li><a href="events-2/onclick-event.html">1. onclick</a></li>
-<li><a href="events-2/ondblclick-event.html">2. ondblclick</a></li>
-<li><a href="events-2/mouse-over-out.html">3. mouseover / mouseout</a></li>
-<li><a href="events-2/mouse-down-up.html">4. mousedown / mouseup</a></li>
-<li><a href="events-2/mousemove-event.html">5. mousemove</a></li>
-<li><a href="events-2/keydown-event.html">6. keydown</a></li>
-<li><a href="events-2/keyup-event.html">7. keyup</a></li>
-<li><a href="events-2/key-pressed.html">8. Display Key Pressed</a></li>
-<li><a href="events-2/key-press-counter.html">9. Keyboard Key Press Counter</a></li>
-<li><a href="events-2/focus-blur.html">10. focus / blur</a></li>
-<li><a href="events-2/change-event.html">11. change</a></li>
-<li><a href="events-2/input-event.html">12. input</a></li>
-<li><a href="events-2/submit-event.html">13. submit</a></li>
-<li><a href="events-2/reset-event.html">14. reset</a></li>
-<li><a href="events-2/background-button.html">15. Button Background Color</a></li>
-<li><a href="events-2/dynamic-font-size.html">16. Dynamic Font Size</a></li>
-<li><a href="events-2/multiple-buttons.html">17. Multiple Buttons with Different Handlers</a></li>
-<li><a href="events-2/add-event-listener.html">18. addEventListener()</a></li>
-<li><a href="events-2/multiple-event-listeners.html">19. Multiple Event Listeners</a></li>
-<li><a href="events-2/remove-event-listener.html">20. removeEventListener()</a></li>
-<li><a href="events-2/event-bubbling.html">21. Event Bubbling</a></li>
-<li><a href="events-2/event-capturing.html">22. Event Capturing</a></li>
-<li><a href="events-2/event-delegation.html">23. Event Delegation</a></li>
-<li><a href="events-2/drag-drop.html">24. Drag and Drop</a></li>
-<li><a href="events-2/mouse-coordinate-tracker.html">25. Mouse Coordinate Tracker</a></li>
-<li><a href="events-2/keyboard-moving-object.html">26. Keyboard-Controlled Moving Object</a></li>
-<li><a href="events-2/click-counter.html">27. Click Counter</a></li>
-<li><a href="events-2/double-click-counter.html">28. Double-Click Counter</a></li>
-<li><a href="events-2/reaction-time-game.html">29. Reaction-Time Game</a></li>
-<li><a href="events-2/typing-test.html">30. Typing Test</a></li>
-  </ol>
-     <h2>Additional Forms & Validation</h2>
-<ol>
-    <li><a href="forms and validation-2/form-student-registration.html">1. Student Registration - All Fields</a></li>
-<li><a href="forms and validation-2/form-login.html">2. Login Form</a></li>
-<li><a href="forms and validation-2/form-name-validation.html">3. Name - Alphabets Only</a></li>
-<li><a href="forms and validation-2/form-age-validation.html">4. Age Validation</a></li>
-<li><a href="forms and validation-2/form-mobile-validation.html">5. Mobile Validation</a></li>
-<li><a href="forms and validation-2/form-email-validation.html">6. Email Validation</a></li>
-<li><a href="forms and validation-2/form-password-min.html">7. Password Minimum Length</a></li>
-<li><a href="forms and validation-2/form-strong-password.html">8. Strong Password</a></li>
-<li><a href="forms and validation-2/form-confirm-password.html">9. Confirm Password</a></li>
-<li><a href="forms and validation-2/form-dob.html">10. Date of Birth</a></li>
-<li><a href="forms and validation-2/form-gender.html">11. Gender</a></li>
-<li><a href="forms and validation-2/form-radio-buttons.html">12. Radio Buttons</a></li>
-<li><a href="forms and validation-2/form-checkbox.html">13. Checkbox</a></li>
-<li><a href="forms and validation-2/form-dropdown.html">14. Dropdown</a></li>
-<li><a href="forms and validation-2/form-textarea.html">15. Textarea</a></li>
-<li><a href="forms and validation-2/form-required-fields.html">16. Required Fields</a></li>
-<li><a href="forms and validation-2/form-individual-errors.html">17. Individual Error Messages</a></li>
-<li><a href="forms and validation-2/form-success-message.html">18. Success Message</a></li>
-<li><a href="forms and validation-2/form-prevent-submit.html">19. Prevent Form Submit</a></li>
-<li><a href="forms and validation-2/form-regex-validation.html">20. Regex Form Validation</a></li>
-<li><a href="forms and validation-2/form-email-regex.html">21. Email Regex</a></li>
-<li><a href="forms and validation-2/form-phone-regex.html">22. Phone Regex</a></li>
-<li><a href="forms and validation-2/form-password-regex.html">23. Password Regex</a></li>
-<li><a href="forms and validation-2/form-realtime-validation.html">24. Real-Time Validation</a></li>
-<li><a href="forms and validation-2/form-event-validation.html">25. Validation using Input, Change, Focus and Blur</a></li>
-<li><a href="forms and validation-2/form-password-strength.html">26. Password Strength Meter</a></li>
-<li><a href="forms and validation-2/form-show-hide-password.html">27. Show / Hide Password</a></li>
-<li><a href="forms and validation-2/form-registration-confirmation.html">28. Registration Confirmation</a></li>
-<li><a href="forms and validation-2/form-college-admission.html">29. College Admission Form</a></li>
-<li><a href="forms and validation-2/form-job-application.html">30. Job Application Form</a></li>
-<li><a href="forms and validation-2/form-feedback.html">31. Feedback Form</a></li>
-<li><a href="forms and validation-2/form-contact.html">32. Contact Form</a></li>
-<li><a href="forms and validation-2/form-multistep.html">33. Multi-Step Registration</a></li>
-<li><a href="forms and validation-2/form-preview.html">34. Form Preview</a></li>
-<li><a href="forms and validation-2/form-age-from-dob.html">35. Calculate Age from DOB</a></li>
-<li><a href="forms and validation-2/form-marks-grade.html">36. Marks Total, Average and Grade</a></li>
-<li><a href="forms and validation-2/form-employee-salary.html">37. Employee Salary</a></li>
-<li><a href="forms and validation-2/form-shopping-total.html">38. Shopping Order Total</a></li>
-<li><a href="forms and validation-2/form-dynamic-fields.html">39. Dynamic Form Fields</a></li>
-<li><a href="forms and validation-2/form-no-reload-validation.html">40. Validate Without Page Reload</a></li>
-</ol>
-    <h2>Additional Browser Objects</h2>
-<ol>
-     <li><a href="browser objects-2/browser-window.html">1. Window Object</a></li>
-<li><a href="browser objects-2/browser-alert-confirm-prompt.html">2. Alert, Confirm and Prompt</a></li>
-<li><a href="browser objects-2/browser-settimeout.html">3. setTimeout()</a></li>
-<li><a href="browser objects-2/browser-setinterval.html">4. setInterval()</a></li>
-<li><a href="browser objects-2/browser-digital-clock.html">5. Digital Clock using setInterval()</a></li>
-<li><a href="browser objects-2/browser-countdown.html">6. Countdown</a></li>
-<li><a href="browser objects-2/browser-stopwatch.html">7. Stopwatch</a></li>
-<li><a href="browser objects-2/browser-location.html">8. Location Object</a></li>
-<li><a href="browser objects-2/browser-redirect.html">9. Redirect using Location</a></li>
-<li><a href="browser objects-2/browser-current-url.html">10. Current URL</a></li>
-<li><a href="browser objects-2/browser-history.html">11. History Object</a></li>
-<li><a href="browser objects-2/browser-back-forward-reload.html">12. Back, Forward and Reload</a></li>
-<li><a href="browser objects-2/browser-navigator.html">13. Navigator Object</a></li>
-<li><a href="browser objects-2/browser-info.html">14. Browser Information</a></li>
-<li><a href="browser objects-2/screen-dimensions.html">15. Screen Width and Height</a></li>
-<li><a href="browser objects-2/online-offline.html">16. Online / Offline Status</a></li>
-<li><a href="browser objects-2/browser-language.html">17. Browser Language</a></li>
-<li><a href="browser objects-2/geolocation.html">18. Geolocation</a></li>
-<li><a href="browser objects-2/coordinates.html">19. Display Coordinates</a></li>
-<li><a href="browser objects-2/online-offline-updates.html">20. Online / Offline Updates</a></li>
-</ol>
-    <h2>Additional Web Storage</h2>
-<ol>
-    <li><a href="web storage/storage-store-username.html">1. Store Username</a></li>
-<li><a href="web storage/storage-retrieve.html">2. Retrieve Data</a></li>
-<li><a href="web storage/storage-update.html">3. Update Data</a></li>
-<li><a href="web storage/storage-delete.html">4. Delete Item</a></li>
-<li><a href="web storage/storage-clear.html">5. Clear Storage</a></li>
-<li><a href="web storage/storage-multiple-values.html">6. Multiple Values</a></li>
-<li><a href="web storage/storage-array-json.html">7. Array using JSON</a></li>
-<li><a href="web storage/storage-object-json.html">8. Object using JSON</a></li>
-<li><a href="web storage/storage-student-record.html">9. Student Record System</a></li>
-<li><a href="web storage/storage-todo.html">10. To-Do List using localStorage</a></li>
-<li><a href="web storage/storage-notes.html">11. Notes using localStorage</a></li>
-<li><a href="web storage/storage-shopping-cart.html">12. Shopping Cart</a></li>
-<li><a href="web storage/storage-login-preference.html">13. Login Preference</a></li>
-<li><a href="web storage/storage-theme.html">14. Dark / Light Theme</a></li>
-<li><a href="web storage/storage-font-size.html">15. Preferred Font Size</a></li>
-<li><a href="web storage/storage-recently-viewed.html">16. Recently Viewed Items</a></li>
-<li><a href="web storage/storage-visitor-counter.html">17. Visitor Counter</a></li>
-<li><a href="web storage/storage-local-vs-session.html">18. localStorage vs sessionStorage</a></li>
-<li><a href="web storage/storage-temporary-form.html">19. Temporary Form using sessionStorage</a></li>
-<li><a href="web storage/storage-multipage-form.html">20. Multi-Page Form using sessionStorage</a></li>
-<li><a href="web storage/storage-autosave.html">21. Auto-Save Form</a></li>
-<li><a href="web storage/storage-restore-refresh.html">22. Restore Data after Refresh</a></li>
-<li><a href="web storage/storage-persistent-cart.html">23. Persistent Shopping Cart</a></li>
-<li><a href="web storage/storage-student-marks.html">24. Student Marks Database</a></li>
-<li><a href="web storage/storage-crud.html">25. localStorage CRUD</a></li>
-</ol>
-</section>
-<footer>
-<p>💻 HTML • CSS • JavaScript Practical Record</p>
-<p><a href="index.html" style="color:#c4b5fd">← Back to Main Dashboard</a></p>
-</footer>
+    <div class="cards">
+
+
+        <!-- HTML -->
+
+        <div class="card html-card">
+
+            <div class="icon">
+                🌐
+            </div>
+
+            <h2>
+                HTML
+            </h2>
+
+            <p>
+                Explore 15 HTML practical programs
+                including webpages, lists, tables,
+                forms, multimedia and semantic elements.
+            </p>
+
+            <a href="html/index.html">
+                Open HTML Programs →
+            </a>
+
+        </div>
+
+
+        <!-- CSS -->
+
+        <div class="card css-card">
+
+            <div class="icon">
+                🎨
+            </div>
+
+            <h2>
+                CSS
+            </h2>
+
+            <p>
+                Explore 75 CSS practical programs
+                covering selectors, layouts, Flexbox,
+                Grid, animations and responsive design.
+            </p>
+
+            <a href="css/index.html">
+                Open CSS Programs →
+            </a>
+
+        </div>
+
+
+        <!-- JAVASCRIPT -->
+
+        <div class="card js-card">
+
+            <div class="icon">
+                ⚡
+            </div>
+
+            <h2>
+                JavaScript
+            </h2>
+
+            <p>
+                Explore JavaScript practical programs
+                covering basics, DOM, events, forms,
+                browser objects, Web Storage and more.
+            </p>
+
+            <a href="javascript/index.html">
+                Open JavaScript Programs →
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info">
+
+        <h2>
+            🚀 Web Programming Lab
+        </h2>
+
+        <p>
+            Select a subject above to access its
+            complete list of practical programs.
+        </p>
+
+        <p>
+            HTML → CSS → JavaScript
+        </p>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            HTML • CSS • JavaScript Practical Assignment
+        </p>
+
+        <p>
+            💻 Web Programming Lab
+        </p>
+
+    </footer>
+
+
+</div>
+
+
 </body>
+
 </html>
