@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Arrays and Array Methods - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d, #00c6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #00897b;
+            font-size: 36px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        input {
+            width: 85%;
+            padding: 14px;
+            margin: 15px 0;
+            border: 2px solid #26a69a;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 13px 28px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #00897b, #26a69a);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e0f2f1;
+            color: #00695c;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00897b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #00695c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📚 Arrays & Array Methods</h1>
+
+        <p>Enter numbers separated by commas.</p>
+
+        <input type="text" id="numbers"
+            placeholder="Example: 10, 20, 30, 40, 50">
+
+        <br>
+
+        <button onclick="arrayOperations()">Perform Operations</button>
+
+        <div class="result" id="result">
+            Result will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function arrayOperations() {
+
+            let input = document.getElementById("numbers").value;
+
+            if (input.trim() === "") {
+                document.getElementById("result").innerHTML =
+                    "Please enter some numbers.";
+                return;
+            }
+
+            let numbers = input.split(",").map(Number);
+
+            if (numbers.some(isNaN)) {
+                document.getElementById("result").innerHTML =
+                    "Please enter valid numbers only.";
+                return;
+            }
+
+            // map() - multiply each element by 2
+            let doubled = numbers.map(function(number) {
+                return number * 2;
+            });
+
+            // filter() - select numbers greater than 20
+            let greaterThan20 = numbers.filter(function(number) {
+                return number > 20;
+            });
+
+            // reduce() - calculate the sum
+            let sum = numbers.reduce(function(total, number) {
+                return total + number;
+            }, 0);
+
+            // push() - add an element
+            let newArray = [...numbers];
+            newArray.push(100);
+
+            document.getElementById("result").innerHTML =
+                "Original Array: " + numbers.join(", ") +
+                "<br>Doubled using map(): " + doubled.join(", ") +
+                "<br>Greater than 20 using filter(): " +
+                (greaterThan20.length > 0 ? greaterThan20.join(", ") : "None") +
+                "<br>Sum using reduce(): " + sum +
+                "<br>After push(100): " + newArray.join(", ");
+        }
+
+    </script>
+
+</body>
+
+</html>

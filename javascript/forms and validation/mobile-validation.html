@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mobile Number Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 400px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1565c0;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #1565c0, #26a69a);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.02);
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #26a69a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📱 Mobile Validation</h1>
+
+        <form onsubmit="return validateMobile()">
+
+            <label>Enter Mobile Number:</label>
+
+            <input
+                type="text"
+                id="mobile"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+            >
+
+            <button type="submit">Validate Mobile</button>
+
+        </form>
+
+        <div id="message"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function validateMobile() {
+
+            let mobile = document.getElementById("mobile").value;
+            let message = document.getElementById("message");
+
+            // Regular expression for exactly 10 digits
+            let mobilePattern = /^[0-9]{10}$/;
+
+            if (mobile === "") {
+
+                message.innerHTML =
+                    "❌ Mobile number cannot be empty.";
+
+                message.style.color = "red";
+
+                return false;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+
+                message.innerHTML =
+                    "❌ Enter a valid 10-digit mobile number.";
+
+                message.style.color = "red";
+
+                return false;
+            }
+
+            message.innerHTML =
+                "✅ Valid mobile number!";
+
+            message.style.color = "green";
+
+            return false;
+        }
+
+    </script>
+
+</body>
+</html>

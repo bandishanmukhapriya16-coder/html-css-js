@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Strings and String Methods - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9966, #ff5e62, #8e2de2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #d84315;
+            font-size: 36px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        input {
+            width: 85%;
+            padding: 14px;
+            margin: 15px 0;
+            border: 2px solid #ff7043;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 13px 28px;
+            margin: 8px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #d84315, #ff7043);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #fbe9e7;
+            color: #bf360c;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #d84315;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #bf360c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔤 Strings & String Methods</h1>
+
+        <p>Enter a string to perform different string operations.</p>
+
+        <input type="text" id="text" placeholder="Enter a string">
+
+        <br>
+
+        <button onclick="stringOperations()">Show String Methods</button>
+
+        <div class="result" id="result">
+            Result will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function stringOperations() {
+
+            let text = document.getElementById("text").value;
+
+            if (text === "") {
+                document.getElementById("result").innerHTML =
+                    "Please enter a string.";
+                return;
+            }
+
+            let result =
+                "Original String: " + text +
+                "<br>Length: " + text.length +
+                "<br>Uppercase: " + text.toUpperCase() +
+                "<br>Lowercase: " + text.toLowerCase() +
+                "<br>First Character: " + text.charAt(0) +
+                "<br>Trimmed String: " + text.trim() +
+                "<br>Reversed String: " + text.split("").reverse().join("");
+
+            document.getElementById("result").innerHTML = result;
+        }
+
+    </script>
+
+</body>
+
+</html>

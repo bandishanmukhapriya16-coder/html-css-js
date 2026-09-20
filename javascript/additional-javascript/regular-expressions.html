@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regular Expressions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #6a11cb;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #8e2de2;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #4a00e0;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0e6ff;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #6a11cb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔎 Regular Expressions</h1>
+
+        <p>Enter text to find all numbers:</p>
+
+        <input type="text" id="text"
+               placeholder="Example: I have 25 apples and 10 oranges">
+
+        <br>
+
+        <button onclick="findNumbers()">Find Numbers</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function findNumbers() {
+
+            let text = document.getElementById("text").value;
+
+            // Regular expression to find numbers
+            let pattern = /\d+/g;
+
+            let numbers = text.match(pattern);
+
+            if (numbers) {
+                document.getElementById("result").innerHTML =
+                    "Numbers Found: " + numbers.join(", ");
+            } else {
+                document.getElementById("result").innerHTML =
+                    "❌ No numbers found.";
+            }
+        }
+    </script>
+
+</body>
+</html>

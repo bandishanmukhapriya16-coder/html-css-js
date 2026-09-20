@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Change Text Content</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            margin: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            padding: 35px;
+            text-align: center;
+            border-radius: 20px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #6a11cb;
+        }
+
+        #message {
+            background: #f3e8ff;
+            color: #5a189a;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        button {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2575fc;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #6a11cb;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 Change Text Content</h1>
+
+        <p id="message">
+            This is the original text.
+        </p>
+
+        <button onclick="changeText()">
+            Change Text
+        </button>
+
+        <div class="back">
+
+            <a href="../index.html">
+                ← Back to JavaScript Index
+            </a>
+
+            <br><br>
+
+            <a href="../../index.html">
+                ← Back to Main Index
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function changeText() {
+
+            document.getElementById("message").textContent =
+                "🎉 The text has been changed using JavaScript!";
+
+        }
+
+    </script>
+
+</body>
+</html>

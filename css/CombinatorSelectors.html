@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Combinators</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        /* Descendant selector */
+        .container p {
+            color: #3498db;
+        }
+
+        /* Child selector */
+        .parent > p {
+            background-color: #e8f6ff;
+            padding: 10px;
+        }
+
+        /* Adjacent sibling selector */
+        h2 + p {
+            font-weight: bold;
+        }
+
+        /* General sibling selector */
+        h3 ~ p {
+            color: #e67e22;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>CSS Combinators</h1>
+
+        <h2>Descendant Selector</h2>
+        <p>This is a descendant of the container.</p>
+
+        <div class="parent">
+            <p>This is a direct child.</p>
+
+            <div>
+                <p>This is a nested paragraph.</p>
+            </div>
+        </div>
+
+        <h2>Adjacent Sibling</h2>
+        <p>This paragraph is immediately after the heading.</p>
+
+        <h3>General Sibling</h3>
+        <p>This is a sibling paragraph.</p>
+        <p>This is another sibling paragraph.</p>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

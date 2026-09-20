@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Remove Element</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 550px;
+            padding: 35px;
+            text-align: center;
+            border-radius: 20px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #d63384;
+        }
+
+        .item {
+            background: #fff0f6;
+            color: #9c2c77;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #d63384;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            margin-top: 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #b02a6f;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #d63384;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🗑️ Remove Element</h1>
+
+        <p>Click the button to remove the last item.</p>
+
+        <div id="items">
+
+            <div class="item">📘 HTML</div>
+
+            <div class="item">🎨 CSS</div>
+
+            <div class="item">⚡ JavaScript</div>
+
+            <div class="item">💻 DOM</div>
+
+        </div>
+
+        <button onclick="removeElement()">
+            Remove Last Item
+        </button>
+
+        <div class="back">
+
+            <a href="../index.html">
+                ← Back to JavaScript Index
+            </a>
+
+            <br><br>
+
+            <a href="../../index.html">
+                ← Back to Main Index
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function removeElement() {
+
+            const container = document.getElementById("items");
+
+            const lastItem = container.lastElementChild;
+
+            if (lastItem) {
+
+                container.removeChild(lastItem);
+
+            } else {
+
+                alert("All items have been removed!");
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Replace Element</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 550px;
+            padding: 35px;
+            text-align: center;
+            border-radius: 20px;
+
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #5a189a;
+        }
+
+        #content {
+            background: #f3e8ff;
+            color: #5a189a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #5a189a;
+            color: white;
+            border: none;
+            padding: 13px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #7b2cbf;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #5a189a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔄 Replace Element</h1>
+
+        <p>Click the button to replace the existing element.</p>
+
+        <div id="content">
+            📘 This is the original element.
+        </div>
+
+        <button onclick="replaceElement()">
+            Replace Element
+        </button>
+
+        <div class="back">
+
+            <a href="../index.html">
+                ← Back to JavaScript Index
+            </a>
+
+            <br><br>
+
+            <a href="../../index.html">
+                ← Back to Main Index
+            </a>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function replaceElement() {
+
+            // Get the parent container
+            const container = document.querySelector(".container");
+
+            // Get the old element
+            const oldElement = document.getElementById("content");
+
+            // Create a new element
+            const newElement = document.createElement("div");
+
+            // Add content to the new element
+            newElement.textContent =
+                "🎉 The original element has been replaced!";
+
+            // Give the new element an ID
+            newElement.id = "content";
+
+            // Apply styles
+            newElement.style.backgroundColor = "#e0f7fa";
+            newElement.style.color = "#006064";
+            newElement.style.padding = "20px";
+            newElement.style.margin = "20px 0";
+            newElement.style.borderRadius = "12px";
+            newElement.style.fontSize = "20px";
+            newElement.style.fontWeight = "bold";
+
+            // Replace the old element
+            container.replaceChild(newElement, oldElement);
+
+        }
+
+    </script>
+
+</body>
+</html>

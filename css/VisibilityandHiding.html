@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Visibility</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .box {
+            width: 250px;
+            padding: 20px;
+            margin: 15px auto;
+            background-color: #3498db;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .hidden {
+            visibility: hidden;
+        }
+
+        .visible {
+            visibility: visible;
+        }
+
+        .display-none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Visibility</h1>
+
+    <div class="box visible">
+        This box is visible.
+    </div>
+
+    <div class="box hidden">
+        This box is hidden using visibility.
+    </div>
+
+    <div class="box">
+        This box is visible after the hidden box.
+    </div>
+
+    <div class="box display-none">
+        This box uses display: none.
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

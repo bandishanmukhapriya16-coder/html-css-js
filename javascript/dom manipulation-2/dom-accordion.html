@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Accordion</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #00897b;
+        }
+
+        .accordion {
+            margin-top: 25px;
+        }
+
+        .question {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background: #00897b;
+            color: white;
+            font-size: 17px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .question:hover {
+            background: #00695c;
+        }
+
+        .answer {
+            display: none;
+            padding: 18px;
+            background: #e0f2f1;
+            color: #333;
+            border-radius: 0 0 10px 10px;
+            line-height: 1.6;
+        }
+
+        .answer.show {
+            display: block;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #00897b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📚 JavaScript Accordion</h1>
+
+        <div class="accordion">
+
+            <button class="question" onclick="toggleAnswer(0)">
+                What is HTML?
+            </button>
+
+            <div class="answer">
+                HTML stands for HyperText Markup Language.
+                It is used to create the structure of web pages.
+            </div>
+
+            <button class="question" onclick="toggleAnswer(1)">
+                What is CSS?
+            </button>
+
+            <div class="answer">
+                CSS stands for Cascading Style Sheets.
+                It is used to style and design web pages.
+            </div>
+
+            <button class="question" onclick="toggleAnswer(2)">
+                What is JavaScript?
+            </button>
+
+            <div class="answer">
+                JavaScript is a programming language used
+                to add interactivity and dynamic behavior
+                to web pages.
+            </div>
+
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function toggleAnswer(index) {
+
+            // Get all answer elements
+            let answers =
+                document.getElementsByClassName("answer");
+
+            // Toggle selected answer
+            answers[index].classList.toggle("show");
+        }
+
+    </script>
+
+</body>
+</html>

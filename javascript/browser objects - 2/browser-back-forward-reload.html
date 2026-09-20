@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Back Forward Reload</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #087f5b;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .info {
+            margin: 25px 0;
+            padding: 20px;
+            background: #effff6;
+            border-radius: 15px;
+        }
+
+        #message {
+            color: #087f5b;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        button {
+            padding: 13px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .back-btn {
+            background: #e67e22;
+        }
+
+        .forward-btn {
+            background: #3498db;
+        }
+
+        .reload-btn {
+            background: #8e44ad;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🧭 Browser Navigation</h1>
+
+        <p>
+            Use the buttons to control browser history and reload the page.
+        </p>
+
+        <div class="info">
+            <div id="message">
+                Choose a navigation option.
+            </div>
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+            ◀ Back
+        </button>
+
+        <button class="forward-btn" onclick="goForward()">
+            ▶ Forward
+        </button>
+
+        <button class="reload-btn" onclick="reloadPage()">
+            🔄 Reload
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Go to the previous page
+        function goBack() {
+
+            document.getElementById("message").textContent =
+                "◀ Going back to the previous page...";
+
+            window.history.back();
+        }
+
+
+        // Go to the next page
+        function goForward() {
+
+            document.getElementById("message").textContent =
+                "▶ Going forward to the next page...";
+
+            window.history.forward();
+        }
+
+
+        // Reload the current page
+        function reloadPage() {
+
+            window.location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

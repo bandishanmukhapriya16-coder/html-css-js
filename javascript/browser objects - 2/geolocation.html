@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Geolocation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2471a3;
+        }
+
+        button {
+            background: #2471a3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #154360;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #ebf5fb;
+            border-radius: 12px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #154360;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>📍 Geolocation</h1>
+
+        <p>Click the button to get your current location.</p>
+
+        <button onclick="getLocation()">Get My Location</button>
+
+        <div id="result">
+            Location will appear here.
+        </div>
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function getLocation() {
+
+            const result = document.getElementById("result");
+
+            if (navigator.geolocation) {
+
+                result.innerHTML = "📡 Getting your location...";
+
+                navigator.geolocation.getCurrentPosition(
+                    showPosition,
+                    showError
+                );
+
+            } else {
+                result.innerHTML = "❌ Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            document.getElementById("result").innerHTML =
+                "🌎 Location Found!<br><br>" +
+                "Latitude: " + latitude + "<br>" +
+                "Longitude: " + longitude;
+        }
+
+        function showError(error) {
+
+            const result = document.getElementById("result");
+
+            if (error.code === 1) {
+                result.innerHTML = "❌ Location permission was denied.";
+            } 
+            else if (error.code === 2) {
+                result.innerHTML = "❌ Location information is unavailable.";
+            } 
+            else if (error.code === 3) {
+                result.innerHTML = "⏳ Location request timed out.";
+            } 
+            else {
+                result.innerHTML = "❌ An unknown error occurred.";
+            }
+        }
+    </script>
+
+</body>
+</html>

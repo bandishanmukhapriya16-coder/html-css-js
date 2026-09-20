@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .timer-box {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #e67e22;
+        }
+
+        input {
+            width: 150px;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        #display {
+            font-size: 45px;
+            font-weight: bold;
+            color: #e67e22;
+            margin: 25px 0;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start {
+            background: #27ae60;
+        }
+
+        .reset {
+            background: #e74c3c;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="timer-box">
+
+        <h1>⏳ Countdown Timer</h1>
+
+        <p>Enter time in seconds:</p>
+
+        <input type="number" id="secondsInput" min="1" placeholder="Seconds">
+
+        <div id="display">00</div>
+
+        <button class="start" onclick="startTimer()">Start</button>
+        <button class="reset" onclick="resetTimer()">Reset</button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        let timeLeft = 0;
+        let timer = null;
+
+        function startTimer() {
+
+            if (timer !== null) {
+                return;
+            }
+
+            let input = document.getElementById("secondsInput").value;
+
+            if (input <= 0) {
+                alert("Please enter a valid number of seconds.");
+                return;
+            }
+
+            timeLeft = Number(input);
+
+            updateDisplay();
+
+            timer = setInterval(function () {
+
+                timeLeft--;
+
+                updateDisplay();
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timer = null;
+                    alert("⏰ Time's up!");
+                }
+
+            }, 1000);
+        }
+
+        function updateDisplay() {
+            document.getElementById("display").textContent =
+                String(timeLeft).padStart(2, "0");
+        }
+
+        function resetTimer() {
+
+            clearInterval(timer);
+            timer = null;
+            timeLeft = 0;
+
+            document.getElementById("display").textContent = "00";
+            document.getElementById("secondsInput").value = "";
+        }
+    </script>
+
+</body>
+</html>

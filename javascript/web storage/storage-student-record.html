@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Record System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 750px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        input {
+            padding: 12px;
+            margin: 8px;
+            border: 2px solid #8e44ad;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5b2c83;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background: #8e44ad;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f5eef8;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5b2c83;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🎓 Student Record System</h1>
+
+        <input type="text" id="name" placeholder="Student Name">
+
+        <input type="text" id="course" placeholder="Course">
+
+        <input type="number" id="age" placeholder="Age">
+
+        <br>
+
+        <button onclick="addStudent()">
+            ➕ Add Student
+        </button>
+
+        <button onclick="displayStudents()">
+            📋 Display Records
+        </button>
+
+        <button onclick="clearRecords()">
+            🗑️ Clear Records
+        </button>
+
+        <div id="message"></div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Age</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function addStudent() {
+
+            const name = document.getElementById("name").value;
+            const course = document.getElementById("course").value;
+            const age = document.getElementById("age").value;
+
+            if (name === "" || course === "" || age === "") {
+
+                document.getElementById("message").textContent =
+                    "❌ Please fill in all fields.";
+
+                return;
+            }
+
+            let students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+            const student = {
+                name: name,
+                course: course,
+                age: age
+            };
+
+            students.push(student);
+
+            localStorage.setItem(
+                "students",
+                JSON.stringify(students)
+            );
+
+            document.getElementById("name").value = "";
+            document.getElementById("course").value = "";
+            document.getElementById("age").value = "";
+
+            document.getElementById("message").textContent =
+                "✅ Student added successfully!";
+
+            displayStudents();
+        }
+
+
+        function displayStudents() {
+
+            const students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+            const table =
+                document.getElementById("studentTable");
+
+            table.innerHTML = "";
+
+            students.forEach(function(student, index) {
+
+                const row = table.insertRow();
+
+                row.insertCell(0).textContent = student.name;
+                row.insertCell(1).textContent = student.course;
+                row.insertCell(2).textContent = student.age;
+
+                const actionCell = row.insertCell(3);
+
+                const deleteButton =
+                    document.createElement("button");
+
+                deleteButton.textContent = "Delete";
+
+                deleteButton.className = "delete-btn";
+
+                deleteButton.onclick = function() {
+                    deleteStudent(index);
+                };
+
+                actionCell.appendChild(deleteButton);
+            });
+        }
+
+
+        function deleteStudent(index) {
+
+            let students =
+                JSON.parse(localStorage.getItem("students")) || [];
+
+            students.splice(index, 1);
+
+            localStorage.setItem(
+                "students",
+                JSON.stringify(students)
+            );
+
+            displayStudents();
+
+            document.getElementById("message").textContent =
+                "🗑️ Student deleted successfully!";
+        }
+
+
+        function clearRecords() {
+
+            localStorage.removeItem("students");
+
+            displayStudents();
+
+            document.getElementById("message").textContent =
+                "✅ All student records cleared!";
+        }
+
+
+        // Display saved records when page opens
+        displayStudents();
+
+    </script>
+
+</body>
+</html>

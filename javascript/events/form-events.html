@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Events</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .box {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #6c5ce7;
+        }
+
+        input,
+        select {
+            width: 80%;
+            padding: 13px;
+            margin: 10px;
+            border: 2px solid #6c5ce7;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #e84393;
+            outline: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #e84393;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #6c5ce7;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #dff9fb;
+            border-radius: 10px;
+            color: #0984e3;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .back {
+            margin-top: 35px;
+        }
+
+        .back a {
+            text-decoration: none;
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📝 Form Events</h1>
+
+        <form id="myForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <select id="course">
+                <option value="">Select Course</option>
+                <option value="CSE">Computer Science</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="DS">Data Science</option>
+            </select>
+
+            <br>
+
+            <button type="submit">Submit Form</button>
+
+        </form>
+
+        <div id="result">
+            Form events will appear here.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const form = document.getElementById("myForm");
+        const nameInput = document.getElementById("name");
+        const course = document.getElementById("course");
+        const result = document.getElementById("result");
+
+        // Focus event
+        nameInput.addEventListener("focus", function() {
+            result.textContent = "Event: focus — Name field selected.";
+        });
+
+        // Blur event
+        nameInput.addEventListener("blur", function() {
+            result.textContent = "Event: blur — Name field lost focus.";
+        });
+
+        // Change event
+        course.addEventListener("change", function() {
+            result.textContent =
+                "Event: change — Course selected: " + course.value;
+        });
+
+        // Submit event
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            result.textContent =
+                "Event: submit — Form submitted successfully!";
+        });
+    </script>
+
+</body>
+</html>

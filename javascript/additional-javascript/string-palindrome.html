@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Palindrome</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #185a9d;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #43cea2;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #185a9d;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #43cea2;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e0f7f1;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #185a9d;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔤 String Palindrome</h1>
+
+        <p>Enter a string:</p>
+
+        <input type="text" id="text"
+               placeholder="Example: madam">
+
+        <br>
+
+        <button onclick="checkPalindrome()">Check Palindrome</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function checkPalindrome() {
+
+            let text = document.getElementById("text").value;
+
+            let reversed = text.split("").reverse().join("");
+
+            if (text.toLowerCase() === reversed.toLowerCase()) {
+                document.getElementById("result").innerHTML =
+                    "✅ " + text + " is a Palindrome";
+            } else {
+                document.getElementById("result").innerHTML =
+                    "❌ " + text + " is Not a Palindrome";
+            }
+        }
+    </script>
+
+</body>
+</html>

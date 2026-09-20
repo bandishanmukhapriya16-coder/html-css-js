@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History Object Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 90%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d84315;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .info {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #d84315, #8e24aa);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #d84315;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #8e24aa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📖 History Object</h1>
+
+        <p>
+            The History object allows JavaScript to work
+            with the browser's session history.
+        </p>
+
+        <div class="info" id="output">
+            Click a button to perform a history operation.
+        </div>
+
+        <button onclick="showHistoryLength()">
+            Show History Length
+        </button>
+
+        <br>
+
+        <button onclick="goBack()">
+            ⬅ Back
+        </button>
+
+        <button onclick="goForward()">
+            Forward ➡
+        </button>
+
+        <button onclick="reloadPage()">
+            🔄 Reload
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        // Display number of history entries
+        function showHistoryLength() {
+
+            document.getElementById("output").innerHTML =
+                "📚 History entries: " + history.length;
+        }
+
+
+        // Go to previous page
+        function goBack() {
+
+            history.back();
+        }
+
+
+        // Go to next page
+        function goForward() {
+
+            history.forward();
+        }
+
+
+        // Reload current page
+        function reloadPage() {
+
+            location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

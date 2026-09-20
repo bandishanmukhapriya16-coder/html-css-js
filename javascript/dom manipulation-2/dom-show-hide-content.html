@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Hide Content</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        p {
+            color: #555;
+        }
+
+        #content {
+            background: #e3f2fd;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 12px;
+            color: #0d47a1;
+            line-height: 1.6;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .show {
+            background: #2e7d32;
+        }
+
+        .show:hover {
+            background: #1b5e20;
+        }
+
+        .hide {
+            background: #e53935;
+        }
+
+        .hide:hover {
+            background: #b71c1c;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>👀 Show / Hide Content</h1>
+
+        <p>Use the buttons to show or hide the content below.</p>
+
+        <div id="content">
+            <h2>📚 JavaScript DOM</h2>
+
+            <p>
+                The Document Object Model (DOM) allows JavaScript
+                to access and modify HTML elements dynamically.
+            </p>
+
+            <p>
+                JavaScript can change text, styles, attributes,
+                and the visibility of elements.
+            </p>
+        </div>
+
+        <button class="show" onclick="showContent()">
+            👁️ Show Content
+        </button>
+
+        <button class="hide" onclick="hideContent()">
+            🙈 Hide Content
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showContent() {
+
+            document.getElementById("content").style.display = "block";
+
+        }
+
+        function hideContent() {
+
+            document.getElementById("content").style.display = "none";
+
+        }
+
+    </script>
+
+</body>
+</html>

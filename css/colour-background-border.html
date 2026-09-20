@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Colors, Backgrounds and Borders</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe6f7, #e6f7ff);
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff6f91, #845ec2);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 35px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .box {
+            width: 220px;
+            min-height: 180px;
+            padding: 25px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .box1 {
+            background-color: #ffd6e7;
+            border: 5px solid #ff4f81;
+            color: #a0003c;
+        }
+
+        .box2 {
+            background-color: #d9f7ff;
+            border: 5px solid #00a8cc;
+            color: #006477;
+        }
+
+        .box3 {
+            background-color: #e5dcff;
+            border: 5px dashed #845ec2;
+            color: #4b2885;
+        }
+
+        .box4 {
+            background-color: #fff1bd;
+            border: 5px double #ff9f1c;
+            color: #9a5b00;
+        }
+
+        .box h2 {
+            margin-top: 0;
+        }
+
+        .box:hover {
+            transform: translateY(-8px);
+            transition: 0.3s;
+        }
+
+        footer {
+            background-color: #352f44;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Colors, Backgrounds & Borders</h1>
+        <p>Beautiful examples of CSS styling</p>
+    </header>
+
+    <div class="container">
+
+        <div class="box box1">
+            <h2>Pink Box</h2>
+            <p>Pink background with a solid border.</p>
+        </div>
+
+        <div class="box box2">
+            <h2>Blue Box</h2>
+            <p>Blue background with a solid border.</p>
+        </div>
+
+        <div class="box box3">
+            <h2>Purple Box</h2>
+            <p>Purple background with a dashed border.</p>
+        </div>
+
+        <div class="box box4">
+            <h2>Yellow Box</h2>
+            <p>Yellow background with a double border.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>CSS Practical - Question 3</p>
+    </footer>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Inheritance</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        .box {
+            background: #fce4ec;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #e91e63;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c2185b;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: bold;
+            color: #673ab7;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #e91e63;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🧬 JavaScript Inheritance</h1>
+
+        <div class="box">
+            <p>
+                <b>Inheritance</b> allows one class to use
+                properties and methods of another class.
+            </p>
+        </div>
+
+        <button onclick="showInheritance()">
+            Show Example
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Parent class
+        class Person {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            introduce() {
+                return "My name is " + this.name;
+            }
+        }
+
+        // Child class inherits Person
+        class Student extends Person {
+
+            constructor(name, course) {
+                super(name);
+                this.course = course;
+            }
+
+            showCourse() {
+                return "I study " + this.course;
+            }
+        }
+
+        function showInheritance() {
+
+            // Creating object of child class
+            let student = new Student(
+                "Priya",
+                "B.Tech CSE"
+            );
+
+            document.getElementById("result").innerHTML =
+                "👩‍🎓 Student Object<br><br>" +
+                student.introduce() +
+                "<br>" +
+                student.showCourse();
+        }
+
+    </script>
+
+</body>
+</html>

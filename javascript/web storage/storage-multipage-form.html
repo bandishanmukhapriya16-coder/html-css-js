@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Page Form - Page 2</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #8e44ad;
+        }
+
+        .details {
+            background: #f5eef8;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .details p {
+            font-size: 17px;
+            padding: 5px;
+        }
+
+        input {
+            width: 85%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #8e44ad;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c3483;
+        }
+
+        .clear {
+            background: #e74c3c;
+        }
+
+        .clear:hover {
+            background: #c0392b;
+        }
+
+        #success {
+            margin-top: 20px;
+            padding: 15px;
+            background: #d5f5e3;
+            color: #196f3d;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6c3483;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📋 Registration Summary</h1>
+
+        <h3>Step 2: Review Details</h3>
+
+        <div class="details">
+
+            <p>
+                <b>Name:</b>
+                <span id="displayName"></span>
+            </p>
+
+            <p>
+                <b>Age:</b>
+                <span id="displayAge"></span>
+            </p>
+
+            <p>
+                <b>Email:</b>
+                <span id="displayEmail"></span>
+            </p>
+
+        </div>
+
+        <input
+            type="text"
+            id="course"
+            placeholder="Enter your course"
+        >
+
+        <br>
+
+        <button onclick="finishRegistration()">
+            ✅ Submit
+        </button>
+
+        <button onclick="goBack()">
+            ← Previous
+        </button>
+
+        <button class="clear" onclick="clearData()">
+            🗑️ Clear Data
+        </button>
+
+        <div id="success"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        // Retrieve Page 1 data
+        const name =
+            sessionStorage.getItem("studentName");
+
+        const age =
+            sessionStorage.getItem("studentAge");
+
+        const email =
+            sessionStorage.getItem("studentEmail");
+
+
+        // Display saved data
+        document.getElementById("displayName").textContent =
+            name || "Not available";
+
+        document.getElementById("displayAge").textContent =
+            age || "Not available";
+
+        document.getElementById("displayEmail").textContent =
+            email || "Not available";
+
+
+        function finishRegistration() {
+
+            const course =
+                document.getElementById("course").value;
+
+            if (course === "") {
+
+                alert("Please enter your course.");
+
+                return;
+            }
+
+
+            // Store Page 2 data
+            sessionStorage.setItem(
+                "studentCourse",
+                course
+            );
+
+
+            document.getElementById("success").textContent =
+                "🎉 Registration completed successfully!";
+        }
+
+
+        function goBack() {
+
+            window.location.href =
+                "multi-page-form-1.html";
+        }
+
+
+        function clearData() {
+
+            sessionStorage.removeItem("studentName");
+            sessionStorage.removeItem("studentAge");
+            sessionStorage.removeItem("studentEmail");
+            sessionStorage.removeItem("studentCourse");
+
+            document.getElementById("success").textContent =
+                "🗑️ All temporary form data has been cleared.";
+        }
+
+    </script>
+
+</body>
+</html>

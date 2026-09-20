@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance and Specificity</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        p {
+            color: blue;
+            font-size: 18px;
+        }
+
+        .special {
+            color: green;
+        }
+
+        #important {
+            color: red;
+        }
+
+        .box {
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Inheritance and Specificity</h1>
+
+        <p>This paragraph uses the element selector.</p>
+
+        <p class="special">
+            This paragraph uses a class selector.
+        </p>
+
+        <p id="important">
+            This paragraph uses an ID selector.
+        </p>
+
+        <div class="box">
+            <p>This paragraph inherits the font family from the body.</p>
+        </div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

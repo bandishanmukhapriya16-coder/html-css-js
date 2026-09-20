@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiple Event Listeners</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #d35400;
+        }
+
+        #box {
+            padding: 40px;
+            margin: 25px 0;
+            border-radius: 15px;
+            background: #fff3cd;
+            color: #8a5a00;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 10px;
+            background: #d35400;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a84300;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎯 Multiple Event Listeners</h1>
+
+        <p>Move your mouse over the box, click it, and type inside it.</p>
+
+        <div id="box" tabindex="0">
+            Interactive Box
+        </div>
+
+        <button id="resetButton">
+            🔄 Reset
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let box = document.getElementById("box");
+
+        // Click event
+        box.addEventListener("click", function() {
+            box.textContent = "🖱️ Box was clicked!";
+        });
+
+        // Mouseover event
+        box.addEventListener("mouseover", function() {
+            box.style.background = "#d5f5e3";
+        });
+
+        // Mouseout event
+        box.addEventListener("mouseout", function() {
+            box.style.background = "#fff3cd";
+        });
+
+        // Keyboard event
+        box.addEventListener("keydown", function(event) {
+            box.textContent = "⌨️ Key pressed: " + event.key;
+        });
+
+        // Reset button
+        document.getElementById("resetButton")
+            .addEventListener("click", function() {
+
+                box.textContent = "Interactive Box";
+                box.style.background = "#fff3cd";
+
+            });
+
+    </script>
+
+</body>
+</html>

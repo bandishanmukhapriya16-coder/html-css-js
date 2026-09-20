@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks & Grade</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .marks-box {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0984e3;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 8px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #0984e3;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0767b1;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f2f6;
+            border-radius: 12px;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #0984e3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="marks-box">
+
+        <h1>🎓 Student Grade Calculator</h1>
+
+        <input type="text" id="studentName" placeholder="Student Name">
+
+        <input type="number" id="maths" placeholder="Mathematics Marks">
+        <input type="number" id="science" placeholder="Science Marks">
+        <input type="number" id="english" placeholder="English Marks">
+
+        <button onclick="calculateGrade()">
+            Calculate Result
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateGrade() {
+
+            let name = document.getElementById("studentName").value.trim();
+
+            let maths = Number(document.getElementById("maths").value);
+            let science = Number(document.getElementById("science").value);
+            let english = Number(document.getElementById("english").value);
+
+            if (
+                name === "" ||
+                maths < 0 || maths > 100 ||
+                science < 0 || science > 100 ||
+                english < 0 || english > 100
+            ) {
+                document.getElementById("result").innerHTML =
+                    "⚠️ Please enter valid details and marks between 0 and 100.";
+                return;
+            }
+
+            let total = maths + science + english;
+            let average = total / 3;
+            let grade;
+
+            if (average >= 90) {
+                grade = "A+";
+            } else if (average >= 80) {
+                grade = "A";
+            } else if (average >= 70) {
+                grade = "B";
+            } else if (average >= 60) {
+                grade = "C";
+            } else if (average >= 50) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            document.getElementById("result").innerHTML = `
+                <strong>Student:</strong> ${name}<br>
+                <strong>Total:</strong> ${total} / 300<br>
+                <strong>Average:</strong> ${average.toFixed(2)}%<br>
+                <strong>Grade:</strong> ${grade}
+            `;
+        }
+    </script>
+
+</body>
+</html>

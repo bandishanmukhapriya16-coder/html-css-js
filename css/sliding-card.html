@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sliding Card Animation</title>
+
+    <style>
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            overflow: hidden;
+            border: 2px solid black;
+        }
+
+        .slider {
+            display: flex;
+            width: 900px;
+            animation: slide 6s infinite;
+        }
+
+        .card {
+            width: 300px;
+            height: 180px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+            font-size: 25px;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            30% {
+                transform: translateX(0);
+            }
+
+            35% {
+                transform: translateX(-300px);
+            }
+
+            65% {
+                transform: translateX(-300px);
+            }
+
+            70% {
+                transform: translateX(-600px);
+            }
+
+            95% {
+                transform: translateX(-600px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">Sliding Card Animation</h1>
+
+    <div class="container">
+
+        <div class="slider">
+
+            <div class="card">Card 1</div>
+            <div class="card">Card 2</div>
+            <div class="card">Card 3</div>
+
+        </div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

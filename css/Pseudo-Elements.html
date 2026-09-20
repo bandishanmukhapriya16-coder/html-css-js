@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Pseudo-Elements</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        /* ::before */
+        .before-text::before {
+            content: "★ ";
+            color: orange;
+            font-size: 25px;
+        }
+
+        /* ::after */
+        .after-text::after {
+            content: " ✓";
+            color: green;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        /* ::first-letter */
+        .first-letter::first-letter {
+            font-size: 45px;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* ::first-line */
+        .first-line::first-line {
+            color: #e67e22;
+            font-weight: bold;
+        }
+
+        .box {
+            background-color: white;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Pseudo-Elements</h1>
+
+    <div class="box">
+
+        <h2>::before</h2>
+        <p class="before-text">
+            This text has content added before it.
+        </p>
+
+        <h2>::after</h2>
+        <p class="after-text">
+            This text has content added after it.
+        </p>
+
+        <h2>::first-letter</h2>
+        <p class="first-letter">
+            This paragraph demonstrates the first-letter pseudo-element.
+            The first letter is displayed in a larger size.
+        </p>
+
+        <h2>::first-line</h2>
+        <p class="first-line">
+            This is the first line of the paragraph and it is styled differently.
+            The remaining text uses the normal paragraph style.
+        </p>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

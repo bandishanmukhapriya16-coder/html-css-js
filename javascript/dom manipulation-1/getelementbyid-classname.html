@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>getElementById and getElementsByClassName</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #0072ff;
+        }
+
+        .box {
+            background: #e6f4ff;
+            color: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056cc;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #eef7ff;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #0072ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔍 DOM Element Methods</h1>
+
+        <p id="heading">Original Heading</p>
+
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+
+        <button onclick="changeById()">
+            Change Using getElementById()
+        </button>
+
+        <button onclick="changeByClass()">
+            Change Using getElementsByClassName()
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function changeById() {
+
+            let heading = document.getElementById("heading");
+
+            heading.textContent = "✨ Heading Changed Using getElementById()";
+
+            document.getElementById("result").textContent =
+                "getElementById() selected one element.";
+        }
+
+        function changeByClass() {
+
+            let boxes = document.getElementsByClassName("box");
+
+            for (let i = 0; i < boxes.length; i++) {
+                boxes[i].style.backgroundColor = "#0072ff";
+                boxes[i].style.color = "white";
+                boxes[i].textContent = "✨ Box Changed!";
+            }
+
+            document.getElementById("result").textContent =
+                "getElementsByClassName() selected all elements with the class 'box'.";
+        }
+    </script>
+
+</body>
+</html>

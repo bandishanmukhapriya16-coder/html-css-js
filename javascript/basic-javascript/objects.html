@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Objects - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #673ab7;
+            font-size: 38px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 13px 30px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #673ab7, #ab47bc);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f3e5f5;
+            color: #673ab7;
+            border-radius: 15px;
+            font-size: 19px;
+            font-weight: bold;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #673ab7;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #4527a0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>👤 JavaScript Objects</h1>
+
+        <p>
+            Click the button to display information stored inside
+            a JavaScript object.
+        </p>
+
+        <button onclick="displayObject()">Show Object</button>
+
+        <div class="result" id="result">
+            Object details will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function displayObject() {
+
+            // Creating a JavaScript object
+            let student = {
+                name: "Rahul",
+                age: 20,
+                course: "Computer Science",
+                city: "Chennai"
+            };
+
+            // Accessing object properties
+            document.getElementById("result").innerHTML =
+                "Student Name: " + student.name +
+                "<br>Age: " + student.age +
+                "<br>Course: " + student.course +
+                "<br>City: " + student.city;
+        }
+
+    </script>
+
+</body>
+
+</html>

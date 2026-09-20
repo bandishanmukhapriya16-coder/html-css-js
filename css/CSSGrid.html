@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 30px auto;
+        }
+
+        .box {
+            background-color: #3498db;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        .box:nth-child(2) {
+            background-color: #2ecc71;
+        }
+
+        .box:nth-child(3) {
+            background-color: #e67e22;
+        }
+
+        .box:nth-child(4) {
+            background-color: #9b59b6;
+        }
+
+        .box:nth-child(5) {
+            background-color: #e74c3c;
+        }
+
+        .box:nth-child(6) {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Grid Layout</h1>
+
+    <div class="grid-container">
+
+        <div class="box">HTML</div>
+        <div class="box">CSS</div>
+        <div class="box">JavaScript</div>
+        <div class="box">Python</div>
+        <div class="box">C++</div>
+        <div class="box">Java</div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

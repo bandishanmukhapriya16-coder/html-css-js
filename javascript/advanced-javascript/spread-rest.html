@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spread and Rest Operators</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e65100;
+        }
+
+        .box {
+            background: #fff3e0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .box h3 {
+            color: #ef6c00;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #e65100;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #bf360c;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: bold;
+            color: #8e24aa;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #e65100;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>✨ Spread & Rest Operators</h1>
+
+        <div class="box">
+            <h3>📌 Spread Operator (...)</h3>
+            <p>Used to expand the elements of an array.</p>
+        </div>
+
+        <div class="box">
+            <h3>📌 Rest Operator (...)</h3>
+            <p>Used to collect multiple values into an array.</p>
+        </div>
+
+        <button onclick="showExample()">Show Example</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showExample() {
+
+            // Spread Operator
+            let numbers1 = [10, 20, 30];
+
+            let numbers2 = [...numbers1, 40, 50];
+
+            // Rest Operator
+            function addNumbers(...numbers) {
+
+                let sum = 0;
+
+                for (let number of numbers) {
+                    sum += number;
+                }
+
+                return sum;
+            }
+
+            let total = addNumbers(10, 20, 30, 40);
+
+            document.getElementById("result").innerHTML =
+                "📦 Original Array: " + numbers1 + "<br>" +
+                "📦 Spread Array: " + numbers2 + "<br>" +
+                "➕ Rest Operator Sum: " + total;
+        }
+
+    </script>
+
+</body>
+</html>

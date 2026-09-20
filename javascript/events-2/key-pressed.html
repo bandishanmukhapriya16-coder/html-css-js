@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Key Pressed</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            color: #00897b;
+        }
+
+        input {
+            width: 85%;
+            padding: 15px;
+            margin-top: 25px;
+            border: 2px solid #00897b;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        #keyDisplay {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e0f2f1;
+            color: #00695c;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #00897b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>⌨️ Display Key Pressed</h1>
+
+        <p>Press any key in the input box.</p>
+
+        <input
+            type="text"
+            id="textBox"
+            placeholder="Press a key..."
+            onkeydown="displayKey(event)"
+        >
+
+        <div id="keyDisplay">
+            Key: None
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function displayKey(event) {
+
+            let key = event.key;
+
+            document.getElementById("keyDisplay").innerText =
+                "🎹 Key Pressed: " + key;
+        }
+
+    </script>
+
+</body>
+</html>

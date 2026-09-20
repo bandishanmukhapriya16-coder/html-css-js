@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Tabs</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 25px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 22px;
+            border: none;
+            border-radius: 10px;
+            background: #e1bee7;
+            color: #4a148c;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .tab-button:hover {
+            background: #ce93d8;
+        }
+
+        .tab-button.active {
+            background: #6a1b9a;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 25px;
+            background: #f3e5f5;
+            border-radius: 12px;
+            line-height: 1.6;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content h2 {
+            color: #6a1b9a;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6a1b9a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📑 Dynamic Tabs</h1>
+
+        <div class="tabs">
+
+            <button class="tab-button active"
+                    onclick="openTab('htmlTab', this)">
+                HTML
+            </button>
+
+            <button class="tab-button"
+                    onclick="openTab('cssTab', this)">
+                CSS
+            </button>
+
+            <button class="tab-button"
+                    onclick="openTab('jsTab', this)">
+                JavaScript
+            </button>
+
+        </div>
+
+        <div id="htmlTab" class="tab-content active">
+            <h2>🌐 HTML</h2>
+            <p>
+                HTML stands for HyperText Markup Language.
+                It is used to create the structure of web pages.
+            </p>
+        </div>
+
+        <div id="cssTab" class="tab-content">
+            <h2>🎨 CSS</h2>
+            <p>
+                CSS stands for Cascading Style Sheets.
+                It is used to style and design web pages.
+            </p>
+        </div>
+
+        <div id="jsTab" class="tab-content">
+            <h2>⚡ JavaScript</h2>
+            <p>
+                JavaScript is used to add interactivity
+                and dynamic behavior to web pages.
+            </p>
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function openTab(tabId, button) {
+
+            // Hide all tab contents
+            let contents =
+                document.getElementsByClassName("tab-content");
+
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            // Remove active class from all buttons
+            let buttons =
+                document.getElementsByClassName("tab-button");
+
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            // Show selected tab
+            document.getElementById(tabId).classList.add("active");
+
+            // Highlight selected button
+            button.classList.add("active");
+        }
+
+    </script>
+
+</body>
+</html>

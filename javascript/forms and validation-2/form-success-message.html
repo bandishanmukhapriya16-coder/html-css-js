@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Message Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #009688;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #009688;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #009688;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00796b;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #009688;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>✅ Registration</h1>
+
+        <form id="registrationForm">
+
+            <label>Full Name:</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <label>Email:</label>
+            <input
+                type="text"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <label>Mobile Number:</label>
+            <input
+                type="text"
+                id="mobile"
+                placeholder="Enter 10-digit mobile number"
+            >
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+
+            let message = document.getElementById("message");
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let mobilePattern = /^[0-9]{10}$/;
+
+            if (name === "") {
+
+                message.innerHTML = "❌ Please enter your name.";
+                message.className = "error";
+
+            }
+            else if (!emailPattern.test(email)) {
+
+                message.innerHTML = "❌ Please enter a valid email.";
+                message.className = "error";
+
+            }
+            else if (!mobilePattern.test(mobile)) {
+
+                message.innerHTML =
+                    "❌ Please enter a valid 10-digit mobile number.";
+                message.className = "error";
+
+            }
+            else {
+
+                message.innerHTML =
+                    "🎉 Registration successful! Welcome, " + name + "!";
+                message.className = "success";
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Dropdown Options</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0072ff;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        input {
+            width: 95%;
+            padding: 12px;
+            margin-top: 15px;
+            border: 2px solid #0072ff;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: 2px solid #00a8ff;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #0072ff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        #result {
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+            background: #e3f2fd;
+            border-radius: 10px;
+            color: #0056b3;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #0072ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>➕ Add Dropdown Options</h1>
+
+        <p>Enter a course name and add it to the dropdown.</p>
+
+        <input
+            type="text"
+            id="courseInput"
+            placeholder="Enter course name"
+        >
+
+        <button onclick="addOption()">Add Course</button>
+
+        <select id="courseDropdown">
+            <option value="">-- Select Course --</option>
+            <option value="CSE">Computer Science</option>
+            <option value="AI">Artificial Intelligence</option>
+        </select>
+
+        <button onclick="showSelected()">Show Selected Course</button>
+
+        <div id="result">
+            No course selected.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function addOption() {
+
+            // Get input value
+            let courseName =
+                document.getElementById("courseInput").value.trim();
+
+            // Check if input is empty
+            if (courseName === "") {
+                alert("Please enter a course name.");
+                return;
+            }
+
+            // Get dropdown
+            let dropdown =
+                document.getElementById("courseDropdown");
+
+            // Create a new option
+            let option = document.createElement("option");
+
+            // Set option value and text
+            option.value = courseName;
+            option.textContent = courseName;
+
+            // Add option to dropdown
+            dropdown.appendChild(option);
+
+            // Clear input
+            document.getElementById("courseInput").value = "";
+
+            alert("Course added successfully!");
+        }
+
+        function showSelected() {
+
+            let dropdown =
+                document.getElementById("courseDropdown");
+
+            let selectedCourse = dropdown.value;
+
+            if (selectedCourse === "") {
+                document.getElementById("result").innerText =
+                    "⚠️ Please select a course.";
+            } else {
+                document.getElementById("result").innerText =
+                    "✅ Selected Course: " + selectedCourse;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

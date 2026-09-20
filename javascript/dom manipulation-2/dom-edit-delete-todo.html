@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do CRUD</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #1565c0;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background: #1565c0;
+        }
+
+        .add-btn:hover {
+            background: #0d47a1;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+
+        li {
+            background: #e3f2fd;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .task-text {
+            flex: 1;
+            color: #123;
+            font-size: 16px;
+        }
+
+        .edit-btn {
+            background: #fb8c00;
+        }
+
+        .edit-btn:hover {
+            background: #ef6c00;
+        }
+
+        .delete-btn {
+            background: #e53935;
+        }
+
+        .delete-btn:hover {
+            background: #c62828;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 To-Do List CRUD</h1>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="taskInput"
+                placeholder="Enter a task"
+            >
+
+            <button class="add-btn" onclick="addTask()">
+                Add Task
+            </button>
+
+        </div>
+
+        <ul id="taskList"></ul>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function addTask() {
+
+            let input = document.getElementById("taskInput");
+            let task = input.value.trim();
+
+            if (task === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            // Create list item
+            let li = document.createElement("li");
+
+            // Create task text
+            let span = document.createElement("span");
+            span.className = "task-text";
+            span.textContent = task;
+
+            // Create Edit button
+            let editButton = document.createElement("button");
+            editButton.className = "edit-btn";
+            editButton.textContent = "Edit";
+
+            editButton.onclick = function() {
+
+                let newTask = prompt(
+                    "Edit your task:",
+                    span.textContent
+                );
+
+                if (newTask !== null && newTask.trim() !== "") {
+                    span.textContent = newTask.trim();
+                }
+            };
+
+            // Create Delete button
+            let deleteButton = document.createElement("button");
+            deleteButton.className = "delete-btn";
+            deleteButton.textContent = "Delete";
+
+            deleteButton.onclick = function() {
+                li.remove();
+            };
+
+            // Add everything to the list item
+            li.appendChild(span);
+            li.appendChild(editButton);
+            li.appendChild(deleteButton);
+
+            // Add list item to the task list
+            document.getElementById("taskList")
+                .appendChild(li);
+
+            // Clear input
+            input.value = "";
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Object using localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #7d3c98;
+        }
+
+        input {
+            display: block;
+            width: 80%;
+            margin: 12px auto;
+            padding: 12px;
+            border: 2px solid #9b59b6;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c3483;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f5eef8;
+            border-radius: 12px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #5b2c6f;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6c3483;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>👤 Store Student Object</h1>
+
+        <input type="text" id="name" placeholder="Enter student name">
+
+        <input type="text" id="course" placeholder="Enter course">
+
+        <input type="number" id="age" placeholder="Enter age">
+
+        <button onclick="storeObject()">
+            Save Student
+        </button>
+
+        <button onclick="displayObject()">
+            Display Student
+        </button>
+
+        <div id="result">
+            Student details will appear here.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function storeObject() {
+
+            const name = document.getElementById("name").value;
+            const course = document.getElementById("course").value;
+            const age = document.getElementById("age").value;
+
+            if (name === "" || course === "" || age === "") {
+                document.getElementById("result").textContent =
+                    "❌ Please fill in all fields.";
+                return;
+            }
+
+            const student = {
+                name: name,
+                course: course,
+                age: age
+            };
+
+            localStorage.setItem(
+                "student",
+                JSON.stringify(student)
+            );
+
+            document.getElementById("result").textContent =
+                "✅ Student object saved successfully!";
+        }
+
+        function displayObject() {
+
+            const storedStudent =
+                localStorage.getItem("student");
+
+            if (storedStudent === null) {
+                document.getElementById("result").textContent =
+                    "❌ No student data found.";
+                return;
+            }
+
+            const student = JSON.parse(storedStudent);
+
+            document.getElementById("result").innerHTML =
+                "<b>🎓 Student Details</b><br><br>" +
+                "Name: " + student.name + "<br>" +
+                "Course: " + student.course + "<br>" +
+                "Age: " + student.age;
+        }
+    </script>
+
+</body>
+</html>

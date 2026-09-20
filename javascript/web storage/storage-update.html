@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Username - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #c0392b;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid #e74c3c;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #e74c3c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c0392b;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fdebd0;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #7d3c0c;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>✏️ Update Username</h1>
+
+        <p>Enter a new username:</p>
+
+        <input type="text" id="username" placeholder="Enter new username">
+
+        <br>
+
+        <button onclick="updateUsername()">
+            Update Username
+        </button>
+
+        <div id="message">
+            Enter a username to update it.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function updateUsername() {
+
+            const username = document.getElementById("username").value;
+
+            if (username === "") {
+                document.getElementById("message").textContent =
+                    "❌ Please enter a new username.";
+                return;
+            }
+
+            localStorage.setItem("username", username);
+
+            document.getElementById("message").textContent =
+                "✅ Username updated successfully!";
+        }
+    </script>
+
+</body>
+</html>

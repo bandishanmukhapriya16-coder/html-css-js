@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Word Counter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5e35b1;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        textarea {
+            width: 95%;
+            height: 180px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 2px solid #7e57c2;
+            border-radius: 12px;
+            font-size: 16px;
+            resize: vertical;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #5e35b1;
+        }
+
+        #counter {
+            margin-top: 20px;
+            padding: 15px;
+            text-align: center;
+            background: #ede7f6;
+            color: #4527a0;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5e35b1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 Live Word Counter</h1>
+
+        <p>
+            Type text below to count the number of words automatically.
+        </p>
+
+        <textarea
+            id="textBox"
+            placeholder="Start typing here..."
+            oninput="countWords()"
+        ></textarea>
+
+        <div id="counter">
+            Words: 0
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function countWords() {
+
+            // Get the text entered by the user
+            let text =
+                document.getElementById("textBox").value.trim();
+
+            let wordCount = 0;
+
+            // Check whether the text is not empty
+            if (text !== "") {
+
+                // Split text into words
+                let words = text.split(/\s+/);
+
+                // Count the words
+                wordCount = words.length;
+            }
+
+            // Display the word count
+            document.getElementById("counter").innerText =
+                "Words: " + wordCount;
+        }
+
+    </script>
+
+</body>
+</html>

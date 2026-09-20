@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        input, select {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #90caf9;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #1565c0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d47a1;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🧮 Simple Calculator</h1>
+
+        <input type="number" id="num1" placeholder="Enter first number">
+
+        <select id="operator">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (×)</option>
+            <option value="/">Division (÷)</option>
+        </select>
+
+        <input type="number" id="num2" placeholder="Enter second number">
+
+        <br>
+
+        <button onclick="calculate()">Calculate</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function calculate() {
+
+            let num1 = Number(document.getElementById("num1").value);
+            let num2 = Number(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+
+            let answer;
+
+            if (operator === "+") {
+                answer = num1 + num2;
+            }
+            else if (operator === "-") {
+                answer = num1 - num2;
+            }
+            else if (operator === "*") {
+                answer = num1 * num2;
+            }
+            else if (operator === "/") {
+
+                if (num2 === 0) {
+                    document.getElementById("result").innerHTML =
+                        "❌ Cannot divide by zero!";
+                    return;
+                }
+
+                answer = num1 / num2;
+            }
+
+            document.getElementById("result").innerHTML =
+                "✅ Result = " + answer;
+        }
+
+    </script>
+
+</body>
+</html>

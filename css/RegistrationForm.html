@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Styled Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #3498db;
+            outline: none;
+            background-color: #f0f8ff;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .gender {
+            margin-top: 10px;
+        }
+
+        .gender input {
+            width: auto;
+            margin-right: 5px;
+        }
+
+        .button {
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Student Registration Form</h1>
+
+    <div class="form-container">
+
+        <form>
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter your password">
+
+            <label for="course">Select Course</label>
+            <select id="course">
+                <option>CSE</option>
+                <option>AI & DS</option>
+                <option>Cyber Security</option>
+                <option>ECE</option>
+            </select>
+
+            <label>Gender</label>
+
+            <div class="gender">
+                <input type="radio" name="gender" id="male">
+                <label for="male" style="display:inline;">Male</label>
+
+                <input type="radio" name="gender" id="female">
+                <label for="female" style="display:inline;">Female</label>
+            </div>
+
+            <label for="address">Address</label>
+            <textarea id="address" placeholder="Enter your address"></textarea>
+
+            <button type="submit" class="button">
+                Register
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

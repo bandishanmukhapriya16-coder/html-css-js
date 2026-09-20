@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Image Gallery</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Responsive Image Gallery</h1>
+
+    <div class="gallery">
+
+        <img src="../assets/images/college.jpg" alt="Image 1">
+        <img src="../assets/images/student.jpg" alt="Image 2">
+        <img src="../assets/images/classroom.jpg" alt="Image 3">
+        <img src="../assets/images/computer lab.jpg" alt="Image 4">
+        <img src="../assets/images/library.jpg" alt="Image 5">
+        
+    </div>
+
+</body>
+</html>

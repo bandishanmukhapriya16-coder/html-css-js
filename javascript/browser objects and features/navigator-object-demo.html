@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigator Object Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 90%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+
+        .info {
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 15px;
+            line-height: 1.8;
+        }
+
+        .info p {
+            margin: 8px 0;
+            word-wrap: break-word;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #7b1fa2, #e91e63);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #6a1b9a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌐 Navigator Object</h1>
+
+        <div class="info" id="output">
+            Click the button to display browser information.
+        </div>
+
+        <button onclick="showNavigatorInfo()">
+            Show Browser Information
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function showNavigatorInfo() {
+
+            let output = document.getElementById("output");
+
+            output.innerHTML =
+                "<p><b>🌐 Browser:</b> " +
+                navigator.appName + "</p>" +
+
+                "<p><b>💻 Platform:</b> " +
+                navigator.platform + "</p>" +
+
+                "<p><b>🗣️ Language:</b> " +
+                navigator.language + "</p>" +
+
+                "<p><b>🍪 Cookies Enabled:</b> " +
+                navigator.cookieEnabled + "</p>" +
+
+                "<p><b>📶 Online Status:</b> " +
+                (navigator.onLine ? "Online" : "Offline") + "</p>" +
+
+                "<p><b>🔧 User Agent:</b><br>" +
+                navigator.userAgent + "</p>";
+        }
+
+    </script>
+
+</body>
+</html>

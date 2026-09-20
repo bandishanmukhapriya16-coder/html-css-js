@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Coordinate Tracker</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+        }
+
+        .container {
+            background: white;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e76f51;
+        }
+
+        .coordinates {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .box {
+            padding: 20px 30px;
+            border-radius: 15px;
+            background: #fff3cd;
+            color: #8a5a00;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #area {
+            height: 180px;
+            background: #ffe5d9;
+            border: 3px dashed #e76f51;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #c44536;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🖱️ Mouse Coordinate Tracker</h1>
+
+        <p>Move your mouse inside the area below.</p>
+
+        <div class="coordinates">
+
+            <div class="box">
+                X: <span id="x">0</span>
+            </div>
+
+            <div class="box">
+                Y: <span id="y">0</span>
+            </div>
+
+        </div>
+
+        <div id="area">
+            Move your mouse here 👆
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let area = document.getElementById("area");
+
+        area.addEventListener("mousemove", function(event) {
+
+            document.getElementById("x").textContent =
+                event.clientX;
+
+            document.getElementById("y").textContent =
+                event.clientY;
+
+        });
+
+    </script>
+
+</body>
+</html>

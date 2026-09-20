@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display API Data Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+            text-align: center;
+        }
+
+        h1 {
+            color: #5a3d8a;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        #output {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f3f0ff;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .post {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .post h3 {
+            color: #5a3d8a;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🌐 Display API Data Dynamically</h1>
+
+    <p>Click the button to fetch and display data from an API.</p>
+
+    <button onclick="getData()">📥 Get API Data</button>
+
+    <div id="output">
+        <p>API data will appear here...</p>
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+<script>
+
+function getData() {
+
+    const output = document.getElementById("output");
+
+    output.innerHTML = "<p>⏳ Loading data...</p>";
+
+    fetch("https://jsonplaceholder.typicode.com/posts?_limit=5")
+        .then(response => response.json())
+        .then(data => {
+
+            output.innerHTML = "";
+
+            data.forEach(post => {
+
+                const div = document.createElement("div");
+
+                div.className = "post";
+
+                div.innerHTML = `
+                    <h3>📝 ${post.title}</h3>
+                    <p>${post.body}</p>
+                    <small>Post ID: ${post.id}</small>
+                `;
+
+                output.appendChild(div);
+            });
+
+        })
+        .catch(error => {
+
+            output.innerHTML =
+                "<p>❌ Error loading API data.</p>";
+
+            console.log(error);
+        });
+}
+
+</script>
+
+</body>
+</html>

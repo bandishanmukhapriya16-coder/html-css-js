@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Capturing</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #7b2cbf;
+        }
+
+        .outer {
+            background: #ffe0f0;
+            padding: 35px;
+            border-radius: 20px;
+            color: #a61e4d;
+            font-weight: bold;
+        }
+
+        .middle {
+            background: #d0ebff;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 15px;
+            color: #1864ab;
+        }
+
+        .inner {
+            background: #d3f9d8;
+            padding: 25px;
+            border-radius: 12px;
+            color: #2b8a3e;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎯 Event Capturing</h1>
+
+        <p>
+            Click the green box and observe the order in which
+            the events are triggered.
+        </p>
+
+        <div class="outer" id="outer">
+            Outer Element
+
+            <div class="middle" id="middle">
+                Middle Element
+
+                <div class="inner" id="inner">
+                    🖱️ Click Me
+                </div>
+
+            </div>
+        </div>
+
+        <div id="message">
+            Waiting for a click...
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        document.getElementById("outer")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").innerHTML +=
+                    "1️⃣ Outer element<br>";
+
+            }, true);
+
+
+        document.getElementById("middle")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").innerHTML +=
+                    "2️⃣ Middle element<br>";
+
+            }, true);
+
+
+        document.getElementById("inner")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").innerHTML +=
+                    "3️⃣ Inner element<br>";
+
+            }, true);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Variables</title>
+
+    <style>
+        :root {
+            --main-color: #3498db;
+            --secondary-color: #2c3e50;
+            --background-color: #f4f6fb;
+            --spacing: 20px;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: var(--spacing);
+        }
+
+        .card {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: var(--spacing);
+            background-color: white;
+            border-top: 5px solid var(--main-color);
+            border-radius: 10px;
+        }
+
+        h2 {
+            color: var(--main-color);
+        }
+
+        button {
+            background-color: var(--main-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CSS Variables</h1>
+    </header>
+
+    <div class="card">
+
+        <h2>Using CSS Variables</h2>
+
+        <p>
+            CSS variables allow us to store and reuse values
+            throughout a stylesheet.
+        </p>
+
+        <button>Learn More</button>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

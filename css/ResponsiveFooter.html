@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Footer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+            padding: 40px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            margin: 10px;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <h1>Responsive Footer</h1>
+        <p>This page demonstrates a responsive footer.</p>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>College Website</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">Courses</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: college@example.com</p>
+                <p>Phone: 9876543210</p>
+            </div>
+
+        </div>
+
+        <p>© 2026 College Website</p>
+    </footer>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

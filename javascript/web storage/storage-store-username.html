@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Username - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            border: 2px solid #764ba2;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #764ba2;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5b2c83;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5b2c83;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>💾 Store Username</h1>
+
+        <p>Enter your username:</p>
+
+        <input type="text" id="username" placeholder="Enter username">
+
+        <br>
+
+        <button onclick="storeUsername()">Save Username</button>
+
+        <div id="message"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function storeUsername() {
+
+            const username = document.getElementById("username").value;
+
+            if (username === "") {
+                document.getElementById("message").textContent =
+                    "Please enter a username.";
+                return;
+            }
+
+            localStorage.setItem("username", username);
+
+            document.getElementById("message").textContent =
+                "✅ Username saved successfully!";
+        }
+    </script>
+
+</body>
+</html>

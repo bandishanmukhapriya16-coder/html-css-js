@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input Change Focus Blur Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 430px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4f70;
+        }
+
+        .info {
+            background: #fff0f3;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #9b2945;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #ff4f70;
+            background: #fff8fa;
+        }
+
+        .message {
+            margin-top: 6px;
+            font-size: 13px;
+            min-height: 18px;
+        }
+
+        .success {
+            color: #198754;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #ff4f70;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e63d5c;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #ff4f70;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 Form Event Validation</h1>
+
+        <div class="info">
+            <b>Events used:</b><br>
+            • Input – while typing<br>
+            • Change – when the value changes<br>
+            • Focus – when entering a field<br>
+            • Blur – when leaving a field
+        </div>
+
+        <form id="myForm">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <div id="nameMessage" class="message"></div>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
+            <div id="emailMessage" class="message"></div>
+
+            <label for="course">Select Course:</label>
+            <select id="course">
+                <option value="">-- Select Course --</option>
+                <option value="CSE">Computer Science</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="DS">Data Science</option>
+            </select>
+            <div id="courseMessage" class="message"></div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <div id="status"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        let name = document.getElementById("name");
+        let email = document.getElementById("email");
+        let course = document.getElementById("course");
+
+        let nameMessage = document.getElementById("nameMessage");
+        let emailMessage = document.getElementById("emailMessage");
+        let courseMessage = document.getElementById("courseMessage");
+
+
+        // INPUT EVENT
+        name.addEventListener("input", function() {
+
+            if (name.value.trim() === "") {
+                nameMessage.innerHTML = "";
+            }
+            else if (/^[A-Za-z ]+$/.test(name.value.trim())) {
+                nameMessage.innerHTML = "✔ Name looks good";
+                nameMessage.className = "message success";
+            }
+            else {
+                nameMessage.innerHTML = "✖ Use alphabets only";
+                nameMessage.className = "message error";
+            }
+
+        });
+
+
+        // FOCUS EVENT
+        email.addEventListener("focus", function() {
+
+            emailMessage.innerHTML = "💡 Enter a valid email address.";
+            emailMessage.className = "message";
+
+        });
+
+
+        // BLUR EVENT
+        email.addEventListener("blur", function() {
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (email.value.trim() === "") {
+
+                emailMessage.innerHTML = "✖ Email is required";
+                emailMessage.className = "message error";
+
+            }
+            else if (!emailPattern.test(email.value.trim())) {
+
+                emailMessage.innerHTML = "✖ Invalid email address";
+                emailMessage.className = "message error";
+
+            }
+            else {
+
+                emailMessage.innerHTML = "✔ Valid email";
+                emailMessage.className = "message success";
+            }
+
+        });
+
+
+        // CHANGE EVENT
+        course.addEventListener("change", function() {
+
+            if (course.value === "") {
+
+                courseMessage.innerHTML = "✖ Please select a course";
+                courseMessage.className = "message error";
+
+            }
+            else {
+
+                courseMessage.innerHTML =
+                    "✔ Selected: " + course.options[course.selectedIndex].text;
+
+                courseMessage.className = "message success";
+            }
+
+        });
+
+
+        // FORM SUBMIT
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let status = document.getElementById("status");
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (
+                /^[A-Za-z ]+$/.test(name.value.trim()) &&
+                emailPattern.test(email.value.trim()) &&
+                course.value !== ""
+            ) {
+
+                status.innerHTML = "🎉 Form submitted successfully!";
+                status.style.background = "#d4edda";
+                status.style.color = "#155724";
+
+            }
+            else {
+
+                status.innerHTML = "❌ Please correct all fields.";
+                status.style.background = "#ffe0e0";
+                status.style.color = "#c0392b";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

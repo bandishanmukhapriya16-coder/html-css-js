@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News Blog Grid</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #222;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .article {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .article h2 {
+            margin-top: 0;
+        }
+
+        @media (max-width: 800px) {
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Daily News</h1>
+        <p>Latest updates and articles</p>
+    </header>
+
+    <section class="news-grid">
+
+        <article class="article">
+            <h2>Technology</h2>
+            <p>Latest developments in technology and innovation.</p>
+        </article>
+
+        <article class="article">
+            <h2>Education</h2>
+            <p>New trends and opportunities in education.</p>
+        </article>
+
+        <article class="article">
+            <h2>Science</h2>
+            <p>Interesting discoveries and scientific updates.</p>
+        </article>
+
+        <article class="article">
+            <h2>Sports</h2>
+            <p>Updates from the world of sports.</p>
+        </article>
+
+        <article class="article">
+            <h2>Business</h2>
+            <p>Business and startup news.</p>
+        </article>
+
+        <article class="article">
+            <h2>Entertainment</h2>
+            <p>Movies, music and entertainment updates.</p>
+        </article>
+
+    </section>
+
+</body>
+    <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

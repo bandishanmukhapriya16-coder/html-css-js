@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Multiple HTML Elements</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #4169e1;
+        }
+
+        .box {
+            background: #eaf4ff;
+            color: #333;
+            padding: 15px;
+            margin: 12px;
+            border-radius: 10px;
+            font-size: 20px;
+            transition: 0.3s;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 15px;
+            background: #4169e1;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #2748a5;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #4169e1;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔄 Change Multiple HTML Elements</h1>
+
+        <div class="box">HTML Element 1</div>
+        <div class="box">HTML Element 2</div>
+        <div class="box">HTML Element 3</div>
+
+        <button onclick="changeElements()">
+            Change All Elements
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function changeElements() {
+
+            let elements = document.querySelectorAll(".box");
+
+            elements.forEach(function(element) {
+                element.style.backgroundColor = "#4169e1";
+                element.style.color = "white";
+                element.style.fontSize = "24px";
+                element.textContent = "✨ Element Changed!";
+            });
+        }
+    </script>
+
+</body>
+</html>

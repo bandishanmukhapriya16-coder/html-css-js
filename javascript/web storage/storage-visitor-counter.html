@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visitor Counter - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            max-width: 550px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #7d3c98;
+        }
+
+        #counter {
+            font-size: 50px;
+            font-weight: bold;
+            color: #8e44ad;
+            margin: 20px;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #555;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c3483;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6c3483;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>👋 Welcome!</h1>
+
+        <p class="message">
+            This page remembers how many times it has
+            been opened in this browser.
+        </p>
+
+        <div id="counter">0</div>
+
+        <p class="message">
+            Page visits
+        </p>
+
+        <button onclick="resetCounter()">
+            🔄 Reset Counter
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        // Get the existing visitor count
+        let count =
+            localStorage.getItem("visitorCount");
+
+        // If no count exists, start from 0
+        if (count === null) {
+            count = 0;
+        } else {
+            count = Number(count);
+        }
+
+        // Increase the count
+        count++;
+
+        // Save the updated count
+        localStorage.setItem(
+            "visitorCount",
+            count
+        );
+
+        // Display the count
+        document.getElementById("counter").textContent =
+            count;
+
+
+        // Reset the visitor counter
+        function resetCounter() {
+
+            localStorage.removeItem("visitorCount");
+
+            location.reload();
+        }
+
+    </script>
+
+</body>
+</html>

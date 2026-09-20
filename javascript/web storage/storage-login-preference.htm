@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Preference - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        input {
+            padding: 12px;
+            width: 80%;
+            margin: 10px;
+            border: 2px solid #8e44ad;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5b2c83;
+        }
+
+        #welcome {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5eef8;
+            border-radius: 10px;
+            color: #6c3483;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5b2c83;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🔐 Login Preference</h1>
+
+        <p>Enter your username:</p>
+
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+        >
+
+        <br>
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <button onclick="logout()">
+            Logout
+        </button>
+
+        <div id="welcome">
+            Please login.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function login() {
+
+            const username =
+                document.getElementById("username").value.trim();
+
+            if (username === "") {
+
+                document.getElementById("welcome").textContent =
+                    "❌ Please enter your username.";
+
+                return;
+            }
+
+            // Store login preference
+            localStorage.setItem(
+                "loggedInUser",
+                username
+            );
+
+            document.getElementById("welcome").textContent =
+                "✅ Welcome, " + username + "!";
+        }
+
+
+        function logout() {
+
+            localStorage.removeItem("loggedInUser");
+
+            document.getElementById("username").value = "";
+
+            document.getElementById("welcome").textContent =
+                "👋 You have been logged out.";
+        }
+
+
+        // Check saved login when the page opens
+        const savedUser =
+            localStorage.getItem("loggedInUser");
+
+        if (savedUser) {
+
+            document.getElementById("username").value =
+                savedUser;
+
+            document.getElementById("welcome").textContent =
+                "✅ Welcome back, " + savedUser + "!";
+        }
+
+    </script>
+
+</body>
+</html>

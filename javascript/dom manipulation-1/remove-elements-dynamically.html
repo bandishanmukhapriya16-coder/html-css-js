@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove HTML Elements Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #764ba2;
+        }
+
+        .item {
+            background: #f0e6ff;
+            margin: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #764ba2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a3780;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #764ba2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🗑️ Remove HTML Elements Dynamically</h1>
+
+        <p>Click the button to remove the last element.</p>
+
+        <div id="output">
+            <p class="item">📘 HTML</p>
+            <p class="item">🎨 CSS</p>
+            <p class="item">⚡ JavaScript</p>
+        </div>
+
+        <button onclick="removeElement()">Remove Last Element</button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function removeElement() {
+
+            let output = document.getElementById("output");
+
+            if (output.lastElementChild) {
+                output.removeChild(output.lastElementChild);
+            } else {
+                alert("No elements left to remove!");
+            }
+        }
+    </script>
+
+</body>
+</html>

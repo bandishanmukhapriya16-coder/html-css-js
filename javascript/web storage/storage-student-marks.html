@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Database - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        input {
+            padding: 11px;
+            margin: 6px;
+            width: 200px;
+            border: 2px solid #8e44ad;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 11px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 8px;
+            background: #8e44ad;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c3483;
+        }
+
+        .clear {
+            background: #e74c3c;
+        }
+
+        .clear:hover {
+            background: #c0392b;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        th {
+            background: #8e44ad;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f5eef8;
+        }
+
+        .delete {
+            background: #e67e22;
+            padding: 7px 12px;
+        }
+
+        #status {
+            margin-top: 15px;
+            padding: 10px;
+            font-weight: bold;
+            color: #6c3483;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6c3483;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🎓 Student Marks Database</h1>
+
+        <p>
+            Add student marks and store the records
+            permanently using localStorage.
+        </p>
+
+        <input
+            type="text"
+            id="studentName"
+            placeholder="Student Name"
+        >
+
+        <input
+            type="number"
+            id="maths"
+            placeholder="Maths Marks"
+            min="0"
+            max="100"
+        >
+
+        <input
+            type="number"
+            id="python"
+            placeholder="Python Marks"
+            min="0"
+            max="100"
+        >
+
+        <input
+            type="number"
+            id="dsa"
+            placeholder="DSA Marks"
+            min="0"
+            max="100"
+        >
+
+        <br>
+
+        <button onclick="addStudent()">
+            ➕ Add Student
+        </button>
+
+        <button class="clear" onclick="clearDatabase()">
+            🗑️ Clear Database
+        </button>
+
+        <div id="status">
+            No new record added.
+        </div>
+
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Maths</th>
+                    <th>Python</th>
+                    <th>DSA</th>
+                    <th>Total</th>
+                    <th>Average</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+
+    <script>
+
+        // Retrieve saved students
+        let students = JSON.parse(
+            localStorage.getItem("studentMarks")
+        ) || [];
+
+
+        // Add a student
+        function addStudent() {
+
+            const name =
+                document.getElementById("studentName").value.trim();
+
+            const maths =
+                Number(document.getElementById("maths").value);
+
+            const python =
+                Number(document.getElementById("python").value);
+
+            const dsa =
+                Number(document.getElementById("dsa").value);
+
+
+            if (
+                name === "" ||
+                maths < 0 || maths > 100 ||
+                python < 0 || python > 100 ||
+                dsa < 0 || dsa > 100
+            ) {
+
+                alert(
+                    "Please enter a valid name and marks between 0 and 100."
+                );
+
+                return;
+            }
+
+
+            const total =
+                maths + python + dsa;
+
+            const average =
+                total / 3;
+
+            const grade =
+                calculateGrade(average);
+
+
+            const student = {
+
+                name: name,
+                maths: maths,
+                python: python,
+                dsa: dsa,
+                total: total,
+                average: average.toFixed(2),
+                grade: grade
+            };
+
+
+            students.push(student);
+
+
+            saveStudents();
+
+            displayStudents();
+
+            clearInputs();
+
+
+            document.getElementById("status").textContent =
+                "✅ Student record added successfully.";
+        }
+
+
+        // Calculate grade
+        function calculateGrade(average) {
+
+            if (average >= 90) {
+                return "A+";
+
+            } else if (average >= 80) {
+                return "A";
+
+            } else if (average >= 70) {
+                return "B";
+
+            } else if (average >= 60) {
+                return "C";
+
+            } else if (average >= 50) {
+                return "D";
+
+            } else {
+                return "F";
+            }
+        }
+
+
+        // Save students
+        function saveStudents() {
+
+            localStorage.setItem(
+                "studentMarks",
+                JSON.stringify(students)
+            );
+        }
+
+
+        // Display students
+        function displayStudents() {
+
+            const table =
+                document.getElementById("studentTable");
+
+            table.innerHTML = "";
+
+
+            students.forEach(function(student, index) {
+
+                const row =
+                    document.createElement("tr");
+
+
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.maths}</td>
+                    <td>${student.python}</td>
+                    <td>${student.dsa}</td>
+                    <td>${student.total}</td>
+                    <td>${student.average}</td>
+                    <td>${student.grade}</td>
+                    <td>
+                        <button
+                            class="delete"
+                            onclick="deleteStudent(${index})">
+                            Delete
+                        </button>
+                    </td>
+                `;
+
+
+                table.appendChild(row);
+            });
+        }
+
+
+        // Delete one student
+        function deleteStudent(index) {
+
+            students.splice(index, 1);
+
+            saveStudents();
+
+            displayStudents();
+
+            document.getElementById("status").textContent =
+                "🗑️ Student record deleted.";
+        }
+
+
+        // Clear all database records
+        function clearDatabase() {
+
+            students = [];
+
+            localStorage.removeItem("studentMarks");
+
+            displayStudents();
+
+            document.getElementById("status").textContent =
+                "🗑️ All student records cleared.";
+        }
+
+
+        // Clear input fields
+        function clearInputs() {
+
+            document.getElementById("studentName").value = "";
+            document.getElementById("maths").value = "";
+            document.getElementById("python").value = "";
+            document.getElementById("dsa").value = "";
+        }
+
+
+        // Display saved records when page loads
+        displayStudents();
+
+    </script>
+
+</body>
+</html>

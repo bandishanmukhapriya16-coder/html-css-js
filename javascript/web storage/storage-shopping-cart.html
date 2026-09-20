@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shopping Cart - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 700px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2471a3;
+        }
+
+        .product {
+            display: inline-block;
+            width: 180px;
+            margin: 10px;
+            padding: 20px;
+            background: #ebf5fb;
+            border-radius: 15px;
+        }
+
+        .product h3 {
+            color: #21618c;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 10px;
+            background: #3498db;
+            color: white;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #21618c;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .delete:hover {
+            background: #c0392b;
+        }
+
+        #cart {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f8f9f9;
+            border-radius: 15px;
+        }
+
+        .cart-item {
+            padding: 12px;
+            margin: 8px;
+            background: #d6eaf8;
+            border-radius: 10px;
+        }
+
+        #total {
+            font-size: 22px;
+            font-weight: bold;
+            color: #117864;
+            margin-top: 20px;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #21618c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🛒 Shopping Cart</h1>
+
+        <div class="product">
+            <h3>🎧 Headphones</h3>
+            <p>₹999</p>
+            <button onclick="addToCart('Headphones', 999)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <h3>⌨️ Keyboard</h3>
+            <p>₹1499</p>
+            <button onclick="addToCart('Keyboard', 1499)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div class="product">
+            <h3>🖱️ Mouse</h3>
+            <p>₹599</p>
+            <button onclick="addToCart('Mouse', 599)">
+                Add to Cart
+            </button>
+        </div>
+
+        <div id="cart">
+
+            <h2>🛍️ Your Cart</h2>
+
+            <div id="cartItems">
+                Your cart is empty.
+            </div>
+
+            <div id="total">
+                Total: ₹0
+            </div>
+
+            <button onclick="clearCart()">
+                🗑️ Clear Cart
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function addToCart(name, price) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            const product = {
+                name: name,
+                price: price
+            };
+
+            cart.push(product);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            displayCart();
+        }
+
+
+        function displayCart() {
+
+            const cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            const cartItems =
+                document.getElementById("cartItems");
+
+            const totalElement =
+                document.getElementById("total");
+
+            cartItems.innerHTML = "";
+
+            let total = 0;
+
+            if (cart.length === 0) {
+
+                cartItems.textContent =
+                    "Your cart is empty.";
+
+                totalElement.textContent =
+                    "Total: ₹0";
+
+                return;
+            }
+
+            cart.forEach(function(item, index) {
+
+                const div =
+                    document.createElement("div");
+
+                div.className = "cart-item";
+
+                div.innerHTML =
+                    "<b>" + item.name + "</b> - ₹" +
+                    item.price;
+
+                const deleteButton =
+                    document.createElement("button");
+
+                deleteButton.textContent = "Remove";
+
+                deleteButton.className = "delete";
+
+                deleteButton.onclick = function() {
+                    removeFromCart(index);
+                };
+
+                div.appendChild(deleteButton);
+
+                cartItems.appendChild(div);
+
+                total += item.price;
+            });
+
+            totalElement.textContent =
+                "Total: ₹" + total;
+        }
+
+
+        function removeFromCart(index) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            displayCart();
+        }
+
+
+        function clearCart() {
+
+            localStorage.removeItem("cart");
+
+            displayCart();
+        }
+
+
+        // Display saved cart when page opens
+        displayCart();
+
+    </script>
+
+</body>
+</html>

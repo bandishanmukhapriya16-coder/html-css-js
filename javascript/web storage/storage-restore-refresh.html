@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restore Form Data - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #117864;
+        }
+
+        input,
+        textarea {
+            width: 85%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #27ae60;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1e8449;
+        }
+
+        .clear {
+            background: #e74c3c;
+        }
+
+        .clear:hover {
+            background: #c0392b;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            background: #eafaf1;
+            color: #196f3d;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #196f3d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🔄 Restore Form Data</h1>
+
+        <p>
+            Enter your details and save them.
+            Refresh the page to see the data restored.
+        </p>
+
+        <form id="restoreForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <input
+                type="text"
+                id="course"
+                placeholder="Enter your course"
+            >
+
+            <textarea
+                id="message"
+                placeholder="Enter your message"
+            ></textarea>
+
+            <br>
+
+            <button type="button" onclick="saveData()">
+                💾 Save Data
+            </button>
+
+            <button
+                type="button"
+                class="clear"
+                onclick="clearData()"
+            >
+                🗑️ Clear Data
+            </button>
+
+        </form>
+
+        <div id="status">
+            No saved data found.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        // Save form data
+        function saveData() {
+
+            const name =
+                document.getElementById("name").value;
+
+            const email =
+                document.getElementById("email").value;
+
+            const course =
+                document.getElementById("course").value;
+
+            const message =
+                document.getElementById("message").value;
+
+
+            localStorage.setItem(
+                "restoreName",
+                name
+            );
+
+            localStorage.setItem(
+                "restoreEmail",
+                email
+            );
+
+            localStorage.setItem(
+                "restoreCourse",
+                course
+            );
+
+            localStorage.setItem(
+                "restoreMessage",
+                message
+            );
+
+
+            document.getElementById("status").textContent =
+                "✅ Data saved successfully! Refresh the page to test restoration.";
+        }
+
+
+        // Restore saved data
+        function restoreData() {
+
+            const name =
+                localStorage.getItem("restoreName");
+
+            const email =
+                localStorage.getItem("restoreEmail");
+
+            const course =
+                localStorage.getItem("restoreCourse");
+
+            const message =
+                localStorage.getItem("restoreMessage");
+
+
+            if (name !== null) {
+
+                document.getElementById("name").value =
+                    name;
+
+                document.getElementById("email").value =
+                    email;
+
+                document.getElementById("course").value =
+                    course;
+
+                document.getElementById("message").value =
+                    message;
+
+                document.getElementById("status").textContent =
+                    "🔄 Saved data restored successfully!";
+
+            } else {
+
+                document.getElementById("status").textContent =
+                    "ℹ️ No saved data found.";
+            }
+        }
+
+
+        // Clear saved data
+        function clearData() {
+
+            localStorage.removeItem("restoreName");
+            localStorage.removeItem("restoreEmail");
+            localStorage.removeItem("restoreCourse");
+            localStorage.removeItem("restoreMessage");
+
+            document.getElementById("restoreForm").reset();
+
+            document.getElementById("status").textContent =
+                "🗑️ Saved data has been cleared.";
+        }
+
+
+        // Restore data automatically when page loads
+        restoreData();
+
+    </script>
+
+</body>
+</html>

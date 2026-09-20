@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alert Confirm Prompt</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 13px 22px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .alert-btn {
+            background: #ff4081;
+        }
+
+        .confirm-btn {
+            background: #9c27b0;
+        }
+
+        .prompt-btn {
+            background: #673ab7;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 18px;
+            background: #fff0f5;
+            border-radius: 12px;
+            color: #c2185b;
+            font-weight: bold;
+            min-height: 25px;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #9c27b0;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>💬 Browser Dialog Boxes</h1>
+
+        <p>
+            Click the buttons below to see how
+            <b>alert()</b>, <b>confirm()</b>, and <b>prompt()</b> work.
+        </p>
+
+        <button class="alert-btn" onclick="showAlert()">
+            🔔 Alert
+        </button>
+
+        <button class="confirm-btn" onclick="showConfirm()">
+            ❓ Confirm
+        </button>
+
+        <button class="prompt-btn" onclick="showPrompt()">
+            ✏️ Prompt
+        </button>
+
+        <div id="result">
+            Your result will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Alert Box
+        function showAlert() {
+            window.alert("🎉 Welcome to JavaScript Browser Objects!");
+
+            document.getElementById("result").textContent =
+                "Alert box was displayed successfully.";
+        }
+
+
+        // Confirm Box
+        function showConfirm() {
+
+            let answer = window.confirm(
+                "Do you want to continue?"
+            );
+
+            if (answer) {
+                document.getElementById("result").textContent =
+                    "✅ You clicked OK.";
+            } else {
+                document.getElementById("result").textContent =
+                    "❌ You clicked Cancel.";
+            }
+        }
+
+
+        // Prompt Box
+        function showPrompt() {
+
+            let name = window.prompt(
+                "What is your name?"
+            );
+
+            if (name === null) {
+
+                document.getElementById("result").textContent =
+                    "You cancelled the prompt.";
+
+            } else if (name.trim() === "") {
+
+                document.getElementById("result").textContent =
+                    "You did not enter a name.";
+
+            } else {
+
+                document.getElementById("result").textContent =
+                    "👋 Hello, " + name + "!";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

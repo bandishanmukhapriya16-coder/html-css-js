@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drag and Drop Event</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5a3fc0;
+        }
+
+        #dragItem {
+            width: 180px;
+            padding: 25px;
+            margin: 25px auto;
+            background: #ff6b81;
+            color: white;
+            border-radius: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: grab;
+        }
+
+        #dropZone {
+            width: 80%;
+            height: 150px;
+            margin: 25px auto;
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #667eea;
+            font-size: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #dropZone.active {
+            background: #e8e3ff;
+            transform: scale(1.03);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🖱️ Drag and Drop</h1>
+
+        <p>Drag the box and drop it into the target area.</p>
+
+        <div id="dragItem" draggable="true">
+            📦 Drag Me
+        </div>
+
+        <div id="dropZone">
+            🎯 Drop Here
+        </div>
+
+        <div id="message">
+            Waiting for an action...
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let dragItem = document.getElementById("dragItem");
+        let dropZone = document.getElementById("dropZone");
+        let message = document.getElementById("message");
+
+        // Drag start event
+        dragItem.addEventListener("dragstart", function(event) {
+
+            event.dataTransfer.setData("text", "dragItem");
+
+            message.textContent = "📦 Dragging the box...";
+
+        });
+
+        // Drag over event
+        dropZone.addEventListener("dragover", function(event) {
+
+            event.preventDefault();
+
+            dropZone.classList.add("active");
+
+        });
+
+        // Drag leave event
+        dropZone.addEventListener("dragleave", function() {
+
+            dropZone.classList.remove("active");
+
+        });
+
+        // Drop event
+        dropZone.addEventListener("drop", function(event) {
+
+            event.preventDefault();
+
+            dropZone.classList.remove("active");
+
+            let data = event.dataTransfer.getData("text");
+
+            if (data === "dragItem") {
+
+                dropZone.appendChild(dragItem);
+
+                dropZone.style.borderColor = "#28a745";
+
+                message.textContent =
+                    "✅ Box dropped successfully!";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

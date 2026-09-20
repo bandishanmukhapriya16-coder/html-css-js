@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkbox Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #11998e;
+        }
+
+        .checkbox-box {
+            margin-top: 20px;
+            padding: 15px;
+            background: #effff7;
+            border-radius: 10px;
+        }
+
+        .checkbox-box input {
+            margin-right: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #11998e;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #087f70;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #11998e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>☑️ Checkbox Validation</h1>
+
+        <form id="checkboxForm">
+
+            <div class="checkbox-box">
+                <input type="checkbox" id="terms">
+                I agree to the terms and conditions.
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("checkboxForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let terms = document.getElementById("terms");
+            let message = document.getElementById("message");
+
+            if (!terms.checked) {
+
+                message.innerHTML =
+                    "❌ Please agree to the terms and conditions.";
+                message.style.color = "red";
+
+            }
+            else {
+
+                message.innerHTML =
+                    "✅ Terms accepted successfully!";
+                message.style.color = "green";
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

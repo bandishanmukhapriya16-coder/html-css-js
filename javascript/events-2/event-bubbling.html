@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Bubbling</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2463c5;
+        }
+
+        .outer {
+            background: #ffd6e7;
+            padding: 35px;
+            border-radius: 20px;
+            color: #b83265;
+            font-weight: bold;
+        }
+
+        .middle {
+            background: #d6f5ff;
+            padding: 30px;
+            margin: 20px;
+            border-radius: 15px;
+            color: #16708a;
+        }
+
+        .inner {
+            background: #d9f7be;
+            padding: 25px;
+            border-radius: 12px;
+            color: #28720b;
+            cursor: pointer;
+        }
+
+        #message {
+            margin-top: 25px;
+            padding: 15px;
+            background: #f4f4f4;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🫧 Event Bubbling</h1>
+
+        <p>
+            Click the green box and observe how the event moves
+            through its parent elements.
+        </p>
+
+        <div class="outer" id="outer">
+            Outer Element
+
+            <div class="middle" id="middle">
+                Middle Element
+
+                <div class="inner" id="inner">
+                    🖱️ Click Me
+                </div>
+
+            </div>
+        </div>
+
+        <div id="message">
+            Waiting for a click...
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        document.getElementById("inner")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").textContent =
+                    "1️⃣ Inner element clicked";
+
+            });
+
+        document.getElementById("middle")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").textContent +=
+                    " → 2️⃣ Middle element received the event";
+
+            });
+
+        document.getElementById("outer")
+            .addEventListener("click", function() {
+
+                document.getElementById("message").textContent +=
+                    " → 3️⃣ Outer element received the event";
+
+            });
+
+    </script>
+
+</body>
+</html>

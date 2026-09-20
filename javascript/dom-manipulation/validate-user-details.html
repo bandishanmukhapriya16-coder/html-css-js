@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validate Name, Email, Phone and Password</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e65100;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #ffb74d;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 30px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #e65100;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #bf360c;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        .error {
+            color: #d32f2f;
+        }
+
+        .success {
+            color: #00897b;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #e65100;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📝 Form Validation</h1>
+
+        <form onsubmit="validateForm(event)">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="text"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="Enter 10-digit phone number"
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+            <br>
+
+            <button type="submit">Validate</button>
+
+        </form>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function validateForm(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let password = document.getElementById("password").value;
+
+            let result = document.getElementById("result");
+
+            let errors = [];
+
+            // Validate name
+            if (name === "") {
+                errors.push("❌ Name is required.");
+            }
+
+            // Validate email
+            if (email === "") {
+                errors.push("❌ Email is required.");
+            }
+            else if (!email.includes("@") || !email.includes(".")) {
+                errors.push("❌ Enter a valid email.");
+            }
+
+            // Validate phone
+            if (phone === "") {
+                errors.push("❌ Phone number is required.");
+            }
+            else if (!/^[0-9]{10}$/.test(phone)) {
+                errors.push("❌ Phone number must contain exactly 10 digits.");
+            }
+
+            // Validate password
+            if (password === "") {
+                errors.push("❌ Password is required.");
+            }
+            else if (password.length < 6) {
+                errors.push("❌ Password must contain at least 6 characters.");
+            }
+
+            // Display result
+            if (errors.length > 0) {
+
+                result.innerHTML = errors.join("<br>");
+                result.className = "error";
+
+            }
+            else {
+
+                result.innerHTML =
+                    "✅ All fields are valid!<br>" +
+                    "Form submitted successfully.";
+
+                result.className = "success";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

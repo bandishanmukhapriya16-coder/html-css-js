@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Coordinates</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #6c3483;
+        }
+
+        button {
+            background: #6c3483;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #512e5f;
+        }
+
+        #coordinates {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f5eef8;
+            border-radius: 12px;
+            font-size: 18px;
+            line-height: 2;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #512e5f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>📍 My Coordinates</h1>
+
+        <p>Click the button to display your coordinates.</p>
+
+        <button onclick="getCoordinates()">Get Coordinates</button>
+
+        <div id="coordinates">
+            Coordinates will appear here.
+        </div>
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function getCoordinates() {
+
+            const output = document.getElementById("coordinates");
+
+            if (navigator.geolocation) {
+
+                output.innerHTML = "📡 Getting coordinates...";
+
+                navigator.geolocation.getCurrentPosition(
+                    showCoordinates,
+                    showError
+                );
+
+            } else {
+                output.innerHTML =
+                    "❌ Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showCoordinates(position) {
+
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+
+            document.getElementById("coordinates").innerHTML =
+                "🌎 <b>Coordinates Found</b><br><br>" +
+                "Latitude: " + latitude + "<br>" +
+                "Longitude: " + longitude + "<br>" +
+                "Accuracy: " + accuracy + " meters";
+        }
+
+        function showError(error) {
+
+            document.getElementById("coordinates").innerHTML =
+                "❌ Unable to retrieve coordinates.";
+        }
+    </script>
+
+</body>
+</html>

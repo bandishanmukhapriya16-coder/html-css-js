@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic CSS Classes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #11998e;
+        }
+
+        #box {
+            padding: 25px;
+            margin: 25px auto;
+            width: 70%;
+            background: #e8fff3;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Class added dynamically */
+        .highlight {
+            background: #11998e !important;
+            color: white;
+            border-radius: 30px;
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            background: #11998e;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #087f70;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #effff6;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #11998e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🎨 Dynamic CSS Classes</h1>
+
+        <div id="box">
+            This box can change its style!
+        </div>
+
+        <button onclick="addClass()">Add CSS Class</button>
+
+        <button onclick="removeClass()">Remove CSS Class</button>
+
+        <button onclick="toggleClass()">Toggle CSS Class</button>
+
+        <div id="result">
+            Current class: None
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function addClass() {
+
+            let box = document.getElementById("box");
+
+            box.classList.add("highlight");
+
+            document.getElementById("result").textContent =
+                "✅ 'highlight' class added.";
+        }
+
+        function removeClass() {
+
+            let box = document.getElementById("box");
+
+            box.classList.remove("highlight");
+
+            document.getElementById("result").textContent =
+                "❌ 'highlight' class removed.";
+        }
+
+        function toggleClass() {
+
+            let box = document.getElementById("box");
+
+            box.classList.toggle("highlight");
+
+            if (box.classList.contains("highlight")) {
+                document.getElementById("result").textContent =
+                    "🔄 'highlight' class is ON.";
+            } else {
+                document.getElementById("result").textContent =
+                    "🔄 'highlight' class is OFF.";
+            }
+        }
+    </script>
+
+</body>
+</html>

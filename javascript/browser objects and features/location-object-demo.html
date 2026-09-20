@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Location Object Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            width: 500px;
+            max-width: 90%;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 15px;
+            line-height: 1.8;
+            word-wrap: break-word;
+        }
+
+        .info p {
+            margin: 8px 0;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #1565c0, #00897b);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #00897b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📍 Location Object</h1>
+
+        <div class="info" id="output">
+            Click the button to display the current page location.
+        </div>
+
+        <button onclick="showLocation()">
+            Show Location
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function showLocation() {
+
+            let output = document.getElementById("output");
+
+            output.innerHTML =
+                "<p><b>🌐 Full URL:</b><br>" +
+                location.href + "</p>" +
+
+                "<p><b>📡 Protocol:</b> " +
+                location.protocol + "</p>" +
+
+                "<p><b>🏠 Host:</b> " +
+                location.host + "</p>" +
+
+                "<p><b>📄 Path:</b> " +
+                location.pathname + "</p>";
+        }
+
+    </script>
+
+</body>
+</html>

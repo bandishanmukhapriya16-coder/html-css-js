@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slideshow</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .box {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #6c5ce7;
+        }
+
+        #slide {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 4px solid #e84393;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            background: #6c5ce7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e84393;
+        }
+
+        #number {
+            font-size: 18px;
+            font-weight: bold;
+            color: #6c5ce7;
+            margin: 10px;
+        }
+
+        .back {
+            margin-top: 35px;
+        }
+
+        .back a {
+            text-decoration: none;
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🖼️ Image Slideshow</h1>
+
+        <img id="slide"
+             src="https://picsum.photos/id/1015/500/300"
+             alt="Slideshow Image">
+
+        <div id="number">Image 1 of 5</div>
+
+        <button onclick="previousImage()">⬅ Previous</button>
+        <button onclick="nextImage()">Next ➡</button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const images = [
+            "https://picsum.photos/id/1015/500/300",
+            "https://picsum.photos/id/1016/500/300",
+            "https://picsum.photos/id/1025/500/300",
+            "https://picsum.photos/id/1035/500/300",
+            "https://picsum.photos/id/1043/500/300"
+        ];
+
+        let currentIndex = 0;
+
+        const slide = document.getElementById("slide");
+        const number = document.getElementById("number");
+
+        function showImage() {
+            slide.src = images[currentIndex];
+
+            number.textContent =
+                "Image " + (currentIndex + 1) +
+                " of " + images.length;
+        }
+
+        function nextImage() {
+            currentIndex++;
+
+            if (currentIndex >= images.length) {
+                currentIndex = 0;
+            }
+
+            showImage();
+        }
+
+        function previousImage() {
+            currentIndex--;
+
+            if (currentIndex < 0) {
+                currentIndex = images.length - 1;
+            }
+
+            showImage();
+        }
+    </script>
+
+</body>
+</html>

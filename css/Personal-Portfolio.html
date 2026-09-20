@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shanmukha Priya Bandi | Resume</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #d9a7ff, #a8d8ff, #ffd6e8);
+            color: #24243e;
+            line-height: 1.6;
+            padding: 30px 10px;
+        }
+
+        .resume {
+            max-width: 1000px;
+            margin: auto;
+            background: #ffffff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(50, 30, 100, 0.25);
+        }
+
+        /* HEADER */
+
+        header {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 55px 30px;
+            background:
+                radial-gradient(circle at 10% 20%, #ff7eb3, transparent 25%),
+                radial-gradient(circle at 90% 20%, #65d6ff, transparent 25%),
+                linear-gradient(135deg, #6a11cb, #2575fc, #00c6ff);
+        }
+
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        header .role {
+            font-size: 18px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            padding: 9px 17px;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .contact a:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* CONTENT */
+
+        .content {
+            padding: 45px 55px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        section h2 {
+            font-size: 22px;
+            color: #6a11cb;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h2::before {
+            content: "";
+            width: 8px;
+            height: 27px;
+            border-radius: 10px;
+            background: linear-gradient(#ff4ecd, #6a11cb, #2575fc);
+        }
+
+        /* PROFILE */
+
+        .profile {
+            padding: 22px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #f7efff, #eef8ff);
+            border: 1px solid #e1d5ff;
+        }
+
+        /* EDUCATION */
+
+        .education {
+            padding: 22px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #fff1fa, #eef5ff);
+            border-left: 6px solid #8e44ad;
+        }
+
+        .education h3 {
+            color: #6a11cb;
+            font-size: 19px;
+        }
+
+        .education .university {
+            font-weight: 600;
+            color: #2575fc;
+        }
+
+        .date {
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            padding: 9px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4b2780;
+            background: linear-gradient(135deg, #eadcff, #dff3ff);
+            border: 1px solid #d5c5ff;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        /* PROJECTS */
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .project {
+            padding: 22px;
+            border-radius: 18px;
+            background: white;
+            border: 1px solid #e5e5f2;
+            box-shadow: 0 8px 20px rgba(60, 40, 120, 0.08);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project::before {
+            content: "";
+            position: absolute;
+            height: 5px;
+            left: 0;
+            right: 0;
+            top: 0;
+            background: linear-gradient(90deg, #ff4ecd, #6a11cb, #2575fc);
+        }
+
+        .project:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(70, 40, 130, 0.15);
+        }
+
+        .project h3 {
+            color: #6a11cb;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .tech {
+            color: #2575fc;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project ul {
+            padding-left: 19px;
+            font-size: 14px;
+        }
+
+        .project li {
+            margin-bottom: 5px;
+        }
+
+        /* CERTIFICATIONS */
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .certificate {
+            padding: 18px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #fff1f8, #fff7e8);
+            border: 1px solid #ffd5e8;
+            transition: 0.3s;
+        }
+
+        .certificate:hover {
+            transform: translateY(-4px);
+        }
+
+        .certificate h3 {
+            font-size: 16px;
+            color: #d13c8a;
+            margin-bottom: 4px;
+        }
+
+        .certificate p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* PROFILES */
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            text-decoration: none;
+            color: white;
+            padding: 11px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(70, 60, 180, 0.3);
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f8f7ff;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            header .role {
+                font-size: 15px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .project-grid,
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact {
+                flex-direction: column;
+                align-items: center;
+            }
+
+        }
+
+        /* PRINT */
+
+        @media print {
+
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            .resume {
+                width: 100%;
+                box-shadow: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="resume">
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>Shanmukha Priya Bandi</h1>
+
+        <div class="role">
+            B.Tech Computing & Data Science | AI & ML Minor
+        </div>
+
+        <div class="contact">
+
+            <a href="mailto:bandishanmukhapriya16@gmail.com">
+                📧 Email
+            </a>
+
+            <a href="https://github.com/bandishanmukhapriya16-coder"
+               target="_blank">
+                💻 GitHub
+            </a>
+
+            <a href="https://www.linkedin.com/in/shanmukha-priya-bandi-19b616384/"
+               target="_blank">
+                🔗 LinkedIn
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <div class="content">
+
+
+        <!-- PROFILE -->
+
+        <section>
+
+            <h2>Profile</h2>
+
+            <div class="profile">
+
+                B.Tech Computing and Data Science student at Sai University
+                with a growing interest in Artificial Intelligence, Machine
+                Learning, Data Science, Software Development, and Data
+                Visualization. Skilled in Python, C, HTML, CSS, JavaScript,
+                Data Structures & Algorithms, and Power BI. Passionate about
+                building practical projects and continuously developing
+                technical and problem-solving skills.
+
+            </div>
+
+        </section>
+
+
+<!-- EDUCATION -->
+
+<section>
+
+    <h2>🎓 Education</h2>
+
+    <div class="education">
+
+        <h3>B.Tech – Computing and Data Science</h3>
+
+        <div class="university">
+            Sai University, Chennai
+        </div>
+
+        <div class="date">
+            2025 – Present
+        </div>
+
+        <p>
+            <strong>Minor:</strong>
+            Artificial Intelligence & Machine Learning
+        </p>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="education">
+
+        <h3>Intermediate / Class XII</h3>
+
+        <div class="university">
+            Sri Chaitanya Junior College, Tirupati
+        </div>
+
+        <div class="date">
+            2023 – 2025
+        </div>
+
+        <p>
+            <strong>Percentage:</strong> 97.5%
+        </p>
+
+    </div>
+
+</section>
+
+        <!-- SKILLS -->
+
+        <section>
+
+            <h2>Technical Skills</h2>
+
+            <div class="skills">
+
+                <span class="skill">Python</span>
+                <span class="skill">C Programming</span>
+                <span class="skill">HTML5</span>
+                <span class="skill">CSS</span>
+                <span class="skill">JavaScript</span>
+
+                <span class="skill">Data Structures</span>
+                <span class="skill">Algorithms</span>
+                <span class="skill">OOP</span>
+                <span class="skill">Problem Solving</span>
+
+                <span class="skill">Microsoft Power BI</span>
+                <span class="skill">Power Query</span>
+                <span class="skill">DAX</span>
+                <span class="skill">Data Visualization</span>
+
+                <span class="skill">n8n Automation</span>
+                <span class="skill">Workflow Automation</span>
+                <span class="skill">Workflow Design</span>
+                <span class="skill">Agentic AI</span>
+
+                <span class="skill">Git</span>
+                <span class="skill">GitHub</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+
+        <section>
+
+            <h2>Projects</h2>
+
+            <div class="project-grid">
+
+
+                <div class="project">
+
+                    <h3>🌐 Bright Path Academy</h3>
+
+                    <div class="tech">
+                        HTML | CSS | JavaScript
+                    </div>
+
+                    <ul>
+                        <li>
+                            Designed and developed an education website.
+                        </li>
+
+                        <li>
+                            Created structured and responsive web pages.
+                        </li>
+
+                        <li>
+                            Added interactive features using JavaScript.
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="project">
+
+                    <h3>📊 Hotel Booking & Cancellation Analysis</h3>
+
+                    <div class="tech">
+                        Power BI | Power Query | DAX
+                    </div>
+
+                    <ul>
+                        <li>
+                            Developed an interactive Power BI dashboard
+                            to analyze hotel bookings and cancellations.
+                        </li>
+
+                        <li>
+                            Performed data cleaning, transformation,
+                            and modeling using Power Query.
+                        </li>
+
+                        <li>
+                            Created KPI-driven visualizations for
+                            bookings, cancellation rate, ADR, and lead time.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="project">
+
+                    <h3>🏨 Hotel Management System</h3>
+
+                    <div class="tech">
+                        Python | Object-Oriented Programming
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Developed a hotel management application
+                            using Python OOP concepts.
+                        </li>
+
+                        <li>
+                            Implemented room management, customer
+                            management, and billing functionalities.
+                        </li>
+
+                        <li>
+                            Applied encapsulation, inheritance,
+                            polymorphism, and abstraction.
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <div class="project">
+
+                    <h3>💻 Data Structures & Algorithms</h3>
+
+                    <div class="tech">
+                        C Programming | DSA
+                    </div>
+
+                    <ul>
+
+                        <li>
+                            Implemented Singly and Doubly Linked Lists.
+                        </li>
+
+                        <li>
+                            Implemented Circular Singly Linked List,
+                            Stack, Queue, and Binary Tree.
+                        </li>
+
+                        <li>
+                            Implemented searching algorithms including
+                            Binary Search.
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="project">
+
+                <h3>🤖 AI & n8n Automation Projects</h3>
+
+                <div class="tech">
+                   n8n | Workflow Automation | Telegram | AI | ChatGPT
+             </div>
+
+              <ul>
+
+          <li>
+              <strong>Appointment Booking System:</strong>
+              Built an automated appointment booking workflow using n8n
+              to manage booking requests and streamline scheduling.
+        </li>
+
+        <li>
+            <strong>Telegram AI Chat Buddy:</strong>
+            Created an AI-powered Telegram chatbot for interactive
+            conversations and automated responses.
+        </li>
+
+        <li>
+            <strong>Website AI Chatbot:</strong>
+            Developed an AI chatbot workflow for website-based
+            user interaction and automated assistance.
+        </li>
+
+        <li>
+            <strong>AI ChatGPT Clone:</strong>
+            Explored the development of a ChatGPT-style conversational
+            AI application with automated workflow integration.
+        </li>
+
+        <li>
+            <strong>AI Telegram Educational Assistant:</strong>
+            Created an AI-powered Telegram assistant designed to
+            support students with educational queries and assistance.
+        </li>
+
+    </ul>
+
+</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CERTIFICATIONS -->
+
+        <section>
+
+            <h2>Certifications</h2>
+
+            <div class="cert-grid">
+
+
+                <div class="certificate">
+
+                    <h3>🤖 n8n & Agentic AI</h3>
+
+                    <p>
+                        Sai University | June 2026
+                    </p>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <h3>🌐 Modern Web Development – Module 1</h3>
+
+                    <p>
+                        Sai University | June 2026
+                    </p>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <h3>📊 Analyzing & Visualizing Data with Microsoft Power BI</h3>
+
+                    <p>
+                        Sai University | June 2026
+                    </p>
+
+                </div>
+
+
+                <div class="certificate">
+
+                    <h3>🐍 Python (Basic)</h3>
+
+                    <p>
+                        HackerRank | June 2026
+                    </p>
+
+                    <p>
+                        Credential ID: 094D4ED644D8
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROFILES -->
+
+        <section>
+
+            <h2>Online Profiles</h2>
+
+            <div class="buttons">
+
+                <a class="button"
+                   href="https://github.com/bandishanmukhapriya16-coder"
+                   target="_blank">
+                    💻 GitHub
+                </a>
+
+                <a class="button"
+                   href="https://www.linkedin.com/in/shanmukha-priya-bandi-19b616384/"
+                   target="_blank">
+                    🔗 LinkedIn
+                </a>
+
+                <a class="button"
+                   href="https://www.hackerrank.com/certificates/094d4ed644d8"
+                   target="_blank">
+                    🏆 HackerRank
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </div>
+
+
+    <footer>
+
+        © 2026 Shanmukha Priya Bandi • Computing & Data Science
+
+    </footer>
+
+</div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+
+</html>

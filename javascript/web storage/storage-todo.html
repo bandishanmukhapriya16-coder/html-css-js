@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #117864;
+        }
+
+        input {
+            width: 65%;
+            padding: 12px;
+            border: 2px solid #16a085;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 10px;
+            background: #16a085;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #117864;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+
+        li {
+            background: #e8f8f5;
+            margin: 10px 0;
+            padding: 12px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .delete:hover {
+            background: #c0392b;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #117864;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #117864;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📝 My To-Do List</h1>
+
+        <input
+            type="text"
+            id="task"
+            placeholder="Enter a task"
+        >
+
+        <button onclick="addTask()">
+            ➕ Add Task
+        </button>
+
+        <button onclick="clearTasks()">
+            🗑️ Clear All
+        </button>
+
+        <div id="message"></div>
+
+        <ul id="taskList"></ul>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function addTask() {
+
+            const taskInput =
+                document.getElementById("task");
+
+            const task = taskInput.value.trim();
+
+            if (task === "") {
+
+                document.getElementById("message").textContent =
+                    "❌ Please enter a task.";
+
+                return;
+            }
+
+            let tasks =
+                JSON.parse(localStorage.getItem("tasks")) || [];
+
+            tasks.push(task);
+
+            localStorage.setItem(
+                "tasks",
+                JSON.stringify(tasks)
+            );
+
+            taskInput.value = "";
+
+            document.getElementById("message").textContent =
+                "✅ Task added successfully!";
+
+            displayTasks();
+        }
+
+
+        function displayTasks() {
+
+            const tasks =
+                JSON.parse(localStorage.getItem("tasks")) || [];
+
+            const list =
+                document.getElementById("taskList");
+
+            list.innerHTML = "";
+
+            tasks.forEach(function(task, index) {
+
+                const li = document.createElement("li");
+
+                li.textContent = task;
+
+                const deleteButton =
+                    document.createElement("button");
+
+                deleteButton.textContent = "Delete";
+
+                deleteButton.className = "delete";
+
+                deleteButton.onclick = function() {
+                    deleteTask(index);
+                };
+
+                li.appendChild(deleteButton);
+
+                list.appendChild(li);
+            });
+        }
+
+
+        function deleteTask(index) {
+
+            let tasks =
+                JSON.parse(localStorage.getItem("tasks")) || [];
+
+            tasks.splice(index, 1);
+
+            localStorage.setItem(
+                "tasks",
+                JSON.stringify(tasks)
+            );
+
+            displayTasks();
+
+            document.getElementById("message").textContent =
+                "🗑️ Task deleted!";
+        }
+
+
+        function clearTasks() {
+
+            localStorage.removeItem("tasks");
+
+            displayTasks();
+
+            document.getElementById("message").textContent =
+                "✅ All tasks cleared!";
+        }
+
+
+        // Display saved tasks when the page opens
+        displayTasks();
+
+    </script>
+
+</body>
+</html>

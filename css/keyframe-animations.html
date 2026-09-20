@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyframe Animation</title>
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border: 2px solid black;
+            position: relative;
+
+            animation: moveBox 4s infinite alternate;
+        }
+
+        @keyframes moveBox {
+            from {
+                left: 0;
+                transform: rotate(0deg);
+            }
+
+            to {
+                left: 500px;
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Keyframe Animation</h1>
+
+    <div class="box"></div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

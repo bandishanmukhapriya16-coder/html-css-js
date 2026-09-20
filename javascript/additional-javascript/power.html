@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power of a Number</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #c8a2e8;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #6f42c1;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4a148c;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3e8ff;
+            border-radius: 12px;
+            color: #5b2c83;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #6f42c1;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔢 Power of a Number</h1>
+
+    <p>Enter a base and exponent to calculate the power.</p>
+
+    <input
+        type="number"
+        id="base"
+        placeholder="Enter base"
+    >
+
+    <input
+        type="number"
+        id="exponent"
+        placeholder="Enter exponent"
+    >
+
+    <br>
+
+    <button onclick="calculatePower()">
+        Calculate Power
+    </button>
+
+    <div id="result">
+        Result will appear here...
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+<script>
+
+function calculatePower() {
+
+    let base = Number(document.getElementById("base").value);
+    let exponent = Number(document.getElementById("exponent").value);
+
+    if (isNaN(base) || isNaN(exponent)) {
+        document.getElementById("result").innerHTML =
+            "⚠️ Please enter valid numbers.";
+        return;
+    }
+
+    let result = Math.pow(base, exponent);
+
+    document.getElementById("result").innerHTML =
+        "✅ " + base + " raised to the power " +
+        exponent + " = " + result;
+}
+
+</script>
+
+</body>
+</html>

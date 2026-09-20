@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            max-width: 550px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5a3fc0;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a3fc0;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎓 Student Registration</h1>
+
+        <form id="registrationForm">
+
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <label>Mobile Number</label>
+            <input type="tel" id="mobile" placeholder="Enter 10-digit mobile number">
+
+            <label>Age</label>
+            <input type="number" id="age" placeholder="Enter your age">
+
+            <label>Course</label>
+            <select id="course">
+                <option value="">Select Course</option>
+                <option value="CSE">Computer Science</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="DS">Data Science</option>
+            </select>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        document.getElementById("registrationForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                let name = document.getElementById("name").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let mobile = document.getElementById("mobile").value.trim();
+                let age = document.getElementById("age").value;
+                let course = document.getElementById("course").value;
+
+                let message = document.getElementById("message");
+
+                if (name === "") {
+                    message.textContent = "❌ Please enter your name.";
+                    message.style.color = "red";
+                    return;
+                }
+
+                if (email === "") {
+                    message.textContent = "❌ Please enter your email.";
+                    message.style.color = "red";
+                    return;
+                }
+
+                if (mobile === "" || mobile.length !== 10) {
+                    message.textContent =
+                        "❌ Please enter a valid 10-digit mobile number.";
+                    message.style.color = "red";
+                    return;
+                }
+
+                if (age === "" || age < 1) {
+                    message.textContent = "❌ Please enter a valid age.";
+                    message.style.color = "red";
+                    return;
+                }
+
+                if (course === "") {
+                    message.textContent = "❌ Please select a course.";
+                    message.style.color = "red";
+                    return;
+                }
+
+                message.textContent =
+                    "✅ Registration successful! Welcome, " + name + ".";
+
+                message.style.color = "green";
+
+            });
+
+    </script>
+
+</body>
+</html>

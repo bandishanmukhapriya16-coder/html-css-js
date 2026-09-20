@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Webpage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .card {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        @media (max-width: 700px) {
+
+            .cards {
+                flex-direction: column;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Responsive Webpage</h1>
+    <p>Resize the browser window to see the effect.</p>
+</header>
+
+<div class="cards">
+
+    <div class="card">
+        <h2>HTML</h2>
+        <p>Creates webpage structure.</p>
+    </div>
+
+    <div class="card">
+        <h2>CSS</h2>
+        <p>Styles webpages.</p>
+    </div>
+
+    <div class="card">
+        <h2>JavaScript</h2>
+        <p>Adds interactivity.</p>
+    </div>
+   <a class="back" href="../index.html">Back to Home</a>
+        <a class="back" href="index.html">HTML Programs</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0072ff;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input.valid {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        input.invalid {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .message {
+            font-size: 13px;
+            margin-top: 5px;
+            min-height: 18px;
+        }
+
+        .valid-message {
+            color: #28a745;
+        }
+
+        .error-message {
+            color: #dc3545;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #0072ff;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #005dcc;
+        }
+
+        #success {
+            text-align: center;
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #0072ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>⚡ Real-Time Validation</h1>
+
+        <form id="myForm">
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <div id="nameMessage" class="message"></div>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
+            <div id="emailMessage" class="message"></div>
+
+            <label for="mobile">Mobile Number:</label>
+            <input type="text" id="mobile" maxlength="10"
+                   placeholder="Enter 10-digit number">
+            <div id="mobileMessage" class="message"></div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <div id="success"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        let nameInput = document.getElementById("name");
+        let emailInput = document.getElementById("email");
+        let mobileInput = document.getElementById("mobile");
+
+        let nameMessage = document.getElementById("nameMessage");
+        let emailMessage = document.getElementById("emailMessage");
+        let mobileMessage = document.getElementById("mobileMessage");
+
+        let namePattern = /^[A-Za-z ]+$/;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let mobilePattern = /^[0-9]{10}$/;
+
+
+        // Name validation
+        nameInput.addEventListener("input", function() {
+
+            let name = nameInput.value.trim();
+
+            if (name === "") {
+
+                nameInput.className = "";
+                nameMessage.innerHTML = "";
+
+            }
+            else if (namePattern.test(name)) {
+
+                nameInput.className = "valid";
+                nameMessage.innerHTML = "✔ Valid name";
+                nameMessage.className = "message valid-message";
+
+            }
+            else {
+
+                nameInput.className = "invalid";
+                nameMessage.innerHTML = "✖ Name should contain alphabets only";
+                nameMessage.className = "message error-message";
+            }
+
+        });
+
+
+        // Email validation
+        emailInput.addEventListener("input", function() {
+
+            let email = emailInput.value.trim();
+
+            if (email === "") {
+
+                emailInput.className = "";
+                emailMessage.innerHTML = "";
+
+            }
+            else if (emailPattern.test(email)) {
+
+                emailInput.className = "valid";
+                emailMessage.innerHTML = "✔ Valid email";
+                emailMessage.className = "message valid-message";
+
+            }
+            else {
+
+                emailInput.className = "invalid";
+                emailMessage.innerHTML = "✖ Invalid email address";
+                emailMessage.className = "message error-message";
+            }
+
+        });
+
+
+        // Mobile validation
+        mobileInput.addEventListener("input", function() {
+
+            let mobile = mobileInput.value.trim();
+
+            if (mobile === "") {
+
+                mobileInput.className = "";
+                mobileMessage.innerHTML = "";
+
+            }
+            else if (mobilePattern.test(mobile)) {
+
+                mobileInput.className = "valid";
+                mobileMessage.innerHTML = "✔ Valid mobile number";
+                mobileMessage.className = "message valid-message";
+
+            }
+            else {
+
+                mobileInput.className = "invalid";
+                mobileMessage.innerHTML = "✖ Enter exactly 10 digits";
+                mobileMessage.className = "message error-message";
+            }
+
+        });
+
+
+        // Form submission
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = nameInput.value.trim();
+            let email = emailInput.value.trim();
+            let mobile = mobileInput.value.trim();
+
+            let success = document.getElementById("success");
+
+            if (
+                namePattern.test(name) &&
+                emailPattern.test(email) &&
+                mobilePattern.test(mobile)
+            ) {
+
+                success.innerHTML = "🎉 Form submitted successfully!";
+                success.style.background = "#d4edda";
+                success.style.color = "#155724";
+
+            }
+            else {
+
+                success.innerHTML = "❌ Please correct the errors above.";
+                success.style.background = "#ffe0e0";
+                success.style.color = "#c0392b";
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>History Object</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #6a1b9a;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .info {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f5efff;
+            border-radius: 15px;
+        }
+
+        #historyCount {
+            color: #6a1b9a;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 13px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 25px;
+            background: #6a1b9a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #4a148c;
+            transform: scale(1.05);
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #ff4081;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📚 JavaScript History Object</h1>
+
+        <p>
+            The History Object allows JavaScript to work with
+            the browser's session history.
+        </p>
+
+        <div class="info">
+            <p>
+                Number of history entries:
+            </p>
+
+            <div id="historyCount">0</div>
+        </div>
+
+        <button onclick="goBack()">
+            ◀ Back
+        </button>
+
+        <button onclick="goForward()">
+            ▶ Forward
+        </button>
+
+        <button onclick="reloadPage()">
+            🔄 Reload
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Display history length
+        function showHistoryLength() {
+
+            document.getElementById("historyCount").textContent =
+                window.history.length;
+        }
+
+
+        // Go back one page
+        function goBack() {
+
+            window.history.back();
+        }
+
+
+        // Go forward one page
+        function goForward() {
+
+            window.history.forward();
+        }
+
+
+        // Reload current page
+        function reloadPage() {
+
+            window.location.reload();
+        }
+
+
+        // Display history information
+        showHistoryLength();
+
+    </script>
+
+</body>
+</html>

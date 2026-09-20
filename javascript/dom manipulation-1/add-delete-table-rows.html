@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add and Delete Table Rows</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 750px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #764ba2;
+        }
+
+        input {
+            width: 35%;
+            padding: 12px;
+            margin: 8px;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #4b5fc7;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 2px solid #667eea;
+        }
+
+        th {
+            background: #764ba2;
+            color: white;
+        }
+
+        td {
+            background: #f3efff;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #764ba2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📋 Add & Delete Table Rows</h1>
+
+        <p>Enter student details:</p>
+
+        <input type="text" id="name" placeholder="Student Name">
+        <input type="number" id="marks" placeholder="Marks">
+
+        <br>
+
+        <button onclick="addRow()">➕ Add Row</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Marks</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+            </tbody>
+        </table>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        let count = 0;
+
+        function addRow() {
+
+            let name = document.getElementById("name").value;
+            let marks = document.getElementById("marks").value;
+
+            if (name === "" || marks === "") {
+                alert("Please enter both name and marks.");
+                return;
+            }
+
+            count++;
+
+            let table = document.getElementById("studentTable");
+
+            let row = table.insertRow();
+
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+
+            cell1.textContent = count;
+            cell2.textContent = name;
+            cell3.textContent = marks;
+
+            let deleteButton = document.createElement("button");
+
+            deleteButton.textContent = "Delete";
+            deleteButton.classList.add("delete-btn");
+
+            deleteButton.onclick = function() {
+                row.remove();
+            };
+
+            cell4.appendChild(deleteButton);
+
+            document.getElementById("name").value = "";
+            document.getElementById("marks").value = "";
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reset Event</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 450px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e85d75;
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit {
+            background: #28a745;
+        }
+
+        .reset {
+            background: #e85d75;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #e85d75;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔄 Reset Event</h1>
+
+        <p>Enter your details and try the Reset button.</p>
+
+        <form id="myForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <br>
+
+            <button type="submit" class="submit">
+                Submit
+            </button>
+
+            <button type="reset" class="reset">
+                Reset
+            </button>
+
+        </form>
+
+        <div id="message"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        document.getElementById("myForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            document.getElementById("message").textContent =
+                "✅ Form submitted successfully!";
+
+        });
+
+        document.getElementById("myForm").addEventListener("reset", function() {
+
+            document.getElementById("message").textContent =
+                "🔄 Form has been reset!";
+
+        });
+
+    </script>
+
+</body>
+</html>

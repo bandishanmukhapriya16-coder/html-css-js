@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage - Store and Retrieve</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d6336c;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #ffb3c6;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #d6336c;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #a61e4d;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff0f6;
+            border-radius: 12px;
+            color: #862e4b;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #d6336c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💾 localStorage</h1>
+
+    <p>Enter your name and store it in the browser.</p>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <br>
+
+    <button onclick="storeData()">💾 Store Name</button>
+    <button onclick="retrieveData()">📂 Retrieve Name</button>
+
+    <div id="output">
+        Stored data will appear here...
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+<script>
+
+function storeData() {
+
+    let name = document.getElementById("name").value;
+
+    if (name === "") {
+        document.getElementById("output").innerHTML =
+            "⚠️ Please enter your name.";
+        return;
+    }
+
+    localStorage.setItem("studentName", name);
+
+    document.getElementById("output").innerHTML =
+        "✅ Name stored successfully!";
+}
+
+
+function retrieveData() {
+
+    let name = localStorage.getItem("studentName");
+
+    if (name) {
+        document.getElementById("output").innerHTML =
+            "👋 Stored Name: " + name;
+    } else {
+        document.getElementById("output").innerHTML =
+            "❌ No name found in localStorage.";
+    }
+}
+
+</script>
+
+</body>
+</html>

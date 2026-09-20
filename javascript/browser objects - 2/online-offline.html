@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Offline Status</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5b2c83;
+        }
+
+        #status {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 25px;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5b2c83;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>🌐 Online / Offline Status</h1>
+
+        <p>Current Internet Connection Status:</p>
+
+        <div id="status"></div>
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const status = document.getElementById("status");
+
+        function checkStatus() {
+            if (navigator.onLine) {
+                status.textContent = "🟢 You are Online";
+                status.className = "online";
+            } else {
+                status.textContent = "🔴 You are Offline";
+                status.className = "offline";
+            }
+        }
+
+        checkStatus();
+    </script>
+
+</body>
+</html>

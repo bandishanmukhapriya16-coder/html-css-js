@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+            min-height: 100vh;
+            margin: 0;
+            padding: 30px 0;
+        }
+
+        .notes-box {
+            background: white;
+            width: 500px;
+            max-width: 90%;
+            margin: auto;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #8e44ad;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            box-sizing: border-box;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            padding: 11px 18px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .note {
+            background: #f8f0ff;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #8e44ad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="notes-box">
+
+        <h1>📝 Notes App</h1>
+
+        <textarea id="noteInput"
+            placeholder="Write your note here..."></textarea>
+
+        <button onclick="addNote()">Add Note</button>
+
+        <div id="notesList"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+        function displayNotes() {
+
+            let notesList = document.getElementById("notesList");
+
+            notesList.innerHTML = "";
+
+            notes.forEach(function(note, index) {
+
+                let div = document.createElement("div");
+
+                div.className = "note";
+
+                div.innerHTML = `
+                    <p>${note}</p>
+                    <button class="delete"
+                            onclick="deleteNote(${index})">
+                        Delete
+                    </button>
+                `;
+
+                notesList.appendChild(div);
+            });
+        }
+
+        function addNote() {
+
+            let input = document.getElementById("noteInput");
+            let note = input.value.trim();
+
+            if (note === "") {
+                alert("Please write a note.");
+                return;
+            }
+
+            notes.push(note);
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            input.value = "";
+
+            displayNotes();
+        }
+
+        function deleteNote(index) {
+
+            notes.splice(index, 1);
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+
+            displayNotes();
+        }
+
+        displayNotes();
+    </script>
+
+</body>
+</html>

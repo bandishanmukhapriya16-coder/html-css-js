@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Overflow</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .box {
+            width: 300px;
+            height: 150px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid #3498db;
+            text-align: left;
+        }
+
+        .hidden {
+            overflow: hidden;
+        }
+
+        .scroll {
+            overflow: scroll;
+        }
+
+        .auto {
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Overflow</h1>
+
+    <h2>Overflow Hidden</h2>
+
+    <div class="box hidden">
+        This is an example of overflow hidden.
+        Extra content that does not fit inside the box
+        will be hidden from view.
+        This demonstrates how the overflow property works.
+    </div>
+
+    <h2>Overflow Scroll</h2>
+
+    <div class="box scroll">
+        This is an example of overflow scroll.
+        When the content is larger than the box,
+        scrollbars are displayed so that the user
+        can view the remaining content.
+    </div>
+
+    <h2>Overflow Auto</h2>
+
+    <div class="box auto">
+        This is an example of overflow auto.
+        Scrollbars appear automatically when required
+        because the content is larger than the box.
+    </div>
+
+</body> <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+
+</html>

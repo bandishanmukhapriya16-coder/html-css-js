@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f3ff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5a189a;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            color: #2575fc;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #6a11cb;
+            text-align: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .skill {
+            background: #ede7f6;
+            color: #5a189a;
+            padding: 12px 18px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .project {
+            background: #f8f7ff;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #6a11cb;
+        }
+
+        button {
+            background: #6a11cb;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #2575fc;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #6a11cb;
+        }
+
+        footer {
+            text-align: center;
+            background: #24104f;
+            color: white;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        .back {
+            text-align: center;
+            margin: 30px;
+        }
+
+        .back a {
+            color: #6a11cb;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+
+            section {
+                margin: 20px 10px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>👩‍💻 My Portfolio</h1>
+    <p>Computer Science | AI & Data Science</p>
+
+    <button onclick="showWelcome()">Say Hello 👋</button>
+
+    <div id="message"></div>
+</header>
+
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="about">
+
+    <h2>🌟 About Me</h2>
+
+    <p>
+        Hello! I am a Computer Science student interested in
+        Artificial Intelligence, Data Science and Web Development.
+    </p>
+
+    <p>
+        I enjoy learning programming, building projects and
+        exploring new technologies.
+    </p>
+
+</section>
+
+<section id="skills">
+
+    <h2>🛠️ Skills</h2>
+
+    <div class="skills">
+
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">C</div>
+        <div class="skill">C++</div>
+        <div class="skill">Data Structures</div>
+        <div class="skill">AI & ML</div>
+
+    </div>
+
+</section>
+
+<section id="projects">
+
+    <h2>🚀 Projects</h2>
+
+    <div class="projects">
+
+        <div class="project">
+            <h3>🌐 Education Website</h3>
+            <p>
+                A responsive educational website created using
+                HTML, CSS and JavaScript.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>📊 Student Dashboard</h3>
+            <p>
+                A dashboard project for displaying student and
+                academic information.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>💱 Currency Converter</h3>
+            <p>
+                A JavaScript project that uses an API to convert
+                currencies.
+            </p>
+        </div>
+
+        <div class="project">
+            <h3>📝 To-Do List</h3>
+            <p>
+                An interactive task management application
+                created with JavaScript.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<section id="contact">
+
+    <h2>📩 Contact Me</h2>
+
+    <p><strong>Email:</strong> shanmukhapriya@email.com</p>
+
+    <p><strong>Location:</strong> India</p>
+
+    <button onclick="showContact()">Show Contact Message</button>
+
+    <p id="contactMessage"></p>
+
+</section>
+
+<div class="back">
+
+    <a href="../index.html">← Back to JavaScript Index</a>
+
+    <br><br>
+
+    <a href="../../index.html">← Back to Main Index</a>
+
+</div>
+
+<footer>
+
+    <p>© 2026 My Interactive Portfolio</p>
+
+</footer>
+
+<script>
+
+function showWelcome() {
+
+    document.getElementById("message").innerHTML =
+        "✨ Welcome to my portfolio! Thanks for visiting.";
+
+}
+
+function showContact() {
+
+    document.getElementById("contactMessage").innerHTML =
+        "📧 Feel free to contact me for projects and collaborations!";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Positive, Negative or Zero</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3, #a18cd1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 45px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #8e24aa;
+            font-size: 34px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        input {
+            width: 80%;
+            padding: 13px;
+            margin: 15px 0;
+            border: 2px solid #a18cd1;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 13px 30px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #8e24aa, #a18cd1);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f3e5f5;
+            color: #6a1b9a;
+            border-radius: 15px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #8e24aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #6a1b9a;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔍 Positive, Negative or Zero</h1>
+
+        <p>Enter a number to identify its type.</p>
+
+        <input type="number" id="number" placeholder="Enter a number">
+
+        <br><br>
+
+        <button onclick="checkNumber()">Check Number</button>
+
+        <div class="result" id="result">
+            Result will appear here.
+        </div>
+
+        <div class="back">
+        
+         <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+        </div>
+
+    </div>
+
+    <script>
+        function checkNumber() {
+
+            let number = Number(document.getElementById("number").value);
+
+            if (number > 0) {
+                document.getElementById("result").innerHTML =
+                    number + " is a Positive Number 🟢";
+            }
+            else if (number < 0) {
+                document.getElementById("result").innerHTML =
+                    number + " is a Negative Number 🔴";
+            }
+            else {
+                document.getElementById("result").innerHTML =
+                    "The number is Zero 🟡";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classes and Objects</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #673ab7;
+        }
+
+        .box {
+            background: #ede7f6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #673ab7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4527a0;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            line-height: 1.8;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #673ab7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>👨‍💻 Classes & Objects</h1>
+
+        <div class="box">
+            <p>
+                A <b>class</b> is a blueprint for creating objects.
+            </p>
+
+            <p>
+                An <b>object</b> is an instance of a class.
+            </p>
+        </div>
+
+        <button onclick="showObject()">Show Object</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Creating a class
+        class Student {
+
+            constructor(name, course, age) {
+                this.name = name;
+                this.course = course;
+                this.age = age;
+            }
+
+            displayDetails() {
+                return "Name: " + this.name +
+                       "<br>Course: " + this.course +
+                       "<br>Age: " + this.age;
+            }
+        }
+
+        function showObject() {
+
+            // Creating an object
+            let student1 = new Student(
+                "Priya",
+                "B.Tech CSE",
+                18
+            );
+
+            document.getElementById("result").innerHTML =
+                "🎓 Student Object<br><br>" +
+                student1.displayDetails();
+        }
+
+    </script>
+
+</body>
+</html>

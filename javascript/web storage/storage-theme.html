@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Light Theme - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #9face6);
+            color: #222;
+            text-align: center;
+            padding: 50px;
+            transition: 0.4s;
+        }
+
+        .box {
+            background: white;
+            max-width: 550px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            transition: 0.4s;
+        }
+
+        h1 {
+            color: #6c3483;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #6c3483;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Dark theme */
+        .dark {
+            background: #181818;
+            color: white;
+        }
+
+        .dark .box {
+            background: #292929;
+            color: white;
+        }
+
+        .dark h1 {
+            color: #d7a8ff;
+        }
+
+        .dark button {
+            background: #bb86fc;
+            color: #181818;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: inherit;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🌙 Dark / Light Theme</h1>
+
+        <p>
+            Choose your preferred website theme.
+        </p>
+
+        <button onclick="setLightTheme()">
+            ☀️ Light Mode
+        </button>
+
+        <button onclick="setDarkTheme()">
+            🌙 Dark Mode
+        </button>
+
+        <p id="status">
+            Current theme: Light
+        </p>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function setDarkTheme() {
+
+            document.body.classList.add("dark");
+
+            localStorage.setItem("theme", "dark");
+
+            document.getElementById("status").textContent =
+                "Current theme: Dark 🌙";
+        }
+
+
+        function setLightTheme() {
+
+            document.body.classList.remove("dark");
+
+            localStorage.setItem("theme", "light");
+
+            document.getElementById("status").textContent =
+                "Current theme: Light ☀️";
+        }
+
+
+        // Restore saved theme when the page loads
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+
+            setDarkTheme();
+
+        } else {
+
+            setLightTheme();
+        }
+
+    </script>
+
+</body>
+</html>

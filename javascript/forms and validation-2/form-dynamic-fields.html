@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Fields</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1565c0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1565c0;
+        }
+
+        .field {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .field input {
+            margin-top: 0;
+            flex: 1;
+        }
+
+        .remove-btn {
+            width: auto;
+            margin: 0;
+            padding: 10px 15px;
+            background: #e53935;
+        }
+
+        .remove-btn:hover {
+            background: #c62828;
+        }
+
+        .add-btn {
+            background: #00897b;
+        }
+
+        .add-btn:hover {
+            background: #00695c;
+        }
+
+        .submit-btn {
+            background: #1565c0;
+        }
+
+        .submit-btn:hover {
+            background: #0d47a1;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .error {
+            color: #e53935;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        #result {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #e3f2fd;
+            border-radius: 12px;
+        }
+
+        #result h2 {
+            color: #1565c0;
+            text-align: center;
+        }
+
+        .result-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: white;
+            background: #333;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📋 Dynamic Form Fields</h1>
+
+    <p class="subtitle">
+        Add as many skills as you want.
+    </p>
+
+    <form id="dynamicForm">
+
+        <label for="name">Student Name</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+
+        <div id="nameError" class="error"></div>
+
+        <label>Skills</label>
+
+        <div id="skillsContainer">
+
+            <div class="field">
+                <input
+                    type="text"
+                    class="skill"
+                    placeholder="Enter a skill"
+                >
+
+                <button
+                    type="button"
+                    class="remove-btn"
+                    onclick="removeSkill(this)"
+                >
+                    ✕
+                </button>
+            </div>
+
+        </div>
+
+        <div id="skillError" class="error"></div>
+
+        <button
+            type="button"
+            class="add-btn"
+            onclick="addSkill()"
+        >
+            ➕ Add Another Skill
+        </button>
+
+        <button
+            type="submit"
+            class="submit-btn"
+        >
+            ✅ Submit Form
+        </button>
+
+    </form>
+
+    <div id="result">
+
+        <h2>🎉 Submitted Details</h2>
+
+        <div class="result-item">
+            <strong>Name:</strong>
+            <span id="resultName"></span>
+        </div>
+
+        <div class="result-item">
+            <strong>Skills:</strong>
+            <ul id="resultSkills"></ul>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="back">
+    <a href="../index.html">← Back to JavaScript Index</a>
+    <br><br>
+    <a href="../../index.html">← Back to Main Index</a>
+</div>
+
+<script>
+
+    function addSkill() {
+
+        let container =
+            document.getElementById("skillsContainer");
+
+        let field = document.createElement("div");
+
+        field.className = "field";
+
+        field.innerHTML = `
+            <input
+                type="text"
+                class="skill"
+                placeholder="Enter a skill"
+            >
+
+            <button
+                type="button"
+                class="remove-btn"
+                onclick="removeSkill(this)"
+            >
+                ✕
+            </button>
+        `;
+
+        container.appendChild(field);
+    }
+
+
+    function removeSkill(button) {
+
+        let container =
+            document.getElementById("skillsContainer");
+
+        let fields =
+            container.querySelectorAll(".field");
+
+        // Keep at least one field
+        if (fields.length > 1) {
+            button.parentElement.remove();
+        }
+        else {
+            alert("At least one skill field is required.");
+        }
+    }
+
+
+    document.getElementById("dynamicForm").addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            let name =
+                document.getElementById("name").value.trim();
+
+            let skills =
+                document.querySelectorAll(".skill");
+
+            let nameError =
+                document.getElementById("nameError");
+
+            let skillError =
+                document.getElementById("skillError");
+
+            nameError.textContent = "";
+            skillError.textContent = "";
+
+            document.getElementById("result").style.display =
+                "none";
+
+            let valid = true;
+
+            // Validate name
+            if (name === "") {
+
+                nameError.textContent =
+                    "Name is required.";
+
+                valid = false;
+
+            }
+            else if (!/^[A-Za-z ]+$/.test(name)) {
+
+                nameError.textContent =
+                    "Name should contain only alphabets.";
+
+                valid = false;
+            }
+
+            // Collect skills
+            let skillValues = [];
+
+            skills.forEach(function(skill) {
+
+                let value = skill.value.trim();
+
+                if (value !== "") {
+                    skillValues.push(value);
+                }
+            });
+
+            // Validate skills
+            if (skillValues.length === 0) {
+
+                skillError.textContent =
+                    "Please enter at least one skill.";
+
+                valid = false;
+            }
+
+            if (!valid) {
+                return;
+            }
+
+            // Display result
+            document.getElementById("resultName").textContent =
+                name;
+
+            let resultSkills =
+                document.getElementById("resultSkills");
+
+            resultSkills.innerHTML = "";
+
+            skillValues.forEach(function(skill) {
+
+                let li = document.createElement("li");
+
+                li.textContent = skill;
+
+                resultSkills.appendChild(li);
+            });
+
+            document.getElementById("result").style.display =
+                "block";
+        }
+    );
+
+</script>
+
+</body>
+</html>

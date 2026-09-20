@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 450px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e69500;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #e69500;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #e69500;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c77d00;
+        }
+
+        #message {
+            margin-top: 18px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #ffe0e0;
+            color: #c0392b;
+        }
+
+        #confirmation {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #fff8df;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #d88900;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>⭐ Feedback Form</h1>
+
+        <form id="feedbackForm">
+
+            <label for="name">Name:</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <label for="email">Email:</label>
+            <input
+                type="text"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <label for="rating">Rating:</label>
+            <select id="rating">
+                <option value="">-- Select Rating --</option>
+                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                <option value="4">⭐⭐⭐⭐ Very Good</option>
+                <option value="3">⭐⭐⭐ Good</option>
+                <option value="2">⭐⭐ Fair</option>
+                <option value="1">⭐ Poor</option>
+            </select>
+
+            <label for="comments">Comments:</label>
+            <textarea
+                id="comments"
+                placeholder="Write your feedback..."
+            ></textarea>
+
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <div id="confirmation">
+            <h2>🎉 Thank You!</h2>
+
+            <p><strong>Name:</strong> <span id="confirmName"></span></p>
+            <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+            <p><strong>Rating:</strong> <span id="confirmRating"></span></p>
+            <p><strong>Comments:</strong> <span id="confirmComments"></span></p>
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let rating = document.getElementById("rating").value;
+            let comments = document.getElementById("comments").value.trim();
+
+            let message = document.getElementById("message");
+            let confirmation = document.getElementById("confirmation");
+
+            let namePattern = /^[A-Za-z ]+$/;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+            if (name === "") {
+                showError("❌ Please enter your name.");
+                return;
+            }
+
+            if (!namePattern.test(name)) {
+                showError("❌ Name should contain alphabets only.");
+                return;
+            }
+
+            if (!emailPattern.test(email)) {
+                showError("❌ Please enter a valid email address.");
+                return;
+            }
+
+            if (rating === "") {
+                showError("❌ Please select a rating.");
+                return;
+            }
+
+            if (comments === "") {
+                showError("❌ Please enter your feedback.");
+                return;
+            }
+
+
+            // Display confirmation
+            message.innerHTML = "✅ Feedback submitted successfully!";
+            message.className = "success";
+
+            document.getElementById("confirmName").innerHTML = name;
+            document.getElementById("confirmEmail").innerHTML = email;
+            document.getElementById("confirmRating").innerHTML = rating + " ⭐";
+            document.getElementById("confirmComments").innerHTML = comments;
+
+            confirmation.style.display = "block";
+
+
+            function showError(text) {
+
+                message.innerHTML = text;
+                message.className = "error";
+                confirmation.style.display = "none";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

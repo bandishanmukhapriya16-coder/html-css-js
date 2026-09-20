@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2D and 3D Transformations</title>
+
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 80px;
+        }
+
+        .box {
+            width: 120px;
+            height: 120px;
+            background-color: #ddd;
+            border: 2px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 1s;
+        }
+
+        .two-d:hover {
+            transform: rotate(45deg) scale(1.2);
+        }
+
+        .three-d:hover {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">2D and 3D Transformations</h1>
+
+    <div class="container">
+
+        <div class="box two-d">
+            2D
+        </div>
+
+        <div class="box three-d">
+            3D
+        </div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

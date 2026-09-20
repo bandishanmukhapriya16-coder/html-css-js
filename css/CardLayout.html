@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Card Layout</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .card {
+            width: 250px;
+            background-color: white;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #bbb;
+        }
+
+        .card h2 {
+            color: #3498db;
+        }
+
+        .card button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Flexbox Card Layout</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h2>HTML</h2>
+            <p>Learn webpage structure.</p>
+            <button>Learn More</button>
+        </div>
+
+        <div class="card">
+            <h2>CSS</h2>
+            <p>Learn webpage styling.</p>
+            <button>Learn More</button>
+        </div>
+
+        <div class="card">
+            <h2>JavaScript</h2>
+            <p>Learn webpage functionality.</p>
+            <button>Learn More</button>
+        </div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

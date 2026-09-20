@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sum of Digits - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background: white;
+            padding: 45px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #673ab7;
+            font-size: 38px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        input {
+            width: 80%;
+            padding: 13px;
+            margin: 15px 0;
+            border: 2px solid #9c6ade;
+            border-radius: 10px;
+            font-size: 17px;
+        }
+
+        button {
+            padding: 13px 30px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #673ab7, #9c27b0);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f3e5f5;
+            color: #673ab7;
+            border-radius: 15px;
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #673ab7;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #4527a0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>➕ Sum of Digits</h1>
+
+        <p>Enter a number to find the sum of its digits.</p>
+
+        <input type="number" id="number" placeholder="Enter a number">
+
+        <br><br>
+
+        <button onclick="sumDigits()">Find Sum</button>
+
+        <div class="result" id="result">
+            Result will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function sumDigits() {
+
+            let number = document.getElementById("number").value;
+
+            if (number === "") {
+                document.getElementById("result").innerHTML =
+                    "Please enter a number.";
+                return;
+            }
+
+            let digits = Math.abs(Number(number)).toString();
+            let sum = 0;
+
+            for (let i = 0; i < digits.length; i++) {
+                sum += Number(digits[i]);
+            }
+
+            document.getElementById("result").innerHTML =
+                "Sum of Digits: " + sum;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>querySelector and querySelectorAll</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #dd2476;
+        }
+
+        .box {
+            background: #ffe6f0;
+            color: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 8px;
+            background: #dd2476;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #b51d5f;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff0f5;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #dd2476;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔎 querySelector & querySelectorAll</h1>
+
+        <div class="box">Box 1</div>
+        <div class="box">Box 2</div>
+        <div class="box">Box 3</div>
+
+        <button onclick="selectOne()">
+            Use querySelector()
+        </button>
+
+        <button onclick="selectAll()">
+            Use querySelectorAll()
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function selectOne() {
+
+            // Selects the first matching element
+            let box = document.querySelector(".box");
+
+            box.style.backgroundColor = "#dd2476";
+            box.style.color = "white";
+
+            document.getElementById("result").textContent =
+                "querySelector() selected the first .box element.";
+        }
+
+        function selectAll() {
+
+            // Selects all matching elements
+            let boxes = document.querySelectorAll(".box");
+
+            boxes.forEach(function(box) {
+                box.style.backgroundColor = "#dd2476";
+                box.style.color = "white";
+            });
+
+            document.getElementById("result").textContent =
+                "querySelectorAll() selected all .box elements.";
+        }
+    </script>
+
+</body>
+</html>

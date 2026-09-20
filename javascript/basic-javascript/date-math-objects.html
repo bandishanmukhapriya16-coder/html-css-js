@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Date and Math Objects - JavaScript</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d, #00c6ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #00897b;
+            font-size: 36px;
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 13px 30px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #00897b, #26a69a);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #e0f2f1;
+            color: #00695c;
+            border-radius: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.9;
+            text-align: left;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00897b;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+        }
+
+        .back a:hover {
+            background-color: #00695c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📅 Date & Math Objects</h1>
+
+        <p>
+            Click the button to demonstrate JavaScript Date and Math objects.
+        </p>
+
+        <button onclick="showObjects()">Show Details</button>
+
+        <div class="result" id="result">
+            Results will appear here.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showObjects() {
+
+            // Date Object
+            let today = new Date();
+
+            // Math Object
+            let randomNumber = Math.floor(Math.random() * 100) + 1;
+            let squareRoot = Math.sqrt(64);
+            let power = Math.pow(2, 3);
+            let roundedNumber = Math.round(12.6);
+
+            document.getElementById("result").innerHTML =
+                "Current Date & Time: " + today +
+                "<br>Random Number (1-100): " + randomNumber +
+                "<br>Square Root of 64: " + squareRoot +
+                "<br>2³ using Math.pow(): " + power +
+                "<br>12.6 rounded using Math.round(): " + roundedNumber;
+        }
+
+    </script>
+
+</body>
+
+</html>

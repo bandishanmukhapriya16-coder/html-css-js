@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Quiz</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 600px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #673ab7;
+        }
+
+        .question {
+            margin: 25px 0;
+            text-align: left;
+            background: #f3e5f5;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .question p {
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #673ab7;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4527a0;
+        }
+
+        #result {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            color: #673ab7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🧠 JavaScript Quiz</h1>
+
+        <div class="question">
+            <p>1. Which keyword is used to declare a variable?</p>
+
+            <label>
+                <input type="radio" name="q1" value="var">
+                var
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="print">
+                print
+            </label>
+
+            <label>
+                <input type="radio" name="q1" value="display">
+                display
+            </label>
+        </div>
+
+        <div class="question">
+            <p>2. Which symbol is used for addition?</p>
+
+            <label>
+                <input type="radio" name="q2" value="+">
+                +
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="*">
+                *
+            </label>
+
+            <label>
+                <input type="radio" name="q2" value="%">
+                %
+            </label>
+        </div>
+
+        <div class="question">
+            <p>3. Which method is used to display a message?</p>
+
+            <label>
+                <input type="radio" name="q3" value="alert">
+                alert()
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="message">
+                message()
+            </label>
+
+            <label>
+                <input type="radio" name="q3" value="show">
+                show()
+            </label>
+        </div>
+
+        <button onclick="checkQuiz()">Submit Quiz</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function checkQuiz() {
+
+            let score = 0;
+
+            let q1 = document.querySelector(
+                'input[name="q1"]:checked'
+            );
+
+            let q2 = document.querySelector(
+                'input[name="q2"]:checked'
+            );
+
+            let q3 = document.querySelector(
+                'input[name="q3"]:checked'
+            );
+
+            if (q1 && q1.value === "var") {
+                score++;
+            }
+
+            if (q2 && q2.value === "+") {
+                score++;
+            }
+
+            if (q3 && q3.value === "alert") {
+                score++;
+            }
+
+            document.getElementById("result").innerHTML =
+                "🎉 Your Score: " + score + " / 3";
+        }
+
+    </script>
+
+</body>
+</html>

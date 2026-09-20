@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search and Filter Table Records</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #11998e;
+        }
+
+        input {
+            width: 70%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #11998e;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 2px solid #11998e;
+        }
+
+        th {
+            background: #11998e;
+            color: white;
+        }
+
+        td {
+            background: #f0fff5;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #11998e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔍 Search & Filter Table</h1>
+
+        <input type="text" id="search"
+               placeholder="Search student name..."
+               onkeyup="filterTable()">
+
+        <table id="studentTable">
+
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Course</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Priya</td>
+                    <td>CSE</td>
+                    <td>95</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Rahul</td>
+                    <td>ECE</td>
+                    <td>88</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Ananya</td>
+                    <td>IT</td>
+                    <td>92</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Arjun</td>
+                    <td>CSE</td>
+                    <td>85</td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function filterTable() {
+
+            let input = document.getElementById("search");
+            let filter = input.value.toLowerCase();
+
+            let table = document.getElementById("studentTable");
+            let rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+
+                let name = rows[i]
+                    .getElementsByTagName("td")[1];
+
+                if (name) {
+
+                    let text = name.textContent.toLowerCase();
+
+                    if (text.includes(filter)) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

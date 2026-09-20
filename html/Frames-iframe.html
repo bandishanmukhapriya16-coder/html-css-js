@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Iframe</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 250px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>HTML Iframe Example</h1>
+
+    <p>
+        An iframe is used to embed another webpage or document
+        inside the current webpage.
+    </p>
+
+    <iframe
+        srcdoc="
+        <html>
+        <body style='font-family:Arial;text-align:center;padding:40px;'>
+        <h2>Embedded Content</h2>
+        <p>This content is displayed inside an iframe.</p>
+        </body>
+        </html>
+        ">
+    </iframe>
+
+    <br>
+
+    <a href="index.html">Back to HTML Programs</a>
+
+</div>
+
+</body>
+</html>

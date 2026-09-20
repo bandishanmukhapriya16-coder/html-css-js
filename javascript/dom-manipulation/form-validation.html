@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 500px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #00897b;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #80cbc4;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 30px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #00897b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00695c;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #d32f2f;
+        }
+
+        .success {
+            color: #00897b;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #00897b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📝 Form Validation</h1>
+
+        <form onsubmit="validateForm(event)">
+
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <input type="email" id="email" placeholder="Enter your email">
+
+            <input type="password" id="password" placeholder="Enter password">
+
+            <br>
+
+            <button type="submit">Submit</button>
+
+        </form>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function validateForm(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value;
+
+            let result = document.getElementById("result");
+
+            if (name === "") {
+                result.innerHTML = "❌ Please enter your name.";
+                result.className = "error";
+            }
+            else if (email === "") {
+                result.innerHTML = "❌ Please enter your email.";
+                result.className = "error";
+            }
+            else if (!email.includes("@")) {
+                result.innerHTML = "❌ Please enter a valid email.";
+                result.className = "error";
+            }
+            else if (password === "") {
+                result.innerHTML = "❌ Please enter your password.";
+                result.className = "error";
+            }
+            else if (password.length < 6) {
+                result.innerHTML =
+                    "❌ Password must contain at least 6 characters.";
+                result.className = "error";
+            }
+            else {
+                result.innerHTML = "✅ Form submitted successfully!";
+                result.className = "success";
+            }
+        }
+
+    </script>
+
+</body>
+</html>

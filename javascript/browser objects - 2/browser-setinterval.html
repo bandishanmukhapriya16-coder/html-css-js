@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>setInterval Example</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #11998e;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        #counter {
+            font-size: 55px;
+            font-weight: bold;
+            color: #11998e;
+            margin: 25px;
+        }
+
+        #status {
+            padding: 15px;
+            background: #e9fff4;
+            border-radius: 12px;
+            color: #087f5b;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 13px 24px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            background: #11998e;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #087f5b;
+            transform: scale(1.05);
+        }
+
+        .stop {
+            background: #e63946;
+        }
+
+        .stop:hover {
+            background: #b71c1c;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #11998e;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #ff4081;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔄 setInterval() Example</h1>
+
+        <p>
+            The counter increases automatically every second.
+        </p>
+
+        <div id="counter">0</div>
+
+        <div id="status">
+            Timer is stopped.
+        </div>
+
+        <button onclick="startCounter()">
+            ▶ Start
+        </button>
+
+        <button class="stop" onclick="stopCounter()">
+            ⏹ Stop
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        let count = 0;
+        let interval;
+
+        function startCounter() {
+
+            // Prevent multiple intervals
+            if (interval) {
+                return;
+            }
+
+            document.getElementById("status").textContent =
+                "🟢 Timer is running...";
+
+            // Execute every 1 second
+            interval = setInterval(function() {
+
+                count++;
+
+                document.getElementById("counter").textContent =
+                    count;
+
+            }, 1000);
+        }
+
+
+        function stopCounter() {
+
+            // Stop the interval
+            clearInterval(interval);
+
+            interval = null;
+
+            document.getElementById("status").textContent =
+                "🔴 Timer stopped.";
+        }
+
+    </script>
+
+</body>
+</html>

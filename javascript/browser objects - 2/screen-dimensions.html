@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Screen Dimensions</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fa709a, #fee140);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 750px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d81b60;
+        }
+
+        .intro {
+            text-align: center;
+            color: #555;
+            font-size: 17px;
+        }
+
+        .screen-info {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            padding: 20px;
+            background: #fff4f7;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #ffd1df;
+        }
+
+        .card h3 {
+            color: #d81b60;
+            margin-bottom: 10px;
+        }
+
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 0;
+            padding: 13px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #d81b60;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #ad1457;
+            transform: scale(1.05);
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #d81b60;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #673ab7;
+        }
+
+        @media (max-width: 600px) {
+            .screen-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🖥️ Screen Dimensions</h1>
+
+        <p class="intro">
+            This page displays information about your device screen
+            using the JavaScript Screen Object.
+        </p>
+
+        <div class="screen-info">
+
+            <div class="card">
+                <h3>Screen Width</h3>
+                <div class="value" id="screenWidth">-</div>
+            </div>
+
+            <div class="card">
+                <h3>Screen Height</h3>
+                <div class="value" id="screenHeight">-</div>
+            </div>
+
+            <div class="card">
+                <h3>Available Width</h3>
+                <div class="value" id="availableWidth">-</div>
+            </div>
+
+            <div class="card">
+                <h3>Available Height</h3>
+                <div class="value" id="availableHeight">-</div>
+            </div>
+
+            <div class="card">
+                <h3>Color Depth</h3>
+                <div class="value" id="colorDepth">-</div>
+            </div>
+
+            <div class="card">
+                <h3>Pixel Depth</h3>
+                <div class="value" id="pixelDepth">-</div>
+            </div>
+
+        </div>
+
+        <button onclick="showScreenInfo()">
+            🔄 Refresh Screen Information
+        </button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showScreenInfo() {
+
+            document.getElementById("screenWidth").textContent =
+                screen.width + " px";
+
+            document.getElementById("screenHeight").textContent =
+                screen.height + " px";
+
+            document.getElementById("availableWidth").textContent =
+                screen.availWidth + " px";
+
+            document.getElementById("availableHeight").textContent =
+                screen.availHeight + " px";
+
+            document.getElementById("colorDepth").textContent =
+                screen.colorDepth + " bits";
+
+            document.getElementById("pixelDepth").textContent =
+                screen.pixelDepth + " bits";
+        }
+
+
+        // Display information when the page loads
+        showScreenInfo();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .quiz-box {
+            background: white;
+            width: 450px;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6c2bd9;
+        }
+
+        #question {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 25px 0 15px;
+        }
+
+        .option {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            background: #eee;
+            cursor: pointer;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .option:hover {
+            background: #ddd;
+        }
+
+        #nextBtn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #6c2bd9;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        #nextBtn:hover {
+            background: #541bb0;
+        }
+
+        #result {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 20px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #6c2bd9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz-box">
+
+        <h1>🧠 JavaScript Quiz</h1>
+
+        <div id="question"></div>
+
+        <div id="options"></div>
+
+        <button id="nextBtn" onclick="nextQuestion()">
+            Next Question
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which keyword is used to declare a variable?",
+                options: ["var", "print", "echo", "display"],
+                answer: "var"
+            },
+            {
+                question: "Which symbol is used for comments in JavaScript?",
+                options: ["//", "##", "<!--", "**"],
+                answer: "//"
+            },
+            {
+                question: "Which method displays a message box?",
+                options: ["alert()", "message()", "show()", "display()"],
+                answer: "alert()"
+            },
+            {
+                question: "Which method converts JSON text into an object?",
+                options: [
+                    "JSON.parse()",
+                    "JSON.convert()",
+                    "JSON.object()",
+                    "JSON.change()"
+                ],
+                answer: "JSON.parse()"
+            },
+            {
+                question: "Which keyword is used to create a constant?",
+                options: ["const", "constant", "fixed", "static"],
+                answer: "const"
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        function loadQuestion() {
+
+            let q = questions[currentQuestion];
+
+            document.getElementById("question").textContent =
+                (currentQuestion + 1) + ". " + q.question;
+
+            let optionsDiv = document.getElementById("options");
+
+            optionsDiv.innerHTML = "";
+
+            q.options.forEach(function(option) {
+
+                let button = document.createElement("button");
+
+                button.textContent = option;
+                button.className = "option";
+
+                button.onclick = function() {
+                    checkAnswer(option);
+                };
+
+                optionsDiv.appendChild(button);
+            });
+        }
+
+        function checkAnswer(selected) {
+
+            let correct = questions[currentQuestion].answer;
+
+            if (selected === correct) {
+                score++;
+                alert("✅ Correct!");
+            } else {
+                alert("❌ Wrong answer!");
+            }
+
+            document.querySelectorAll(".option").forEach(function(button) {
+                button.disabled = true;
+            });
+        }
+
+        function nextQuestion() {
+
+            currentQuestion++;
+
+            if (currentQuestion < questions.length) {
+
+                loadQuestion();
+
+            } else {
+
+                document.getElementById("question").textContent =
+                    "🎉 Quiz Completed!";
+
+                document.getElementById("options").innerHTML = "";
+
+                document.getElementById("nextBtn").style.display = "none";
+
+                document.getElementById("result").textContent =
+                    "Your Score: " + score + " / " + questions.length;
+            }
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+</html>

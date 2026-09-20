@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Counter</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 500px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e85d75;
+        }
+
+        #count {
+            font-size: 60px;
+            font-weight: bold;
+            color: #6c3483;
+            margin: 25px;
+        }
+
+        button {
+            padding: 14px 28px;
+            margin: 8px;
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .click {
+            background: #e85d75;
+        }
+
+        .reset {
+            background: #6c3483;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🖱️ Click Counter</h1>
+
+        <p>Click the button to increase the counter.</p>
+
+        <div id="count">0</div>
+
+        <button class="click" id="clickButton">
+            🖱️ Click Me
+        </button>
+
+        <button class="reset" id="resetButton">
+            🔄 Reset
+        </button>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let count = 0;
+
+        let clickButton = document.getElementById("clickButton");
+        let resetButton = document.getElementById("resetButton");
+        let countDisplay = document.getElementById("count");
+
+        // Click event
+        clickButton.addEventListener("click", function() {
+
+            count++;
+
+            countDisplay.textContent = count;
+
+        });
+
+        // Reset event
+        resetButton.addEventListener("click", function() {
+
+            count = 0;
+
+            countDisplay.textContent = count;
+
+        });
+
+    </script>
+
+</body>
+</html>

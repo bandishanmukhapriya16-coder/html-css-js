@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation Without Page Reload</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6a1b9a;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+        }
+
+        label {
+            display: block;
+            margin-top: 18px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #7b1fa2;
+        }
+
+        .error {
+            color: #e53935;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .valid {
+            border-color: #43a047;
+        }
+
+        .invalid {
+            border-color: #e53935;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 10px;
+            background: #7b1fa2;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #512da8;
+        }
+
+        #success {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #submittedData {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f3e5f5;
+            border-radius: 12px;
+        }
+
+        #submittedData h2 {
+            color: #6a1b9a;
+        }
+
+        .data-item {
+            background: white;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: white;
+            background: #333;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>✨ Registration Form</h1>
+
+    <p class="subtitle">
+        Validation happens without reloading the page.
+    </p>
+
+    <form id="registrationForm">
+
+        <label for="name">Full Name</label>
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name"
+        >
+
+        <div id="nameError" class="error"></div>
+
+
+        <label for="email">Email Address</label>
+
+        <input
+            type="text"
+            id="email"
+            placeholder="Enter your email"
+        >
+
+        <div id="emailError" class="error"></div>
+
+
+        <label for="phone">Phone Number</label>
+
+        <input
+            type="text"
+            id="phone"
+            placeholder="Enter 10-digit phone number"
+        >
+
+        <div id="phoneError" class="error"></div>
+
+
+        <label for="message">Message</label>
+
+        <textarea
+            id="message"
+            placeholder="Enter your message"
+        ></textarea>
+
+        <div id="messageError" class="error"></div>
+
+
+        <button type="submit">
+            🚀 Submit Form
+        </button>
+
+    </form>
+
+
+    <div id="success">
+        ✅ Form submitted successfully without page reload!
+    </div>
+
+
+    <div id="submittedData">
+
+        <h2>📋 Submitted Information</h2>
+
+        <div class="data-item">
+            <strong>Name:</strong>
+            <span id="displayName"></span>
+        </div>
+
+        <div class="data-item">
+            <strong>Email:</strong>
+            <span id="displayEmail"></span>
+        </div>
+
+        <div class="data-item">
+            <strong>Phone:</strong>
+            <span id="displayPhone"></span>
+        </div>
+
+        <div class="data-item">
+            <strong>Message:</strong>
+            <span id="displayMessage"></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="back">
+    <a href="../index.html">← Back to JavaScript Index</a>
+    <br><br>
+    <a href="../../index.html">← Back to Main Index</a>
+</div>
+
+
+<script>
+
+    document.getElementById("registrationForm").addEventListener(
+        "submit",
+        function(event) {
+
+            // Prevent page reload
+            event.preventDefault();
+
+            let name =
+                document.getElementById("name").value.trim();
+
+            let email =
+                document.getElementById("email").value.trim();
+
+            let phone =
+                document.getElementById("phone").value.trim();
+
+            let message =
+                document.getElementById("message").value.trim();
+
+            let valid = true;
+
+
+            // Clear previous messages
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("phoneError").textContent = "";
+            document.getElementById("messageError").textContent = "";
+
+            document.getElementById("success").style.display = "none";
+            document.getElementById("submittedData").style.display = "none";
+
+
+            // Reset input styles
+            document.getElementById("name").className = "";
+            document.getElementById("email").className = "";
+            document.getElementById("phone").className = "";
+            document.getElementById("message").className = "";
+
+
+            // Name validation
+            if (name === "") {
+
+                document.getElementById("nameError").textContent =
+                    "Name is required.";
+
+                document.getElementById("name").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else if (!/^[A-Za-z ]+$/.test(name)) {
+
+                document.getElementById("nameError").textContent =
+                    "Name should contain only alphabets.";
+
+                document.getElementById("name").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else {
+
+                document.getElementById("name").classList.add("valid");
+            }
+
+
+            // Email validation
+            if (email === "") {
+
+                document.getElementById("emailError").textContent =
+                    "Email is required.";
+
+                document.getElementById("email").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+
+                document.getElementById("emailError").textContent =
+                    "Enter a valid email address.";
+
+                document.getElementById("email").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else {
+
+                document.getElementById("email").classList.add("valid");
+            }
+
+
+            // Phone validation
+            if (phone === "") {
+
+                document.getElementById("phoneError").textContent =
+                    "Phone number is required.";
+
+                document.getElementById("phone").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else if (!/^[0-9]{10}$/.test(phone)) {
+
+                document.getElementById("phoneError").textContent =
+                    "Phone number must contain exactly 10 digits.";
+
+                document.getElementById("phone").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else {
+
+                document.getElementById("phone").classList.add("valid");
+            }
+
+
+            // Message validation
+            if (message === "") {
+
+                document.getElementById("messageError").textContent =
+                    "Message is required.";
+
+                document.getElementById("message").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else if (message.length < 10) {
+
+                document.getElementById("messageError").textContent =
+                    "Message must contain at least 10 characters.";
+
+                document.getElementById("message").classList.add("invalid");
+
+                valid = false;
+
+            }
+            else {
+
+                document.getElementById("message").classList.add("valid");
+            }
+
+
+            // If everything is valid
+            if (valid) {
+
+                document.getElementById("displayName").textContent =
+                    name;
+
+                document.getElementById("displayEmail").textContent =
+                    email;
+
+                document.getElementById("displayPhone").textContent =
+                    phone;
+
+                document.getElementById("displayMessage").textContent =
+                    message;
+
+                document.getElementById("success").style.display =
+                    "block";
+
+                document.getElementById("submittedData").style.display =
+                    "block";
+
+                // Clear the form
+                document.getElementById("registrationForm").reset();
+            }
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

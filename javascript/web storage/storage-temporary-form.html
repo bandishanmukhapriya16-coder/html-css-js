@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporary Form - sessionStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 550px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #d35400;
+        }
+
+        input, textarea, select {
+            width: 85%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #f39c12;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #e67e22;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ca6f1e;
+        }
+
+        .clear {
+            background: #c0392b;
+        }
+
+        .clear:hover {
+            background: #922b21;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 12px;
+            background: #fef5e7;
+            border-radius: 10px;
+            color: #784212;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #a04000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📝 Temporary Form</h1>
+
+        <p>
+            Your form data is temporarily saved using
+            <b>sessionStorage</b>.
+        </p>
+
+        <form id="studentForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <select id="course">
+
+                <option value="">
+                    Select Course
+                </option>
+
+                <option value="B.Tech CSE">
+                    B.Tech CSE
+                </option>
+
+                <option value="B.Tech AI & DS">
+                    B.Tech AI & DS
+                </option>
+
+                <option value="BCA">
+                    BCA
+                </option>
+
+            </select>
+
+            <textarea
+                id="messageText"
+                placeholder="Enter your message"
+            ></textarea>
+
+            <br>
+
+            <button type="button" onclick="saveForm()">
+                💾 Save Temporarily
+            </button>
+
+            <button type="button" onclick="clearForm()" class="clear">
+                🗑️ Clear
+            </button>
+
+        </form>
+
+        <div id="message">
+            No temporary data saved.
+        </div>
+
+    </div>
+
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+
+    <script>
+
+        // Save form data in sessionStorage
+        function saveForm() {
+
+            const name =
+                document.getElementById("name").value;
+
+            const email =
+                document.getElementById("email").value;
+
+            const course =
+                document.getElementById("course").value;
+
+            const messageText =
+                document.getElementById("messageText").value;
+
+
+            sessionStorage.setItem(
+                "studentName",
+                name
+            );
+
+            sessionStorage.setItem(
+                "studentEmail",
+                email
+            );
+
+            sessionStorage.setItem(
+                "studentCourse",
+                course
+            );
+
+            sessionStorage.setItem(
+                "studentMessage",
+                messageText
+            );
+
+
+            document.getElementById("message").textContent =
+                "✅ Form data saved temporarily!";
+        }
+
+
+        // Restore saved data
+        function loadForm() {
+
+            const name =
+                sessionStorage.getItem("studentName");
+
+            const email =
+                sessionStorage.getItem("studentEmail");
+
+            const course =
+                sessionStorage.getItem("studentCourse");
+
+            const messageText =
+                sessionStorage.getItem("studentMessage");
+
+
+            if (name !== null) {
+
+                document.getElementById("name").value =
+                    name;
+
+                document.getElementById("email").value =
+                    email;
+
+                document.getElementById("course").value =
+                    course;
+
+                document.getElementById("messageText").value =
+                    messageText;
+
+                document.getElementById("message").textContent =
+                    "🔄 Previous temporary data restored.";
+            }
+        }
+
+
+        // Clear temporary data
+        function clearForm() {
+
+            sessionStorage.removeItem("studentName");
+            sessionStorage.removeItem("studentEmail");
+            sessionStorage.removeItem("studentCourse");
+            sessionStorage.removeItem("studentMessage");
+
+            document.getElementById("studentForm").reset();
+
+            document.getElementById("message").textContent =
+                "🗑️ Temporary data cleared.";
+        }
+
+
+        // Load saved data when the page opens
+        loadForm();
+
+    </script>
+
+</body>
+</html>

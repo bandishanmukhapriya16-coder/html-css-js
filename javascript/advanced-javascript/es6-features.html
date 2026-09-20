@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ES6 Features</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #1565c0;
+        }
+
+        .box {
+            background: #e3f2fd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .box h3 {
+            color: #1976d2;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #1565c0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d47a1;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 17px;
+            line-height: 1.8;
+            font-weight: bold;
+            color: #e91e63;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #1565c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>✨ ES6 Features</h1>
+
+        <div class="box">
+            <h3>1. let and const</h3>
+            <p>Used to declare variables in modern JavaScript.</p>
+        </div>
+
+        <div class="box">
+            <h3>2. Template Literals</h3>
+            <p>Used to create strings using backticks.</p>
+        </div>
+
+        <div class="box">
+            <h3>3. Destructuring</h3>
+            <p>Used to extract values from arrays or objects.</p>
+        </div>
+
+        <button onclick="showES6()">Show Example</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function showES6() {
+
+            // let
+            let age = 18;
+
+            // const
+            const college = "Sai University";
+
+            // Template literal
+            let message = `I am ${age} years old and I study at ${college}.`;
+
+            // Array destructuring
+            let subjects = ["JavaScript", "Python", "C++"];
+
+            let [subject1, subject2, subject3] = subjects;
+
+            document.getElementById("result").innerHTML =
+                "📌 let age = " + age + "<br>" +
+                "📌 const college = " + college + "<br>" +
+                "📌 Template Literal: " + message + "<br>" +
+                "📌 Destructuring: " +
+                subject1 + ", " + subject2 + ", " + subject3;
+        }
+
+    </script>
+
+</body>
+</html>

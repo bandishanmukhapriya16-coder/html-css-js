@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Elements Dynamically</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #ff5e62;
+        }
+
+        input {
+            width: 75%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #ff9966;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #ff5e62;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #e04448;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff0e6;
+            border-radius: 10px;
+            min-height: 50px;
+        }
+
+        .item {
+            background: #ffe0cc;
+            margin: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #ff5e62;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>➕ Add New Elements Dynamically</h1>
+
+        <p>Enter some text and add it to the webpage:</p>
+
+        <input type="text" id="text"
+               placeholder="Enter an item">
+
+        <br>
+
+        <button onclick="addElement()">Add Element</button>
+
+        <div id="output"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function addElement() {
+
+            let text = document.getElementById("text").value;
+
+            if (text === "") {
+                alert("Please enter some text.");
+                return;
+            }
+
+            // Create a new paragraph element
+            let newElement = document.createElement("p");
+
+            // Add text to the element
+            newElement.textContent = text;
+
+            // Add CSS class
+            newElement.classList.add("item");
+
+            // Add the new element to the output div
+            document.getElementById("output").appendChild(newElement);
+
+            // Clear input
+            document.getElementById("text").value = "";
+        }
+    </script>
+
+</body>
+</html>

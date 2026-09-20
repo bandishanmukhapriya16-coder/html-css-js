@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Events</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #f093fb);
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .box {
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #6c5ce7;
+        }
+
+        input {
+            width: 80%;
+            padding: 15px;
+            border: 2px solid #6c5ce7;
+            border-radius: 10px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #e84393;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #ffeaa7;
+            border-radius: 12px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2d3436;
+        }
+
+        .back {
+            margin-top: 35px;
+        }
+
+        .back a {
+            text-decoration: none;
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>⌨️ Keyboard Events</h1>
+
+        <p>Type something in the box:</p>
+
+        <input
+            type="text"
+            id="keyboardInput"
+            placeholder="Press any key..."
+        >
+
+        <div class="result">
+            <p id="keydownResult">Key Down: -</p>
+            <p id="keyupResult">Key Up: -</p>
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const input = document.getElementById("keyboardInput");
+        const keydownResult = document.getElementById("keydownResult");
+        const keyupResult = document.getElementById("keyupResult");
+
+        // keydown event
+        input.addEventListener("keydown", function(event) {
+            keydownResult.textContent =
+                "Key Down: " + event.key;
+        });
+
+        // keyup event
+        input.addEventListener("keyup", function(event) {
+            keyupResult.textContent =
+                "Key Up: " + event.key;
+        });
+    </script>
+
+</body>
+</html>

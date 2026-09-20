@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependent Dropdown</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d81b60;
+        }
+
+        p {
+            text-align: center;
+            color: #555;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: 2px solid #ee0979;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #ff6a00;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 15px;
+            text-align: center;
+            background: #fce4ec;
+            color: #ad1457;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #d81b60;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌍 Dependent Dropdown</h1>
+
+        <p>Select a country to load its states, then select a state to load its cities.</p>
+
+        <label for="country">Country:</label>
+        <select id="country" onchange="loadStates()">
+            <option value="">-- Select Country --</option>
+            <option value="india">India</option>
+            <option value="usa">USA</option>
+        </select>
+
+        <label for="state">State:</label>
+        <select id="state" onchange="loadCities()">
+            <option value="">-- Select State --</option>
+        </select>
+
+        <label for="city">City:</label>
+        <select id="city">
+            <option value="">-- Select City --</option>
+        </select>
+
+        <div id="result">
+            Make your selections above.
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        // Country → State → City data
+        let data = {
+
+            india: {
+                TamilNadu: ["Chennai", "Coimbatore", "Madurai"],
+                Karnataka: ["Bengaluru", "Mysuru", "Mangaluru"]
+            },
+
+            usa: {
+                California: ["Los Angeles", "San Francisco", "San Diego"],
+                Texas: ["Houston", "Dallas", "Austin"]
+            }
+
+        };
+
+        // Load states based on country
+        function loadStates() {
+
+            let country =
+                document.getElementById("country").value;
+
+            let stateDropdown =
+                document.getElementById("state");
+
+            let cityDropdown =
+                document.getElementById("city");
+
+            // Clear old options
+            stateDropdown.innerHTML =
+                '<option value="">-- Select State --</option>';
+
+            cityDropdown.innerHTML =
+                '<option value="">-- Select City --</option>';
+
+            if (country === "") {
+                return;
+            }
+
+            // Add states dynamically
+            for (let state in data[country]) {
+
+                let option = document.createElement("option");
+
+                option.value = state;
+                option.textContent = state;
+
+                stateDropdown.appendChild(option);
+            }
+        }
+
+        // Load cities based on state
+        function loadCities() {
+
+            let country =
+                document.getElementById("country").value;
+
+            let state =
+                document.getElementById("state").value;
+
+            let cityDropdown =
+                document.getElementById("city");
+
+            cityDropdown.innerHTML =
+                '<option value="">-- Select City --</option>';
+
+            if (state === "") {
+                return;
+            }
+
+            // Add cities dynamically
+            data[country][state].forEach(function(city) {
+
+                let option = document.createElement("option");
+
+                option.value = city;
+                option.textContent = city;
+
+                cityDropdown.appendChild(option);
+            });
+
+            showSelection();
+        }
+
+        // Display selected city
+        document.getElementById("city").addEventListener(
+            "change",
+            showSelection
+        );
+
+        function showSelection() {
+
+            let country =
+                document.getElementById("country").value;
+
+            let state =
+                document.getElementById("state").value;
+
+            let city =
+                document.getElementById("city").value;
+
+            if (city !== "") {
+
+                document.getElementById("result").innerText =
+                    "📍 Selected: " +
+                    country.toUpperCase() +
+                    " → " +
+                    state +
+                    " → " +
+                    city;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Count Words in a String</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2575fc;
+        }
+
+        textarea {
+            width: 85%;
+            height: 120px;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #6a11cb;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #6a11cb;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f0ff;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #2575fc;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📝 Count Words in a String</h1>
+
+        <p>Enter a sentence:</p>
+
+        <textarea id="text"
+            placeholder="Example: JavaScript is easy to learn"></textarea>
+
+        <br>
+
+        <button onclick="countWords()">Count Words</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function countWords() {
+
+            let text = document.getElementById("text").value.trim();
+
+            if (text === "") {
+                document.getElementById("result").innerHTML =
+                    "⚠️ Please enter some text.";
+                return;
+            }
+
+            let words = text.split(/\s+/);
+
+            document.getElementById("result").innerHTML =
+                "Total Words: " + words.length;
+        }
+    </script>
+
+</body>
+</html>

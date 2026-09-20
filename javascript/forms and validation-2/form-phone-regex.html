@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Phone Regex Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff5e62;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff5e62;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #ff5e62;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e94b50;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #ffe0e0;
+            color: #c0392b;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #ff5e62;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📱 Phone Validation</h1>
+
+        <form id="phoneForm">
+
+            <label for="phone">Mobile Number:</label>
+
+            <input
+                type="text"
+                id="phone"
+                placeholder="Enter 10-digit mobile number"
+                maxlength="10"
+            >
+
+            <button type="submit">Validate Number</button>
+
+        </form>
+
+        <div id="message"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("phoneForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let phone = document.getElementById("phone").value.trim();
+            let message = document.getElementById("message");
+
+            // Phone number regular expression
+            let phonePattern = /^[0-9]{10}$/;
+
+            if (phone === "") {
+
+                message.innerHTML = "❌ Please enter a mobile number.";
+                message.className = "error";
+
+            }
+            else if (phonePattern.test(phone)) {
+
+                message.innerHTML = "✅ Valid 10-digit mobile number!";
+                message.className = "success";
+
+            }
+            else {
+
+                message.innerHTML =
+                    "❌ Invalid number. Enter exactly 10 digits.";
+
+                message.className = "error";
+            }
+
+        });
+    </script>
+
+</body>
+</html>

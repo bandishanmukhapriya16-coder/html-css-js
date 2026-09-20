@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Interactive Webpage</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: #333;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            color: #5a3d8a;
+            margin: 0;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 8px;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #d6336c;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            padding: 70px 20px;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+        }
+
+        .hero button {
+            padding: 14px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #ffcf33;
+            color: #333;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .cards {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            background: #f3f0ff;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .card button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: #5a3d8a;
+        }
+
+        #message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fff0f6;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .back {
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            nav a {
+                display: inline-block;
+            }
+
+            .section {
+                margin: 20px;
+                padding: 20px;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🌟 My Interactive Website</h1>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <h2>Welcome to My Website 🚀</h2>
+
+    <p>HTML + CSS + JavaScript Interactive Webpage</p>
+
+    <button onclick="welcomeMessage()">
+        Click Me 🎉
+    </button>
+
+    <div id="message"></div>
+
+</section>
+
+
+<section class="section" id="about">
+
+    <h2>📖 About</h2>
+
+    <p>
+        This webpage demonstrates the use of HTML, CSS and JavaScript
+        together to create an interactive website.
+    </p>
+
+</section>
+
+
+<section class="section" id="features">
+
+    <h2>✨ Interactive Features</h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🎨 Change Background</h3>
+
+            <p>Click the button to change the background.</p>
+
+            <button onclick="changeBackground()">
+                Change
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🔢 Counter</h3>
+
+            <p id="count">0</p>
+
+            <button onclick="increaseCounter()">
+                Increase
+            </button>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>⏰ Current Time</h3>
+
+            <p id="time">--:--:--</p>
+
+            <button onclick="showTime()">
+                Show Time
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>© 2026 My Interactive Website</p>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</footer>
+
+
+<script>
+
+let counter = 0;
+
+
+function welcomeMessage() {
+
+    document.getElementById("message").innerHTML =
+        "🎉 Welcome! You clicked the button.";
+
+}
+
+
+function changeBackground() {
+
+    document.body.style.background =
+        "linear-gradient(135deg, #ff758c, #ff7eb3)";
+
+}
+
+
+function increaseCounter() {
+
+    counter++;
+
+    document.getElementById("count").innerHTML = counter;
+
+}
+
+
+function showTime() {
+
+    let currentTime = new Date();
+
+    document.getElementById("time").innerHTML =
+        currentTime.toLocaleTimeString();
+
+}
+
+</script>
+
+</body>
+</html>

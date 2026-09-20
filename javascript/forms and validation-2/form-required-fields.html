@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Required Fields Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 400px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6c5ce7;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #6c5ce7;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #6c5ce7;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4834d4;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #6c5ce7;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📋 Required Fields</h1>
+
+        <form id="requiredForm">
+
+            <label>Full Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+
+            <label>Email:</label>
+            <input type="text" id="email" placeholder="Enter your email">
+
+            <label>Mobile Number:</label>
+            <input type="text" id="mobile" placeholder="Enter mobile number">
+
+            <label>College:</label>
+            <input type="text" id="college" placeholder="Enter college name">
+
+            <button type="submit">Submit Form</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("requiredForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let college = document.getElementById("college").value.trim();
+
+            let message = document.getElementById("message");
+
+            if (name === "") {
+
+                message.innerHTML = "❌ Full Name is required.";
+                message.style.color = "red";
+
+            }
+            else if (email === "") {
+
+                message.innerHTML = "❌ Email is required.";
+                message.style.color = "red";
+
+            }
+            else if (mobile === "") {
+
+                message.innerHTML = "❌ Mobile Number is required.";
+                message.style.color = "red";
+
+            }
+            else if (college === "") {
+
+                message.innerHTML = "❌ College name is required.";
+                message.style.color = "red";
+
+            }
+            else {
+
+                message.innerHTML = "✅ All required fields are filled!";
+                message.style.color = "green";
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

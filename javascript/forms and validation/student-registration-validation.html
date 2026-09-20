@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #acb6e5);
+            padding: 40px 20px;
+        }
+
+        .box {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #6c5ce7;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input,
+        select {
+            width: 95%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 2px solid #6c5ce7;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            display: block;
+            margin: 25px auto 10px;
+            padding: 13px 30px;
+            border: none;
+            border-radius: 10px;
+            background: #e84393;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c5ce7;
+        }
+
+        .error {
+            color: #d63031;
+            font-size: 14px;
+        }
+
+        #success {
+            text-align: center;
+            color: #00b894;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back a {
+            text-decoration: none;
+            background: #6c5ce7;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>🎓 Student Registration</h1>
+
+        <form id="registrationForm">
+
+            <label>Full Name</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <div id="nameError" class="error"></div>
+
+            <label>Email</label>
+            <input type="email" id="email" placeholder="Enter your email">
+            <div id="emailError" class="error"></div>
+
+            <label>Phone Number</label>
+            <input type="text" id="phone" placeholder="Enter phone number">
+            <div id="phoneError" class="error"></div>
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Enter password">
+            <div id="passwordError" class="error"></div>
+
+            <label>Course</label>
+            <select id="course">
+                <option value="">Select Course</option>
+                <option value="CSE">Computer Science</option>
+                <option value="AI">Artificial Intelligence</option>
+                <option value="DS">Data Science</option>
+            </select>
+            <div id="courseError" class="error"></div>
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div id="success"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const form = document.getElementById("registrationForm");
+
+        form.addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const password = document.getElementById("password").value;
+            const course = document.getElementById("course").value;
+
+            const nameError = document.getElementById("nameError");
+            const emailError = document.getElementById("emailError");
+            const phoneError = document.getElementById("phoneError");
+            const passwordError = document.getElementById("passwordError");
+            const courseError = document.getElementById("courseError");
+            const success = document.getElementById("success");
+
+            // Clear previous messages
+            nameError.textContent = "";
+            emailError.textContent = "";
+            phoneError.textContent = "";
+            passwordError.textContent = "";
+            courseError.textContent = "";
+            success.textContent = "";
+
+            let valid = true;
+
+            // Name validation
+            if (name === "") {
+                nameError.textContent = "Name is required.";
+                valid = false;
+            }
+
+            // Email validation
+            if (email === "") {
+                emailError.textContent = "Email is required.";
+                valid = false;
+            }
+
+            // Phone validation
+            if (phone === "") {
+                phoneError.textContent = "Phone number is required.";
+                valid = false;
+            } else if (phone.length !== 10 || isNaN(phone)) {
+                phoneError.textContent =
+                    "Enter a valid 10-digit phone number.";
+                valid = false;
+            }
+
+            // Password validation
+            if (password === "") {
+                passwordError.textContent = "Password is required.";
+                valid = false;
+            } else if (password.length < 6) {
+                passwordError.textContent =
+                    "Password must contain at least 6 characters.";
+                valid = false;
+            }
+
+            // Course validation
+            if (course === "") {
+                courseError.textContent = "Please select a course.";
+                valid = false;
+            }
+
+            // Final result
+            if (valid) {
+                success.textContent =
+                    "✅ Registration successful!";
+            }
+        });
+    </script>
+
+</body>
+</html>

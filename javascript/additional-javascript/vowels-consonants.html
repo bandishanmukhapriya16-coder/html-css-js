@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vowels and Consonants</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e67e22;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #f7971e;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #d35400;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            line-height: 1.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #e67e22;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔤 Vowels and Consonants</h1>
+
+        <p>Enter a string:</p>
+
+        <input type="text" id="text"
+               placeholder="Example: JavaScript">
+
+        <br>
+
+        <button onclick="countLetters()">Count</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function countLetters() {
+
+            let text = document.getElementById("text").value.toLowerCase();
+
+            let vowels = 0;
+            let consonants = 0;
+
+            for (let i = 0; i < text.length; i++) {
+
+                let ch = text[i];
+
+                if (ch >= 'a' && ch <= 'z') {
+
+                    if ("aeiou".includes(ch)) {
+                        vowels++;
+                    } else {
+                        consonants++;
+                    }
+                }
+            }
+
+            document.getElementById("result").innerHTML =
+                "Vowels: " + vowels + "<br>" +
+                "Consonants: " + consonants;
+        }
+    </script>
+
+</body>
+</html>

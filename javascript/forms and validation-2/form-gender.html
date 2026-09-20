@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Date of Birth Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #185a9d;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #185a9d;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #185a9d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d3f70;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #185a9d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📅 Date of Birth</h1>
+
+        <form id="dobForm">
+
+            <label>Date of Birth:</label>
+
+            <input
+                type="date"
+                id="dob"
+            >
+
+            <button type="submit">Validate Date</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("dobForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let dob = document.getElementById("dob").value;
+            let message = document.getElementById("message");
+
+            if (dob === "") {
+
+                message.innerHTML = "❌ Please select your date of birth.";
+                message.style.color = "red";
+
+            }
+            else {
+
+                let selectedDate = new Date(dob);
+                let today = new Date();
+
+                // Remove time from today's date
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate > today) {
+
+                    message.innerHTML =
+                        "❌ Date of birth cannot be in the future.";
+                    message.style.color = "red";
+
+                }
+                else {
+
+                    message.innerHTML =
+                        "✅ Valid date of birth!";
+                    message.style.color = "green";
+
+                }
+            }
+
+        });
+    </script>
+
+</body>
+</html>

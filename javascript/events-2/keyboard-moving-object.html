@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Keyboard Controlled Moving Object</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            margin: 0;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2463c5;
+        }
+
+        #gameArea {
+            width: 600px;
+            height: 300px;
+            max-width: 90%;
+            margin: 25px auto;
+            position: relative;
+            background: #eef6ff;
+            border: 3px solid #2463c5;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        #player {
+            width: 50px;
+            height: 50px;
+            background: #ff6b81;
+            border-radius: 12px;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+        }
+
+        #message {
+            font-weight: bold;
+            color: #555;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎮 Keyboard Controlled Object</h1>
+
+        <p>
+            Use the <b>Arrow Keys</b> to move the object.
+        </p>
+
+        <div id="gameArea">
+
+            <div id="player">
+                🚀
+            </div>
+
+        </div>
+
+        <div id="message">
+            Press an arrow key to move!
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let player = document.getElementById("player");
+        let gameArea = document.getElementById("gameArea");
+
+        let x = 20;
+        let y = 20;
+
+        let step = 10;
+
+        document.addEventListener("keydown", function(event) {
+
+            let maxX = gameArea.clientWidth - player.offsetWidth;
+            let maxY = gameArea.clientHeight - player.offsetHeight;
+
+            if (event.key === "ArrowRight") {
+                x += step;
+            }
+
+            if (event.key === "ArrowLeft") {
+                x -= step;
+            }
+
+            if (event.key === "ArrowDown") {
+                y += step;
+            }
+
+            if (event.key === "ArrowUp") {
+                y -= step;
+            }
+
+            // Keep the object inside the game area
+            x = Math.max(0, Math.min(x, maxX));
+            y = Math.max(0, Math.min(y, maxY));
+
+            player.style.left = x + "px";
+            player.style.top = y + "px";
+
+            document.getElementById("message").textContent =
+                "🚀 Position: X = " + x + ", Y = " + y;
+
+        });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Login Signup</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 20px;
+        }
+
+        .form-box {
+            background-color: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #aaa;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-box {
+                width: 90%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="form-box">
+            <h2>Login</h2>
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Login</button>
+        </div>
+
+        <div class="form-box">
+            <h2>Sign Up</h2>
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Password">
+            <button>Sign Up</button>
+        </div>
+
+    </div>
+
+</body>
+   <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

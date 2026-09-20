@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Calc Function</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            width: calc(100% - 40px);
+            margin: 20px;
+            padding: 30px;
+            box-sizing: border-box;
+            background-color: #ddd;
+            text-align: center;
+        }
+
+        .box {
+            width: calc(50% - 20px);
+            margin: 10px;
+            padding: 30px;
+            box-sizing: border-box;
+            display: inline-block;
+            background-color: #eee;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .box {
+                width: calc(100% - 20px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>CSS calc()</h1>
+        <p>Calculations can be performed directly in CSS.</p>
+    </div>
+
+    <div class="box">
+        <h2>Box 1</h2>
+        <p>Width uses calc().</p>
+    </div>
+
+    <div class="box">
+        <h2>Box 2</h2>
+        <p>Width uses calc().</p>
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Digital Clock</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1d2671, #c33764);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #1d2671;
+        }
+
+        #clock {
+            margin: 30px 0;
+            padding: 25px;
+            border-radius: 15px;
+            background: #f1efff;
+            color: #c33764;
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        #date {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #1d2671;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            color: #c33764;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🕐 Digital Clock</h1>
+
+        <p>
+            The clock updates automatically every second.
+        </p>
+
+        <div id="clock">00:00:00</div>
+
+        <div id="date">Loading date...</div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        function updateClock() {
+
+            // Create a new Date object
+            let now = new Date();
+
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            // Add leading zero
+            hours = String(hours).padStart(2, "0");
+            minutes = String(minutes).padStart(2, "0");
+            seconds = String(seconds).padStart(2, "0");
+
+            // Display time
+            document.getElementById("clock").textContent =
+                hours + ":" + minutes + ":" + seconds;
+
+
+            // Display date
+            let date = now.toDateString();
+
+            document.getElementById("date").textContent = date;
+        }
+
+
+        // Run immediately
+        updateClock();
+
+        // Update every second
+        setInterval(updateClock, 1000);
+
+    </script>
+
+</body>
+</html>

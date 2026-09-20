@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        .calculator {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            width: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5b4bdb;
+        }
+
+        #display {
+            width: 100%;
+            height: 60px;
+            font-size: 25px;
+            text-align: right;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 55px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4c5fd5;
+        }
+
+        .operator {
+            background: #ff7b54;
+        }
+
+        .clear {
+            background: #e74c3c;
+        }
+
+        .equal {
+            background: #27ae60;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back a {
+            color: #5b4bdb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1>🧮 Calculator</h1>
+
+        <input type="text" id="display" readonly>
+
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">⌫</button>
+            <button class="operator" onclick="addValue('/')">÷</button>
+            <button class="operator" onclick="addValue('*')">×</button>
+
+            <button onclick="addValue('7')">7</button>
+            <button onclick="addValue('8')">8</button>
+            <button onclick="addValue('9')">9</button>
+            <button class="operator" onclick="addValue('-')">−</button>
+
+            <button onclick="addValue('4')">4</button>
+            <button onclick="addValue('5')">5</button>
+            <button onclick="addValue('6')">6</button>
+            <button class="operator" onclick="addValue('+')">+</button>
+
+            <button onclick="addValue('1')">1</button>
+            <button onclick="addValue('2')">2</button>
+            <button onclick="addValue('3')">3</button>
+            <button class="equal" onclick="calculate()">=</button>
+
+            <button onclick="addValue('0')" style="grid-column: span 2;">0</button>
+            <button onclick="addValue('.')">.</button>
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function addValue(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function deleteLast() {
+            let display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            let display = document.getElementById("display");
+
+            try {
+                display.value = eval(display.value);
+            } catch {
+                display.value = "Error";
+            }
+        }
+    </script>
+
+</body>
+</html>

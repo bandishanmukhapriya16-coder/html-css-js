@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auto-Save Form - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #6c3483;
+        }
+
+        input,
+        textarea {
+            width: 85%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #8e44ad;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            padding: 12px 22px;
+            margin: 8px;
+            border: none;
+            border-radius: 10px;
+            background: #8e44ad;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6c3483;
+        }
+
+        .clear {
+            background: #e74c3c;
+        }
+
+        .clear:hover {
+            background: #c0392b;
+        }
+
+        #status {
+            margin-top: 20px;
+            padding: 12px;
+            background: #f5eef8;
+            color: #6c3483;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #6c3483;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>💾 Auto-Save Form</h1>
+
+        <p>
+            Your information is automatically saved
+            while you type.
+        </p>
+
+        <form id="autoSaveForm">
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <input
+                type="text"
+                id="course"
+                placeholder="Enter your course"
+            >
+
+            <textarea
+                id="message"
+                placeholder="Write your message..."
+            ></textarea>
+
+            <br>
+
+            <button type="button" onclick="clearSavedData()">
+                🗑️ Clear Saved Data
+            </button>
+
+        </form>
+
+        <div id="status">
+            ✏️ Start typing...
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        const fields = [
+            "name",
+            "email",
+            "course",
+            "message"
+        ];
+
+
+        // Automatically save data whenever the user types
+        fields.forEach(function(field) {
+
+            document.getElementById(field)
+                .addEventListener("input", function() {
+
+                    localStorage.setItem(
+                        "autoSave_" + field,
+                        this.value
+                    );
+
+                    document.getElementById("status").textContent =
+                        "✅ Your data was automatically saved.";
+                });
+
+        });
+
+
+        // Restore previously saved data
+        function restoreData() {
+
+            fields.forEach(function(field) {
+
+                const savedValue =
+                    localStorage.getItem(
+                        "autoSave_" + field
+                    );
+
+                if (savedValue !== null) {
+
+                    document.getElementById(field).value =
+                        savedValue;
+                }
+
+            });
+
+
+            const name =
+                localStorage.getItem("autoSave_name");
+
+            if (name) {
+
+                document.getElementById("status").textContent =
+                    "🔄 Previously saved data restored.";
+            }
+        }
+
+
+        // Clear all saved form data
+        function clearSavedData() {
+
+            fields.forEach(function(field) {
+
+                localStorage.removeItem(
+                    "autoSave_" + field
+                );
+
+            });
+
+            document.getElementById("autoSaveForm").reset();
+
+            document.getElementById("status").textContent =
+                "🗑️ Saved form data has been cleared.";
+        }
+
+
+        // Restore data when the page loads
+        restoreData();
+
+    </script>
+
+</body>
+</html>

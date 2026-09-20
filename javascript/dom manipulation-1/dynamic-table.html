@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Table</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f953c6, #b91d73);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 750px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #b91d73;
+        }
+
+        input {
+            width: 35%;
+            padding: 12px;
+            margin: 8px;
+            border: 2px solid #f953c6;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin: 15px;
+            background: #b91d73;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #8f1558;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 2px solid #f953c6;
+        }
+
+        th {
+            background: #b91d73;
+            color: white;
+        }
+
+        td {
+            background: #fff0f7;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #b91d73;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📊 Dynamic Table</h1>
+
+        <p>Enter student details:</p>
+
+        <input type="text" id="name" placeholder="Student Name">
+        <input type="number" id="marks" placeholder="Marks">
+
+        <br>
+
+        <button onclick="addStudent()">Add Student</button>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Marks</th>
+                </tr>
+            </thead>
+
+            <tbody id="studentTable">
+            </tbody>
+        </table>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        let count = 0;
+
+        function addStudent() {
+
+            let name = document.getElementById("name").value;
+            let marks = document.getElementById("marks").value;
+
+            if (name === "" || marks === "") {
+                alert("Please enter both name and marks.");
+                return;
+            }
+
+            count++;
+
+            let table = document.getElementById("studentTable");
+
+            let row = table.insertRow();
+
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+
+            cell1.textContent = count;
+            cell2.textContent = name;
+            cell3.textContent = marks;
+
+            document.getElementById("name").value = "";
+            document.getElementById("marks").value = "";
+        }
+    </script>
+
+</body>
+</html>

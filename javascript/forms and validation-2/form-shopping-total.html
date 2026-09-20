@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Order Calculator</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+
+        h1 {
+            text-align: center;
+            color: #d81b60;
+        }
+
+        .product {
+            background: #fff0f5;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 12px;
+        }
+
+        .product h3 {
+            margin-top: 0;
+            color: #c2185b;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #d81b60;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: #d81b60;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ad1457;
+        }
+
+        .error {
+            color: #e53935;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        #result {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            background: #fce4ec;
+            border-radius: 12px;
+        }
+
+        #result h2 {
+            text-align: center;
+            color: #c2185b;
+        }
+
+        .bill-item {
+            background: white;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+        }
+
+        .total {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #d81b60;
+            margin-top: 15px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: white;
+            background: #333;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛒 Shopping Order</h1>
+
+    <form id="shoppingForm">
+
+        <!-- Product 1 -->
+        <div class="product">
+            <h3>👕 T-Shirt — ₹500</h3>
+
+            <label for="tshirt">
+                Quantity
+            </label>
+
+            <input type="number"
+                   id="tshirt"
+                   min="0"
+                   value="0">
+
+            <div id="tshirtError" class="error"></div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product">
+            <h3>👖 Jeans — ₹1200</h3>
+
+            <label for="jeans">
+                Quantity
+            </label>
+
+            <input type="number"
+                   id="jeans"
+                   min="0"
+                   value="0">
+
+            <div id="jeansError" class="error"></div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product">
+            <h3>👟 Shoes — ₹1500</h3>
+
+            <label for="shoes">
+                Quantity
+            </label>
+
+            <input type="number"
+                   id="shoes"
+                   min="0"
+                   value="0">
+
+            <div id="shoesError" class="error"></div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product">
+            <h3>🎒 Backpack — ₹800</h3>
+
+            <label for="bag">
+                Quantity
+            </label>
+
+            <input type="number"
+                   id="bag"
+                   min="0"
+                   value="0">
+
+            <div id="bagError" class="error"></div>
+        </div>
+
+        <button type="submit">
+            🧮 Calculate Order Total
+        </button>
+
+    </form>
+
+    <!-- Bill -->
+    <div id="result">
+
+        <h2>🧾 Order Summary</h2>
+
+        <div class="bill-item">
+            T-Shirt:
+            ₹<span id="tshirtTotal">0</span>
+        </div>
+
+        <div class="bill-item">
+            Jeans:
+            ₹<span id="jeansTotal">0</span>
+        </div>
+
+        <div class="bill-item">
+            Shoes:
+            ₹<span id="shoesTotal">0</span>
+        </div>
+
+        <div class="bill-item">
+            Backpack:
+            ₹<span id="bagTotal">0</span>
+        </div>
+
+        <div class="total">
+            Total: ₹<span id="grandTotal">0</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="back">
+    <a href="../index.html">← Back to JavaScript Index</a>
+    <br><br>
+    <a href="../../index.html">← Back to Main Index</a>
+</div>
+
+<script>
+
+    document.getElementById("shoppingForm").addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            let tshirt = Number(
+                document.getElementById("tshirt").value
+            );
+
+            let jeans = Number(
+                document.getElementById("jeans").value
+            );
+
+            let shoes = Number(
+                document.getElementById("shoes").value
+            );
+
+            let bag = Number(
+                document.getElementById("bag").value
+            );
+
+            let valid = true;
+
+            // Clear previous errors
+            document.getElementById("tshirtError").textContent = "";
+            document.getElementById("jeansError").textContent = "";
+            document.getElementById("shoesError").textContent = "";
+            document.getElementById("bagError").textContent = "";
+
+            // Validate quantities
+            if (tshirt < 0) {
+                document.getElementById("tshirtError").textContent =
+                    "Quantity cannot be negative.";
+                valid = false;
+            }
+
+            if (jeans < 0) {
+                document.getElementById("jeansError").textContent =
+                    "Quantity cannot be negative.";
+                valid = false;
+            }
+
+            if (shoes < 0) {
+                document.getElementById("shoesError").textContent =
+                    "Quantity cannot be negative.";
+                valid = false;
+            }
+
+            if (bag < 0) {
+                document.getElementById("bagError").textContent =
+                    "Quantity cannot be negative.";
+                valid = false;
+            }
+
+            if (!valid) {
+                return;
+            }
+
+            // Product prices
+            let tshirtPrice = 500;
+            let jeansPrice = 1200;
+            let shoesPrice = 1500;
+            let bagPrice = 800;
+
+            // Calculate individual totals
+            let tshirtTotal = tshirt * tshirtPrice;
+            let jeansTotal = jeans * jeansPrice;
+            let shoesTotal = shoes * shoesPrice;
+            let bagTotal = bag * bagPrice;
+
+            // Calculate grand total
+            let grandTotal =
+                tshirtTotal +
+                jeansTotal +
+                shoesTotal +
+                bagTotal;
+
+            // Display bill
+            document.getElementById("tshirtTotal").textContent =
+                tshirtTotal;
+
+            document.getElementById("jeansTotal").textContent =
+                jeansTotal;
+
+            document.getElementById("shoesTotal").textContent =
+                shoesTotal;
+
+            document.getElementById("bagTotal").textContent =
+                bagTotal;
+
+            document.getElementById("grandTotal").textContent =
+                grandTotal;
+
+            document.getElementById("result").style.display =
+                "block";
+        }
+    );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Array using localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #89f7fe, #66a6ff);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #2471a3;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #3498db;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #21618c;
+        }
+
+        #result {
+            margin-top: 25px;
+            padding: 20px;
+            background: #ebf5fb;
+            border-radius: 12px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #21618c;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📦 Store Array in localStorage</h1>
+
+        <p>Enter a fruit name:</p>
+
+        <input type="text" id="fruit" placeholder="Enter fruit name">
+
+        <br>
+
+        <button onclick="addFruit()">
+            Add Fruit
+        </button>
+
+        <button onclick="displayFruits()">
+            Display Fruits
+        </button>
+
+        <div id="result">
+            Your fruits will appear here.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        function addFruit() {
+
+            const fruit = document.getElementById("fruit").value;
+
+            if (fruit === "") {
+                document.getElementById("result").textContent =
+                    "❌ Please enter a fruit.";
+                return;
+            }
+
+            let fruits = JSON.parse(localStorage.getItem("fruits")) || [];
+
+            fruits.push(fruit);
+
+            localStorage.setItem("fruits", JSON.stringify(fruits));
+
+            document.getElementById("fruit").value = "";
+
+            document.getElementById("result").textContent =
+                "✅ Fruit added successfully!";
+        }
+
+        function displayFruits() {
+
+            const fruits = JSON.parse(localStorage.getItem("fruits")) || [];
+
+            if (fruits.length === 0) {
+                document.getElementById("result").textContent =
+                    "❌ No fruits stored.";
+                return;
+            }
+
+            document.getElementById("result").innerHTML =
+                "<b>🍎 Stored Fruits:</b><br><br>" +
+                fruits.join("<br>");
+        }
+    </script>
+
+</body>
+</html>

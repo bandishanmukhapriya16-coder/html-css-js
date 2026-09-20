@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armstrong Number</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8360c3, #2ebf91);
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        h1 {
+            color: #5b3f8c;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 10px;
+            border: 2px solid #b7e4c7;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #5b3f8c;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3f2b63;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e9f7ef;
+            border-radius: 12px;
+            color: #26734d;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #5b3f8c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔢 Armstrong Number</h1>
+
+    <p>Check whether a number is an Armstrong number.</p>
+
+    <input
+        type="number"
+        id="number"
+        placeholder="Enter a number"
+    >
+
+    <br>
+
+    <button onclick="checkArmstrong()">
+        Check Number
+    </button>
+
+    <div id="result">
+        Result will appear here...
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+<script>
+
+function checkArmstrong() {
+
+    let number = Number(document.getElementById("number").value);
+
+    if (number < 0 || !Number.isInteger(number)) {
+        document.getElementById("result").innerHTML =
+            "⚠️ Please enter a positive whole number.";
+        return;
+    }
+
+    let original = number;
+    let digits = String(number).length;
+    let sum = 0;
+    let temp = number;
+
+    while (temp > 0) {
+
+        let digit = temp % 10;
+
+        sum += Math.pow(digit, digits);
+
+        temp = Math.floor(temp / 10);
+    }
+
+    if (sum === original) {
+
+        document.getElementById("result").innerHTML =
+            "✅ " + original + " is an Armstrong number.";
+
+    } else {
+
+        document.getElementById("result").innerHTML =
+            "❌ " + original + " is not an Armstrong number.";
+    }
+}
+
+</script>
+
+</body>
+</html>

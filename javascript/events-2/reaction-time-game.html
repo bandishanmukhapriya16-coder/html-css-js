@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reaction Time Game</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #5a3fc0;
+        }
+
+        #gameButton {
+            padding: 25px 45px;
+            margin: 30px;
+            border: none;
+            border-radius: 15px;
+            background: #ccc;
+            color: #555;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #gameButton.ready {
+            background: #28a745;
+            color: white;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #5a3fc0;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3e5f5;
+            border-radius: 12px;
+            color: #5a3fc0;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>⚡ Reaction-Time Game</h1>
+
+        <p>
+            Click Start and wait for the button to turn green.
+            Then click it as quickly as possible!
+        </p>
+
+        <button id="startButton">
+            ▶ Start Game
+        </button>
+
+        <br>
+
+        <button id="gameButton">
+            Wait...
+        </button>
+
+        <div id="result">
+            Your reaction time will appear here.
+        </div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        let startTime;
+        let timer;
+        let gameStarted = false;
+
+        let startButton = document.getElementById("startButton");
+        let gameButton = document.getElementById("gameButton");
+        let result = document.getElementById("result");
+
+        startButton.addEventListener("click", function() {
+
+            clearTimeout(timer);
+
+            gameStarted = false;
+
+            gameButton.textContent = "Wait...";
+            gameButton.classList.remove("ready");
+
+            result.textContent =
+                "⏳ Wait for the button to turn green...";
+
+            let randomTime = Math.floor(Math.random() * 3000) + 2000;
+
+            timer = setTimeout(function() {
+
+                gameStarted = true;
+
+                startTime = new Date().getTime();
+
+                gameButton.textContent = "🟢 CLICK NOW!";
+                gameButton.classList.add("ready");
+
+            }, randomTime);
+
+        });
+
+
+        gameButton.addEventListener("click", function() {
+
+            if (gameStarted) {
+
+                let endTime = new Date().getTime();
+
+                let reactionTime = endTime - startTime;
+
+                result.textContent =
+                    "⚡ Your reaction time: " +
+                    reactionTime + " milliseconds";
+
+                gameStarted = false;
+
+            } else {
+
+                result.textContent =
+                    "⏳ Wait until the button turns green!";
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>

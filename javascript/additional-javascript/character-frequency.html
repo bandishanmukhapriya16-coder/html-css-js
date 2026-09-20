@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Character Frequency</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00b09b, #96c93d);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #00a085;
+        }
+
+        textarea {
+            width: 85%;
+            height: 120px;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #00b09b;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #00a085;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #007f6d;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f8e5;
+            border-radius: 10px;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .back {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #00a085;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🔤 Character Frequency</h1>
+
+        <p>Enter a string:</p>
+
+        <textarea id="text"
+            placeholder="Example: hello"></textarea>
+
+        <br>
+
+        <button onclick="countCharacters()">Count Characters</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function countCharacters() {
+
+            let text = document.getElementById("text").value;
+
+            let frequency = {};
+
+            for (let char of text) {
+
+                if (char === " ") {
+                    continue;
+                }
+
+                if (frequency[char]) {
+                    frequency[char]++;
+                } else {
+                    frequency[char] = 1;
+                }
+            }
+
+            let output = "";
+
+            for (let char in frequency) {
+                output += char + " : " + frequency[char] + "<br>";
+            }
+
+            if (output === "") {
+                output = "⚠️ Please enter some text.";
+            }
+
+            document.getElementById("result").innerHTML = output;
+        }
+    </script>
+
+</body>
+</html>

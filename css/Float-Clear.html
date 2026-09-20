@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Float and Clear</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .box {
+            width: 150px;
+            height: 100px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .left {
+            float: left;
+            background-color: #d6eaf8;
+            border: 2px solid #3498db;
+        }
+
+        .right {
+            float: right;
+            background-color: #d5f5e3;
+            border: 2px solid #27ae60;
+        }
+
+        .clear {
+            clear: both;
+            background-color: #fdebd0;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #e67e22;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>CSS Float and Clear</h1>
+
+        <div class="box left">
+            Float Left
+        </div>
+
+        <div class="box right">
+            Float Right
+        </div>
+
+        <div class="clear">
+            <strong>Clear:</strong>
+            This section appears below the floated elements
+            because the clear property is used.
+        </div>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

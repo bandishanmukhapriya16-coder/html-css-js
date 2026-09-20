@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Confirmation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #36d1dc, #5b86e5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 430px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #3978d4;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3978d4;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #3978d4;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2861b5;
+        }
+
+        #confirmation {
+            display: none;
+            margin-top: 20px;
+            padding: 18px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+
+        .error {
+            color: #dc3545;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #3978d4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📝 Registration</h1>
+
+        <form id="registrationForm">
+
+            <label for="name">Full Name:</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+            >
+
+            <label for="email">Email:</label>
+            <input
+                type="text"
+                id="email"
+                placeholder="Enter your email"
+            >
+
+            <label for="mobile">Mobile Number:</label>
+            <input
+                type="text"
+                id="mobile"
+                maxlength="10"
+                placeholder="Enter 10-digit number"
+            >
+
+            <label for="course">Course:</label>
+            <input
+                type="text"
+                id="course"
+                placeholder="Enter your course"
+            >
+
+            <button type="submit">Register</button>
+
+        </form>
+
+        <div id="error" class="error"></div>
+
+        <div id="confirmation">
+            <h2>🎉 Registration Successful!</h2>
+
+            <p><strong>Name:</strong> <span id="confirmName"></span></p>
+            <p><strong>Email:</strong> <span id="confirmEmail"></span></p>
+            <p><strong>Mobile:</strong> <span id="confirmMobile"></span></p>
+            <p><strong>Course:</strong> <span id="confirmCourse"></span></p>
+
+            <p>Thank you for registering!</p>
+        </div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let course = document.getElementById("course").value.trim();
+
+            let error = document.getElementById("error");
+            let confirmation = document.getElementById("confirmation");
+
+            let namePattern = /^[A-Za-z ]+$/;
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            let mobilePattern = /^[0-9]{10}$/;
+
+
+            // Validation
+            if (name === "") {
+                error.innerHTML = "❌ Please enter your name.";
+                confirmation.style.display = "none";
+                return;
+            }
+
+            if (!namePattern.test(name)) {
+                error.innerHTML = "❌ Name should contain alphabets only.";
+                confirmation.style.display = "none";
+                return;
+            }
+
+            if (!emailPattern.test(email)) {
+                error.innerHTML = "❌ Enter a valid email address.";
+                confirmation.style.display = "none";
+                return;
+            }
+
+            if (!mobilePattern.test(mobile)) {
+                error.innerHTML = "❌ Enter a valid 10-digit mobile number.";
+                confirmation.style.display = "none";
+                return;
+            }
+
+            if (course === "") {
+                error.innerHTML = "❌ Please enter your course.";
+                confirmation.style.display = "none";
+                return;
+            }
+
+
+            // Display confirmation
+            error.innerHTML = "";
+
+            document.getElementById("confirmName").innerHTML = name;
+            document.getElementById("confirmEmail").innerHTML = email;
+            document.getElementById("confirmMobile").innerHTML = mobile;
+            document.getElementById("confirmCourse").innerHTML = course;
+
+            confirmation.style.display = "block";
+
+        });
+
+    </script>
+
+</body>
+</html>

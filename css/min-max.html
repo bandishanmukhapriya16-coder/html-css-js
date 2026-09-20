@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clamp Min Max</title>
+
+    <style>
+        .container {
+            width: min(90%, 900px);
+            margin: auto;
+        }
+
+        h1 {
+            font-size: clamp(30px, 6vw, 60px);
+            text-align: center;
+        }
+
+        .box {
+            width: min(100%, 600px);
+            height: max(150px, 20vw);
+            min-height: 150px;
+            max-height: 300px;
+            margin: auto;
+            padding: 30px;
+            box-sizing: border-box;
+            background-color: #ddd;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>CSS min(), max() and clamp()</h1>
+
+        <div class="box">
+            <h2>Responsive Box</h2>
+            <p>The size changes according to the screen.</p>
+        </div>
+
+    </div>
+
+</body>
+   <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

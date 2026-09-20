@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Password Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #e84393;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #e84393;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+            background: #e84393;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c2185b;
+        }
+
+        #message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #e84393;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🔒 Confirm Password</h1>
+
+        <form id="passwordForm">
+
+            <label>Password:</label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Enter password"
+            >
+
+            <label>Confirm Password:</label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Re-enter password"
+            >
+
+            <button type="submit">Validate Password</button>
+
+        </form>
+
+        <p id="message"></p>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        document.getElementById("passwordForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            let message = document.getElementById("message");
+
+            if (password === "") {
+
+                message.innerHTML = "❌ Please enter a password.";
+                message.style.color = "red";
+
+            }
+            else if (confirmPassword === "") {
+
+                message.innerHTML = "❌ Please confirm your password.";
+                message.style.color = "red";
+
+            }
+            else if (password !== confirmPassword) {
+
+                message.innerHTML = "❌ Passwords do not match.";
+                message.style.color = "red";
+
+            }
+            else {
+
+                message.innerHTML = "✅ Passwords match successfully!";
+                message.style.color = "green";
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>

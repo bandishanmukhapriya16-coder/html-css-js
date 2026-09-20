@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CSS Pseudo-Classes</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        /* Hover */
+        .hover-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .hover-button:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Active */
+        .active-button {
+            background-color: #e67e22;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .active-button:active {
+            background-color: #c0392b;
+        }
+
+        /* Focus */
+        input {
+            padding: 12px;
+            width: 250px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            margin: 20px;
+        }
+
+        input:focus {
+            border-color: #3498db;
+            outline: none;
+            background-color: #eaf4ff;
+        }
+
+        /* Visited */
+        a {
+            color: #3498db;
+            font-size: 18px;
+        }
+
+        a:visited {
+            color: purple;
+        }
+
+        .box {
+            background-color: white;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Pseudo-Classes</h1>
+
+    <div class="box">
+
+        <h2>:hover</h2>
+        <p>Move the mouse over the button.</p>
+        <button class="hover-button">Hover Me</button>
+
+        <h2>:active</h2>
+        <p>Click and hold the button.</p>
+        <button class="active-button">Click Me</button>
+
+        <h2>:focus</h2>
+        <p>Click inside the input box.</p>
+        <input type="text" placeholder="Enter your name">
+
+        <h2>:visited</h2>
+        <p>Click the link and then check its color.</p>
+        <a href="https://www.google.com" target="_blank">
+            Visit Google
+        </a>
+
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

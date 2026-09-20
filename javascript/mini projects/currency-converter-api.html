@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter API</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        h1 {
+            color: #5a189a;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            font-size: 16px;
+        }
+
+        button {
+            background: #5a189a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #7b2cbf;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f3e8ff;
+            border-radius: 12px;
+            color: #4a148c;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #5a189a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>💱 Currency Converter</h1>
+
+    <p>Convert currency using an API</p>
+
+    <input type="number" id="amount" placeholder="Enter amount" value="1">
+
+    <select id="fromCurrency">
+        <option value="USD">USD - US Dollar</option>
+        <option value="INR">INR - Indian Rupee</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+    </select>
+
+    <select id="toCurrency">
+        <option value="INR">INR - Indian Rupee</option>
+        <option value="USD">USD - US Dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British Pound</option>
+        <option value="JPY">JPY - Japanese Yen</option>
+    </select>
+
+    <button onclick="convertCurrency()">Convert 💰</button>
+
+    <div class="result" id="result">
+        Result will appear here
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+<script>
+
+async function convertCurrency() {
+
+    const amount = Number(document.getElementById("amount").value);
+    const from = document.getElementById("fromCurrency").value;
+    const to = document.getElementById("toCurrency").value;
+    const result = document.getElementById("result");
+
+    if (amount <= 0) {
+        result.innerHTML = "⚠️ Please enter a valid amount.";
+        return;
+    }
+
+    result.innerHTML = "⏳ Converting...";
+
+    try {
+
+        const response = await fetch(
+            `https://api.frankfurter.app/latest?amount=${amount}&from=${from}&to=${to}`
+        );
+
+        const data = await response.json();
+
+        if (data.rates && data.rates[to]) {
+
+            const convertedAmount = data.rates[to];
+
+            result.innerHTML =
+                `${amount} ${from} = ${convertedAmount.toFixed(2)} ${to}`;
+
+        } else {
+
+            result.innerHTML = "❌ Conversion failed.";
+
+        }
+
+    } catch (error) {
+
+        result.innerHTML =
+            "❌ Unable to connect to the currency API.";
+
+    }
+}
+
+</script>
+
+</body>
+</html>

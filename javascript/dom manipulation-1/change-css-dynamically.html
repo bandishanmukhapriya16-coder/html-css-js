@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change CSS Style Using JavaScript</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #e84393;
+        }
+
+        #box {
+            background: #ffe6f2;
+            color: #c2185b;
+            padding: 25px;
+            margin: 20px auto;
+            width: 70%;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 5px;
+            background: #e84393;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #c2185b;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #e84393;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>🎨 Change CSS Styles Using JavaScript</h1>
+
+        <div id="box">
+            Style Me!
+        </div>
+
+        <button onclick="changeColor()">Change Color</button>
+        <button onclick="changeSize()">Change Size</button>
+        <button onclick="changeBackground()">Change Background</button>
+        <button onclick="changeRadius()">Change Border Radius</button>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function changeColor() {
+            document.getElementById("box").style.color = "#ffffff";
+        }
+
+        function changeSize() {
+            document.getElementById("box").style.fontSize = "30px";
+        }
+
+        function changeBackground() {
+            document.getElementById("box").style.backgroundColor = "#6c5ce7";
+        }
+
+        function changeRadius() {
+            document.getElementById("box").style.borderRadius = "50px";
+        }
+    </script>
+
+</body>
+</html>

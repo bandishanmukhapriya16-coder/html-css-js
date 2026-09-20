@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transitions and Transformations</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #3498db;
+            color: white;
+            margin: 50px auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 10px;
+
+            transition: transform 0.5s, background-color 0.5s;
+        }
+
+        .box:hover {
+            transform: scale(1.2) rotate(10deg);
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Transitions and Transformations</h1>
+
+    <div class="box">
+        Hover Me
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

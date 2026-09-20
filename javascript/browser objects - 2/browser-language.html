@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Browser Language</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 550px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #d35400;
+        }
+
+        #language {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8e44ad;
+            background: #f5eef8;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #8e44ad;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>🌍 Browser Language</h1>
+
+        <p>Your browser's preferred language is:</p>
+
+        <div id="language"></div>
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+        const language = navigator.language;
+
+        document.getElementById("language").textContent = language;
+    </script>
+
+</body>
+</html>

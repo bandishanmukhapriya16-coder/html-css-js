@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Transitions</title>
+
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: #ddd;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 150px;
+
+            transition: width 1s, height 1s, transform 1s;
+        }
+
+        .box:hover {
+            width: 250px;
+            height: 200px;
+            transform: rotate(10deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="text-align:center;">CSS Transition</h1>
+
+    <div class="box">
+        Hover Me
+    </div>
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

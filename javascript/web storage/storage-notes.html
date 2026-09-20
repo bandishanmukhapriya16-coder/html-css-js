@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notes App - localStorage</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+            text-align: center;
+            padding: 40px;
+        }
+
+        .box {
+            background: white;
+            padding: 35px;
+            max-width: 650px;
+            margin: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #d35400;
+        }
+
+        textarea {
+            width: 85%;
+            height: 120px;
+            padding: 12px;
+            border: 2px solid #e67e22;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        button {
+            padding: 12px 20px;
+            margin: 10px 5px;
+            border: none;
+            border-radius: 10px;
+            background: #e67e22;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ca6f1e;
+        }
+
+        .note {
+            background: #fef5e7;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        .delete {
+            background: #e74c3c;
+        }
+
+        .delete:hover {
+            background: #c0392b;
+        }
+
+        #message {
+            margin: 15px;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #d35400;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <h1>📝 My Notes</h1>
+
+        <textarea
+            id="noteInput"
+            placeholder="Write your note here..."
+        ></textarea>
+
+        <br>
+
+        <button onclick="saveNote()">
+            💾 Save Note
+        </button>
+
+        <button onclick="clearNotes()">
+            🗑️ Clear All
+        </button>
+
+        <div id="message"></div>
+
+        <div id="notesContainer"></div>
+
+    </div>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+    <script>
+
+        function saveNote() {
+
+            const noteInput =
+                document.getElementById("noteInput");
+
+            const note = noteInput.value.trim();
+
+            if (note === "") {
+
+                document.getElementById("message").textContent =
+                    "❌ Please write a note.";
+
+                return;
+            }
+
+            let notes =
+                JSON.parse(localStorage.getItem("notes")) || [];
+
+            notes.push(note);
+
+            localStorage.setItem(
+                "notes",
+                JSON.stringify(notes)
+            );
+
+            noteInput.value = "";
+
+            document.getElementById("message").textContent =
+                "✅ Note saved successfully!";
+
+            displayNotes();
+        }
+
+
+        function displayNotes() {
+
+            const notes =
+                JSON.parse(localStorage.getItem("notes")) || [];
+
+            const container =
+                document.getElementById("notesContainer");
+
+            container.innerHTML = "";
+
+            notes.forEach(function(note, index) {
+
+                const noteDiv =
+                    document.createElement("div");
+
+                noteDiv.className = "note";
+
+                noteDiv.innerHTML =
+                    "<b>📌 Note " + (index + 1) + "</b><br><br>" +
+                    note;
+
+                const deleteButton =
+                    document.createElement("button");
+
+                deleteButton.textContent = "Delete";
+
+                deleteButton.className = "delete";
+
+                deleteButton.onclick = function() {
+                    deleteNote(index);
+                };
+
+                noteDiv.appendChild(deleteButton);
+
+                container.appendChild(noteDiv);
+            });
+        }
+
+
+        function deleteNote(index) {
+
+            let notes =
+                JSON.parse(localStorage.getItem("notes")) || [];
+
+            notes.splice(index, 1);
+
+            localStorage.setItem(
+                "notes",
+                JSON.stringify(notes)
+            );
+
+            displayNotes();
+
+            document.getElementById("message").textContent =
+                "🗑️ Note deleted!";
+        }
+
+
+        function clearNotes() {
+
+            localStorage.removeItem("notes");
+
+            displayNotes();
+
+            document.getElementById("message").textContent =
+                "✅ All notes cleared!";
+        }
+
+
+        // Display saved notes when the page opens
+        displayNotes();
+
+    </script>
+
+</body>
+</html>

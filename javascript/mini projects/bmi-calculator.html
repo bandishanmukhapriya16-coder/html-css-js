@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #43cea2, #185a9d);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .bmi-box {
+            background: white;
+            width: 400px;
+            padding: 35px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #185a9d;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #185a9d;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f2f6;
+            border-radius: 12px;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+        .back {
+            margin-top: 25px;
+        }
+
+        .back a {
+            color: #185a9d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bmi-box">
+
+        <h1>🧮 BMI Calculator</h1>
+
+        <input
+            type="number"
+            id="weight"
+            placeholder="Weight in kg"
+            step="0.1"
+        >
+
+        <input
+            type="number"
+            id="height"
+            placeholder="Height in cm"
+            step="0.1"
+        >
+
+        <button onclick="calculateBMI()">
+            Calculate BMI
+        </button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function calculateBMI() {
+
+            let weight = Number(
+                document.getElementById("weight").value
+            );
+
+            let height = Number(
+                document.getElementById("height").value
+            );
+
+            let result = document.getElementById("result");
+
+            if (weight <= 0 || height <= 0) {
+                result.textContent =
+                    "⚠️ Please enter valid height and weight.";
+                return;
+            }
+
+            let heightInMeters = height / 100;
+
+            let bmi = weight /
+                (heightInMeters * heightInMeters);
+
+            let category;
+
+            if (bmi < 18.5) {
+                category = "Below the usual adult BMI range";
+            } else if (bmi < 25) {
+                category = "Within the usual adult BMI range";
+            } else if (bmi < 30) {
+                category = "Above the usual adult BMI range";
+            } else {
+                category = "High adult BMI range";
+            }
+
+            result.innerHTML = `
+                <strong>BMI:</strong> ${bmi.toFixed(2)}<br>
+                <strong>Category:</strong> ${category}
+            `;
+        }
+    </script>
+
+</body>
+</html>

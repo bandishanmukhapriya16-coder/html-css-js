@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Selectors</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6fb;
+            padding: 30px;
+        }
+
+        /* Universal selector */
+        * {
+            margin: 5px;
+        }
+
+        /* Element selector */
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Class selector */
+        .student {
+            color: #3498db;
+        }
+
+        /* ID selector */
+        #special {
+            color: #e74c3c;
+        }
+
+        /* Attribute selector */
+        input[type="text"] {
+            border: 2px solid #3498db;
+            padding: 10px;
+        }
+
+        /* Grouping selector */
+        h2, p {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Selectors</h1>
+
+    <h2>Element Selector</h2>
+    <p>This paragraph is selected using an element selector.</p>
+
+    <h2 class="student">Class Selector</h2>
+
+    <p id="special">
+        This paragraph is selected using an ID selector.
+    </p>
+
+    <input type="text" placeholder="Attribute selector">
+
+</body>
+ <a href="index.html">← Back to CSS Index</a>
+        <br><br>
+        <a href="../index.html">← Back to Main Index</a>
+</html>

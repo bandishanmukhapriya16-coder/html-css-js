@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>localStorage CRUD Application</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5a3d8e;
+        }
+
+        .description {
+            text-align: center;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .form-box {
+            background: #f4f0ff;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+
+        button {
+            border: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 5px;
+        }
+
+        #saveButton {
+            background: #667eea;
+            color: white;
+        }
+
+        #clearButton {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #f6c344;
+            color: #222;
+        }
+
+        .delete-btn {
+            background: #ff5c5c;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+        }
+
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f2ff;
+        }
+
+        .empty {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+        }
+
+        .back {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back a {
+            color: #5a3d8e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back a:hover {
+            text-decoration: underline;
+        }
+
+        #message {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #5a3d8e;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📚 Student Record CRUD</h1>
+
+    <p class="description">
+        Create, Read, Update and Delete student records using localStorage.
+    </p>
+
+    <div class="form-box">
+
+        <label for="studentId">Student ID</label>
+        <input type="text" id="studentId" placeholder="Enter student ID">
+
+        <label for="studentName">Student Name</label>
+        <input type="text" id="studentName" placeholder="Enter student name">
+
+        <label for="course">Course</label>
+        <input type="text" id="course" placeholder="Enter course">
+
+        <button id="saveButton" onclick="saveRecord()">
+            ➕ Add Record
+        </button>
+
+        <button id="clearButton" onclick="clearForm()">
+            Clear
+        </button>
+
+        <p id="message"></p>
+
+    </div>
+
+    <h2>📋 Student Records</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="recordTable">
+        </tbody>
+    </table>
+
+    <div class="back">
+        <a href="../index.html">← Back to JavaScript Index</a>
+        <br><br>
+        <a href="../../index.html">← Back to Main Index</a>
+    </div>
+
+</div>
+
+
+<script>
+
+    // Get existing records from localStorage
+    let records = JSON.parse(localStorage.getItem("crudRecords")) || [];
+
+    // Stores the index of the record being edited
+    let editIndex = -1;
+
+
+    // Save records to localStorage
+    function saveToLocalStorage() {
+        localStorage.setItem("crudRecords", JSON.stringify(records));
+    }
+
+
+    // CREATE / UPDATE record
+    function saveRecord() {
+
+        let id = document.getElementById("studentId").value.trim();
+        let name = document.getElementById("studentName").value.trim();
+        let course = document.getElementById("course").value.trim();
+
+        if (id === "" || name === "" || course === "") {
+            document.getElementById("message").textContent =
+                "⚠️ Please fill all fields.";
+            return;
+        }
+
+        let newRecord = {
+            id: id,
+            name: name,
+            course: course
+        };
+
+
+        // UPDATE
+        if (editIndex !== -1) {
+
+            records[editIndex] = newRecord;
+
+            document.getElementById("message").textContent =
+                "✅ Record updated successfully.";
+
+            editIndex = -1;
+
+            document.getElementById("saveButton").textContent =
+                "➕ Add Record";
+
+        }
+
+        // CREATE
+        else {
+
+            records.push(newRecord);
+
+            document.getElementById("message").textContent =
+                "✅ Record added successfully.";
+        }
+
+
+        saveToLocalStorage();
+
+        displayRecords();
+
+        clearInputs();
+    }
+
+
+    // READ records
+    function displayRecords() {
+
+        let table = document.getElementById("recordTable");
+
+        table.innerHTML = "";
+
+
+        if (records.length === 0) {
+
+            let row = document.createElement("tr");
+
+            let cell = document.createElement("td");
+
+            cell.colSpan = 4;
+
+            cell.className = "empty";
+
+            cell.textContent = "No records available.";
+
+            row.appendChild(cell);
+
+            table.appendChild(row);
+
+            return;
+        }
+
+
+        records.forEach(function(record, index) {
+
+            let row = document.createElement("tr");
+
+
+            let idCell = document.createElement("td");
+            idCell.textContent = record.id;
+
+            let nameCell = document.createElement("td");
+            nameCell.textContent = record.name;
+
+            let courseCell = document.createElement("td");
+            courseCell.textContent = record.course;
+
+
+            let actionCell = document.createElement("td");
+
+
+            // Edit button
+            let editButton = document.createElement("button");
+
+            editButton.textContent = "✏️ Edit";
+
+            editButton.className = "edit-btn";
+
+            editButton.onclick = function() {
+                editRecord(index);
+            };
+
+
+            // Delete button
+            let deleteButton = document.createElement("button");
+
+            deleteButton.textContent = "🗑️ Delete";
+
+            deleteButton.className = "delete-btn";
+
+            deleteButton.onclick = function() {
+                deleteRecord(index);
+            };
+
+
+            actionCell.appendChild(editButton);
+            actionCell.appendChild(deleteButton);
+
+
+            row.appendChild(idCell);
+            row.appendChild(nameCell);
+            row.appendChild(courseCell);
+            row.appendChild(actionCell);
+
+
+            table.appendChild(row);
+
+        });
+    }
+
+
+    // UPDATE - Load record into form
+    function editRecord(index) {
+
+        let record = records[index];
+
+        document.getElementById("studentId").value = record.id;
+
+        document.getElementById("studentName").value = record.name;
+
+        document.getElementById("course").value = record.course;
+
+
+        editIndex = index;
+
+        document.getElementById("saveButton").textContent =
+            "💾 Update Record";
+
+        document.getElementById("message").textContent =
+            "✏️ Editing record...";
+
+    }
+
+
+    // DELETE record
+    function deleteRecord(index) {
+
+        let confirmDelete = confirm(
+            "Are you sure you want to delete this record?"
+        );
+
+
+        if (confirmDelete) {
+
+            records.splice(index, 1);
+
+            saveToLocalStorage();
+
+            displayRecords();
+
+            document.getElementById("message").textContent =
+                "🗑️ Record deleted successfully.";
+        }
+    }
+
+
+    // Clear form
+    function clearInputs() {
+
+        document.getElementById("studentId").value = "";
+
+        document.getElementById("studentName").value = "";
+
+        document.getElementById("course").value = "";
+    }
+
+
+    // Clear form and reset edit mode
+    function clearForm() {
+
+        clearInputs();
+
+        editIndex = -1;
+
+        document.getElementById("saveButton").textContent =
+            "➕ Add Record";
+
+        document.getElementById("message").textContent = "";
+    }
+
+
+    // Display records when page loads
+    displayRecords();
+
+</script>
+
+</body>
+</html>

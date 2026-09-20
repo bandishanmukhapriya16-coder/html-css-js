@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Validate Email Using Regular Expression</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            text-align: center;
+            padding: 50px;
+        }
+
+        .card {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #0072ff;
+        }
+
+        input {
+            width: 80%;
+            padding: 12px;
+            margin: 15px;
+            border: 2px solid #00a8ff;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #0072ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #0056cc;
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e6f4ff;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back {
+            margin-top: 30px;
+        }
+
+        .back a {
+            text-decoration: none;
+            color: #0072ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+
+        <h1>📧 Email Validation</h1>
+
+        <p>Enter your email address:</p>
+
+        <input type="text" id="email"
+               placeholder="Example: student@gmail.com">
+
+        <br>
+
+        <button onclick="validateEmail()">Validate Email</button>
+
+        <div id="result"></div>
+
+        <div class="back">
+            <a href="../index.html">← Back to JavaScript Index</a>
+            <br><br>
+            <a href="../../index.html">← Back to Main Index</a>
+        </div>
+
+    </div>
+
+    <script>
+        function validateEmail() {
+
+            let email = document.getElementById("email").value;
+
+            // Regular expression for email validation
+            let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (pattern.test(email)) {
+                document.getElementById("result").innerHTML =
+                    "✅ Valid Email Address";
+            } else {
+                document.getElementById("result").innerHTML =
+                    "❌ Invalid Email Address";
+            }
+        }
+    </script>
+
+</body>
+</html>
